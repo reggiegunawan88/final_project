@@ -7,7 +7,7 @@ const query_mobil = "SELECT * FROM mobil";
 const pool = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "reggie",
+  password: "root",
   database: "naripan_motor",
 });
 

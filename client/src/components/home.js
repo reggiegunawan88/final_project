@@ -28,7 +28,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className="main-div">
         <h2>List Mobil Naripan Motor</h2>
         <ul>
           {this.state.mobil.map((mobil) => (
