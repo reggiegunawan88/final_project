@@ -1,5 +1,5 @@
 import React from "react";
-import "./navbar.css";
+import "../components/style/navbar.css";
 import { Navbar, Nav } from "react-bootstrap";
 import logo from "../assets/logo-naripan-motor.jpg";
 
@@ -13,7 +13,6 @@ class NavigationBar extends React.Component {
               <Navbar.Brand href="#home">
                 <img src={logo} />
               </Navbar.Brand>
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                   <Nav.Link>Home</Nav.Link>

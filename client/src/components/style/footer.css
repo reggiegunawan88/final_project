@@ -1,0 +1,16 @@
+.footer {
+  bottom: 0;
+  flex-shrink: 0;
+  text-align: center;
+  background-color: #08051be8;
+  color: rgba(255, 255, 255, 0.6);
+  position: sticky;
+  width: 100%;
+}
+
+.footer-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 2px;
+}
