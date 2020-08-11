@@ -1,6 +1,6 @@
 import React from "react";
 import ButtonLayout from "./buttonLayout";
-import ListMobil from "./listmobil";
+import ListMobil from "./list mobil/listmobil";
 
 class Content extends React.Component {
   constructor() {
@@ -14,7 +14,7 @@ class Content extends React.Component {
           <div className="col-3">
             <ButtonLayout />
           </div>
-          <div className="col-9" style={{ backgroundColor: "lightblue" }}>
+          <div className="col-9" style={{ backgroundColor: "" }}>
             <ListMobil />
           </div>
         </div>

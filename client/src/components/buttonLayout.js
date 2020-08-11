@@ -12,7 +12,7 @@ class ButtonLayout extends React.Component {
           </p>
         </div>
         <div className="row justify-content-md-center m-2">
-          <h2 />
+          <h2 className="separator-line" />
         </div>
         <div className="row justify-content-md-center m-2">
           <Button variant="primary">Pilih Mobil</Button>
