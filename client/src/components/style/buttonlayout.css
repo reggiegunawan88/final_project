@@ -1,4 +1,7 @@
-.container {
+.filter-container {
+  position: fixed;
+  width: 250px !important;
+  top: 25%;
   text-align: center;
   justify-content: center;
 }

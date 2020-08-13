@@ -1,0 +1,44 @@
+.modal-footer {
+  display: block !important;
+  text-align: center !important;
+  border-top: 0px !important;
+  padding: 35px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.modal-header {
+  display: block !important;
+  text-align: center;
+}
+
+.container-modal {
+  text-align: center;
+  justify-content: center;
+  /* display: flex; */
+}
+
+.form {
+  text-align: center;
+}
+
+#label-txt {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  margin-right: 20px !important;
+  padding: 5px !important;
+  height: 35px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.dropdown {
+  /* width: 25% !important; */
+  text-align: center !important;
+  right: auto;
+  /* margin-left: 285px !important; */
+}

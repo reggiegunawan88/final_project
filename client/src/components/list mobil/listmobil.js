@@ -29,7 +29,7 @@ class ListMobil extends React.Component {
           </div>
         </div>
         <h2 className="hr-line" />
-        <div className="container-fluid overflow-auto">
+        <div className="container-fluid">
           <div className="row">
             <div className="col-4">
               <CardMobil />
@@ -65,7 +65,7 @@ class ListMobil extends React.Component {
           </div>
         </div>
         <div className="row page-pagination">
-          <div class="col-12 col-md-offset-6">
+          <div className="col-12 col-md-offset-6">
             <p>1 2 3 next last</p>
           </div>
         </div>
