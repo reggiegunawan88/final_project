@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-import Home from "./components/home";
+import "./components/style/pagination.css";
 import Navbar from "./components/navbar";
-import Content from "./components/content";
+import MainContent from "./components/maincontent";
 import Footer from "./components/footer";
 
 class App extends Component {
@@ -10,8 +10,8 @@ class App extends Component {
     return (
       <div className="App" style={{ overflowX: "hidden" }}>
         <Navbar />
-        <Content />
-        {/* <Footer /> */}
+        <MainContent />
+        <Footer />
       </div>
     );
   }
