@@ -1,7 +1,7 @@
 import React from "react";
-import "../style/modal.css";
+import "../../style/modal.css";
 import { Button, Modal } from "react-bootstrap";
-import { Dropdown, Menu } from "semantic-ui-react";
+import { Dropdown } from "semantic-ui-react";
 
 const options = [
   { key: 1, text: "Choice 1", value: 1 },

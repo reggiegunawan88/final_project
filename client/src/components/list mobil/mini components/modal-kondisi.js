@@ -1,5 +1,5 @@
 import React from "react";
-import "../style/modal.css";
+import "../../style/modal.css";
 import { Button, Modal } from "react-bootstrap";
 import { Dropdown, Menu } from "semantic-ui-react";
 
@@ -48,7 +48,7 @@ class ModalKriteria extends React.Component {
                     defaultChecked={false}
                     onChange={this.onChangeCheckbox}
                   />
-                  <label class="custom-control-label" for="defaultInline1">
+                  <label className="custom-control-label" for="defaultInline1">
                     YES
                   </label>
                 </div>
