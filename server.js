@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
+const cors = require("cors");
 
 const query_mobil = "SELECT * FROM mobil";
 
@@ -26,14 +27,15 @@ pool.getConnection(function (err, connection) {
   });
 });
 
+//prevent cors
+app.use(cors());
+
 app.get("/mobil", (req, res) => {
   pool.query(query_mobil, (err, result) => {
     if (err) {
       return res.send(err);
     } else {
-      return res.json({
-        data: result,
-      });
+      return res.json(result);
     }
   });
 });
