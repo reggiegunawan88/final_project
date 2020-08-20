@@ -3,3 +3,7 @@
   text-align: left;
   margin-bottom: 25px !important;
 }
+
+.ui.card.mobil-card:hover {
+  transform: scale(1.065, 1.065);
+}

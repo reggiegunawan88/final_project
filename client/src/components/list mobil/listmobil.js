@@ -6,10 +6,11 @@ import GroupCards from "./group-cards";
 import Pagination from "./pagination";
 
 const ListMobil = () => {
+  const [query, setQuery] = useState("");
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(3);
+  const [itemsPerPage] = useState(6);
 
   useEffect(() => {
     const fetchData = async () => {
