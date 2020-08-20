@@ -4,6 +4,10 @@ const mysql = require("mysql");
 const cors = require("cors");
 
 const query_mobil = "SELECT * FROM mobil";
+const query_harga_asc = "SELECT * FROM mobil ORDER BY harga ASC";
+const query_harga_desc = "SELECT * FROM mobil ORDER BY harga DESC";
+const query_tahun_oldest = "SELECT * FROM mobil ORDER BY tahun ASC";
+const query_tahun_newest = "SELECT * FROM mobil ORDER BY tahun DESC";
 
 const pool = mysql.createPool({
   host: "localhost",
@@ -30,8 +34,53 @@ pool.getConnection(function (err, connection) {
 //prevent cors
 app.use(cors());
 
+//query get all items
 app.get("/mobil", (req, res) => {
   pool.query(query_mobil, (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(result);
+    }
+  });
+});
+
+//query get items by highest price
+app.get("/mobil/hargatertinggi", (req, res) => {
+  pool.query(query_harga_desc, (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(result);
+    }
+  });
+});
+
+//query get items by lowest price
+app.get("/mobil/hargaterendah", (req, res) => {
+  pool.query(query_harga_asc, (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(result);
+    }
+  });
+});
+
+//query get items by newest year
+app.get("/mobil/tahunterbaru", (req, res) => {
+  pool.query(query_tahun_newest, (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(result);
+    }
+  });
+});
+
+//query get items by oldest year
+app.get("/mobil/tahuntertua", (req, res) => {
+  pool.query(query_tahun_oldest, (err, result) => {
     if (err) {
       return res.send(err);
     } else {
