@@ -10,12 +10,12 @@ class NavigationBar extends React.Component {
         <div className="row">
           <div className="col-md-12">
             <Navbar className="menu-bar" bg="" expand="lg" sticky="top">
-              <Navbar.Brand href="#home">
+              <Navbar.Brand href="/">
                 <img src={logo} />
               </Navbar.Brand>
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                  <Nav.Link>Home</Nav.Link>
+                  <Nav.Link href="/">Home</Nav.Link>
                   <Nav.Link>Naripan Motor</Nav.Link>
                   <Nav.Link className="nav-carimobil">Cari Mobil</Nav.Link>
                   <Nav.Link>Jual Mobil Anda</Nav.Link>

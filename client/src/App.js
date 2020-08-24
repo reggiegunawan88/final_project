@@ -1,18 +1,27 @@
 import React, { Component } from "react";
 import "./App.css";
 import "./components/style/pagination.css";
-import Navbar from "./components/navbar";
-import MainContent from "./components/maincontent";
-import Footer from "./components/footer";
+import Navbar from "./components/pages/page_components/navbar";
+import MainContent from "./components/pages/mainpage";
+import ProductDetail from "./components/pages/productdetail";
+import Footer from "./components/pages/page_components/footer";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
-      <div className="App" style={{ overflowX: "hidden" }}>
-        <Navbar />
-        <MainContent />
-        <Footer />
-      </div>
+      <Router>
+        <div className="App" style={{ overflowX: "hidden" }}>
+          <Navbar />
+          {/* <ProductDetail /> */}
+          {/* <MainContent /> */}
+          <Switch>
+            <Route exact path="/" component={MainContent} />
+            <Route exact path="/productdetail" component={ProductDetail} />
+          </Switch>
+          <Footer />
+        </div>
+      </Router>
     );
   }
 }

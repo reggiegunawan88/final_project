@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import AliceCarousel from "react-alice-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { Image } from "semantic-ui-react";
@@ -11,7 +10,7 @@ const img_slideshow = () => {
     setImages([{ url: "../../../assets/kia-rio.jpg" }]);
   }, []);
 
-  console.log(images);
+  // console.log(images);
 
   const renderImg = (item) => {
     if (item) {
