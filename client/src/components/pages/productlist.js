@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "../style/listmobil.css";
 import axios from "axios";
-import Dropdown from "./mini components/dropdown";
-import GroupCards from "./group-cards";
-import Pagination from "./pagination";
+import Dropdown from "./page_components/productlist_components/mini components/dropdown";
+import GroupCards from "./page_components/productlist_components/group-cards";
+import Pagination from "./page_components/productlist_components/pagination";
 
 const ListMobil = () => {
   const [query, setQuery] = useState("");

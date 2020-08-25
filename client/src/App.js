@@ -13,8 +13,6 @@ class App extends Component {
       <Router>
         <div className="App" style={{ overflowX: "hidden" }}>
           <Navbar />
-          {/* <ProductDetail /> */}
-          {/* <MainContent /> */}
           <Switch>
             <Route exact path="/" component={MainContent} />
             <Route exact path="/productdetail" component={ProductDetail} />
