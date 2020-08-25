@@ -15,7 +15,7 @@ const CardMobil = ({ items, history }) => {
   console.log(items);
   return (
     <div>
-      <Link to={{ pathname: "/productdetail", data: items }}>
+      <Link to={{ pathname: `/productdetail/${items.nama}`, data: items }}>
         <Card className="mobil-card">
           <Image
             src={require("../../../../../assets/kia-rio.jpg")}
