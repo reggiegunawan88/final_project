@@ -1,4 +1,5 @@
 import React from "react";
+import NumberFormat from "react-number-format";
 
 const productdata = ({ items }) => {
   return (
@@ -23,11 +24,24 @@ const productdata = ({ items }) => {
           </tr>
           <tr>
             <th scope="row">KILOMETER</th>
-            <td>{items.kilometer}</td>
+            <td>
+              <NumberFormat
+                value={items.kilometer}
+                displayType={"text"}
+                thousandSeparator={true}
+              />
+            </td>
           </tr>
           <tr>
             <th scope="row">KAPASITAS MESIN</th>
-            <td>{items.kapasitas_mesin} CC</td>
+            <td>
+              <NumberFormat
+                value={items.kapasitas_mesin}
+                displayType={"text"}
+                thousandSeparator={true}
+                suffix={" CC"}
+              />
+            </td>
           </tr>
           <tr>
             <th scope="row">JENIS REM</th>
@@ -39,7 +53,15 @@ const productdata = ({ items }) => {
           </tr>
           <tr>
             <th scope="row">HARGA</th>
-            <td>Rp {items.harga}</td>
+            <td>
+              <NumberFormat
+                value={items.harga}
+                displayType={"text"}
+                thousandSeparator={true}
+                prefix={"Rp "}
+                suffix={",00"}
+              />
+            </td>
           </tr>
         </tbody>
       </table>
