@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonPopup from "./page_components/button-popup";
+import ButtonPopup from "./page_components/mainpage/button-popup";
 import ListMobil from "./productlist";
 
 class MainContent extends React.Component {
