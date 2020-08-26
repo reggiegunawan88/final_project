@@ -23,7 +23,7 @@ const CardMobil = ({ items, history }) => {
             ui={true}
           />
           <Card.Content>
-            <Card.Header>KIA</Card.Header>
+            <Card.Header>{items.merk}</Card.Header>
             <Card.Meta>
               <span className="date">{items.tahun}</span>
             </Card.Meta>

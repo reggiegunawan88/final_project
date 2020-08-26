@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./../style/productdetail.css";
-import Carousel from "./page_components/img_slideshow";
-import ProductData from "./page_components/productdata";
+import Carousel from "./page_components/productdetail/img_slideshow";
+import ProductData from "./page_components/productdetail/productdata";
 import { withRouter } from "react-router";
 
 const productdetail = (props) => {
@@ -25,7 +25,9 @@ const productdetail = (props) => {
       <div className="row">
         <div className="col-sm-12 mt-3">
           <div className="product-title">
-            <h3>"MERK XXX" + {data.nama}</h3>
+            <h3>
+              {data.merk} {data.nama}
+            </h3>
           </div>
         </div>
       </div>
