@@ -3,7 +3,8 @@ const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
 
-const query_mobil = "SELECT * FROM mobil";
+const query_mobil =
+  "SELECT nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil FROM mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe";
 const query_harga_asc = "SELECT * FROM mobil ORDER BY harga ASC";
 const query_harga_desc = "SELECT * FROM mobil ORDER BY harga DESC";
 const query_tahun_oldest = "SELECT * FROM mobil ORDER BY tahun ASC";
