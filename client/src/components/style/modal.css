@@ -16,7 +16,6 @@
 .container-modal {
   text-align: center;
   justify-content: center;
-  /* display: flex; */
 }
 
 .form {
@@ -36,13 +35,13 @@ input[type="text"] {
   border-radius: 5px;
 }
 
-.dropdown {
-  /* width: 25% !important; */
-  text-align: center !important;
-  right: auto;
-  /* margin-left: 285px !important; */
-}
-
 .modal-content {
   border-radius: 3.3rem !important;
+}
+
+#kriteria-merk,
+#kriteria-tipe {
+  width: 25%;
+  margin-left: 285px !important;
+  text-align: center;
 }

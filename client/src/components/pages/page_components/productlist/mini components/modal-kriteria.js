@@ -33,6 +33,7 @@ class ModalKriteria extends React.Component {
                 <p id="label-txt">MERK :</p>
                 <div>
                   <Dropdown
+                    id="kriteria-merk"
                     className="dropdown"
                     placeholder="--Semua--"
                     fluid
@@ -47,6 +48,7 @@ class ModalKriteria extends React.Component {
                 <p id="label-txt">TIPE MOBIL : </p>
                 <div>
                   <Dropdown
+                    id="kriteria-merk"
                     placeholder="--Semua--"
                     fluid
                     selection
