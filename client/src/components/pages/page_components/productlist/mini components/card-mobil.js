@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Link, Switch, Route } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import { Card, Image } from "semantic-ui-react";
 import "../../../../style/card.css";
 import { withRouter } from "react-router-dom";
 import NumberFormat from "react-number-format";
-// import Switch from "react-bootstrap/esm/Switch";
-// import ProductDetailPage from "../../pages/productdetail";
 
 const CardMobil = ({ items }) => {
   return (

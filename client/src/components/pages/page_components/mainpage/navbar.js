@@ -11,7 +11,7 @@ class NavigationBar extends React.Component {
           <div className="col-md-12">
             <Navbar className="menu-bar" bg="" expand="lg" sticky="top">
               <Navbar.Brand href="/">
-                <img src={logo} />
+                <img src={logo} alt="Naripan Motor" />
               </Navbar.Brand>
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">

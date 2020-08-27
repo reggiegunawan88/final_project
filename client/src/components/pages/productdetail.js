@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./../style/productdetail.css";
 import Carousel from "./page_components/productdetail/img_slideshow";
 import ProductData from "./page_components/productdetail/productdata";
-import { withRouter } from "react-router";
+import { observable } from "mobx";
 
 const productdetail = (props) => {
   const data = props.location.data;
@@ -37,4 +37,4 @@ const productdetail = (props) => {
   );
 };
 
-export default withRouter(productdetail);
+export default productdetail;

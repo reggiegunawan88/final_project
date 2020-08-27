@@ -3,10 +3,6 @@ import ButtonPopup from "./page_components/mainpage/button-popup";
 import ListMobil from "./productlist";
 
 class MainContent extends React.Component {
-  constructor() {
-    super();
-  }
-
   render() {
     return (
       <div className="container">

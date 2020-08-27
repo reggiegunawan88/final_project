@@ -1,15 +1,8 @@
 import React from "react";
 import "../../../../style/modal.css";
 import { Button, Modal } from "react-bootstrap";
-import { Dropdown, Menu } from "semantic-ui-react";
 
-const options = [
-  { key: 1, text: "Choice 1", value: 1 },
-  { key: 2, text: "Choice 2", value: 2 },
-  { key: 3, text: "Choice 3", value: 3 },
-];
-
-class ModalKriteria extends React.Component {
+class ModalKondisi extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -55,10 +48,10 @@ class ModalKriteria extends React.Component {
                 <div className="custom-control custom-checkbox custom-control-inline">
                   <input
                     type="checkbox"
-                    class="custom-control-input"
+                    className="custom-control-input"
                     id="defaultInline2"
                   />
-                  <label class="custom-control-label" for="defaultInline2">
+                  <label className="custom-control-label" for="defaultInline2">
                     NO
                   </label>
                 </div>
@@ -95,4 +88,4 @@ class ModalKriteria extends React.Component {
   }
 }
 
-export default ModalKriteria;
+export default ModalKondisi;
