@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, Switch, Route } from "react-router-dom";
 import { Card, Image } from "semantic-ui-react";
 import "../../../../style/card.css";
@@ -7,14 +7,7 @@ import NumberFormat from "react-number-format";
 // import Switch from "react-bootstrap/esm/Switch";
 // import ProductDetailPage from "../../pages/productdetail";
 
-const CardMobil = ({ items, history }) => {
-  // const url_name = items.nama;
-  // const handleClick = () => {
-  //   history.push("/" + url_name, { items });
-  // };
-  const productname = "/" + items.nama;
-  console.log(items);
-
+const CardMobil = ({ items }) => {
   return (
     <div>
       <Link to={{ pathname: `/productdetail/${items.nama}`, data: items }}>

@@ -5,20 +5,12 @@ import ProductData from "./page_components/productdetail/productdata";
 import { withRouter } from "react-router";
 
 const productdetail = (props) => {
-  // const [data, setData] = useState([]);
-
-  //save data from incoming props into local storage
-  // let savedData = JSON.stringify(props.location.data);
-  // localStorage.setItem("productdata", savedData);
-  //retrieve and load data froms saved storage
-
-  // useEffect(() => {
-  //   setData(JSON.parse(localStorage.getItem("productdata")));
-  // }, []);
-  // console.log(data);
-
   const data = props.location.data;
-  console.log(data);
+
+  //abaikan saja
+  // const data_router = null;
+  // console.log(data);
+  // console.log(data_router);
 
   return (
     <div className="container">
