@@ -15,15 +15,13 @@ const productdetail = (props) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-sm-12 mt-3">
+        <div className="col-sm-12 mt-5">
           <div className="product-title">
-            <h3>
-              {data.merk} {data.nama}
-            </h3>
+            {data.merk} {data.nama}
           </div>
         </div>
       </div>
-      <div className="row mt-5">
+      <div className="row mt-5 mb-5">
         <div className="col-sm-9">
           <div className="container">
             <Carousel />
