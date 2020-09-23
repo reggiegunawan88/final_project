@@ -4,11 +4,13 @@ const mysql = require("mysql");
 const cors = require("cors");
 
 const query_mobil =
-  "SELECT nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil FROM mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe";
+  "SELECT nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, keyless_entry, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe";
 const query_harga_asc = "SELECT * FROM mobil ORDER BY harga ASC";
 const query_harga_desc = "SELECT * FROM mobil ORDER BY harga DESC";
 const query_tahun_oldest = "SELECT * FROM mobil ORDER BY tahun ASC";
 const query_tahun_newest = "SELECT * FROM mobil ORDER BY tahun DESC";
+const query_merkmobil = "SELECT merk FROM merk_mobil";
+const query_tipemobil = "SELECT tipe_mobil FROM tipe_mobil";
 
 const pool = mysql.createPool({
   host: "localhost",
@@ -82,6 +84,28 @@ app.get("/mobil/tahunterbaru", (req, res) => {
 //query get items by oldest year
 app.get("/mobil/tahuntertua", (req, res) => {
   pool.query(query_tahun_oldest, (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(result);
+    }
+  });
+});
+
+//query get items by car brand
+app.get("/mobil/merkmobil", (req, res) => {
+  pool.query(query_merkmobil, (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(result);
+    }
+  });
+});
+
+//query get items by car type
+app.get("/mobil/tipemobil", (req, res) => {
+  pool.query(query_tipemobil, (err, result) => {
     if (err) {
       return res.send(err);
     } else {
