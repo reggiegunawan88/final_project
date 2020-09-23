@@ -6,11 +6,13 @@ import GroupCards from "./page_components/productlist/group-cards";
 import Pagination from "./page_components/productlist/pagination";
 
 const ListMobil = () => {
-  const [query, setQuery] = useState("");
+  // const [query, setQuery] = useState(""); belum kepake
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(6);
+  const [sortValue, setSortValue] = useState("");
+  // const [isDataFetched, setisDataFetched] = useState(false); belum kepake
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,6 +32,13 @@ const ListMobil = () => {
   //Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  const get_dropdownvalue = async (event, data) => {
+    const selected_value = data.value;
+    console.log(selected_value);
+    // setSortValue(selected_value);
+    console.log(sortValue);
+  };
+
   return (
     <div>
       <div className="row upper-part">
@@ -47,7 +56,7 @@ const ListMobil = () => {
             </div>
             <div className="col-6">
               <div className="dropdown-area">
-                <Dropdown />
+                <Dropdown onChange={get_dropdownvalue} />
               </div>
             </div>
           </div>

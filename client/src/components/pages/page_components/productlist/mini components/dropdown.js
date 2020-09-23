@@ -24,8 +24,14 @@ const options = [
   },
 ];
 
-const SortBy = () => (
-  <Dropdown placeholder="Pilih kriteria" fluid selection options={options} />
+const SortBy = (props) => (
+  <Dropdown
+    placeholder="Pilih kriteria"
+    fluid
+    selection
+    options={options}
+    onChange={props.onChange}
+  />
 );
 
 export default SortBy;

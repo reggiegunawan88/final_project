@@ -34,16 +34,6 @@ const img_slideshow = () => {
 
   return (
     <div>
-      {/* <Carousel autoplay infiniteLoop showThumbs={true}> */}
-      {/* {images.map((image) => renderImg(image.url))} */}
-      {/* <figure> */}
-      {/* <Image src={require("../../../../assets/kia-rio.jpg")} /> */}
-      {/* </figure> */}
-      {/* <Image src={require("../../../assets/kia-rio.jpg")} />
-        <Image src={require("../../../assets/kia-rio.jpg")} />
-        <Image src={require("../../../assets/kia-rio.jpg")} />
-        <Image src={require("../../../assets/kia-rio.jpg")} /> */}
-      {/* </Carousel> */}
       <div className="image-container">
         <ImageGallery
           items={images}
