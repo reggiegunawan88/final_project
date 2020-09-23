@@ -52,6 +52,22 @@ const productdata = ({ items }) => {
             <td>{items.bahan_bakar}</td>
           </tr>
           <tr>
+            <th scope="row">GPS</th>
+            <td>{items.gps}</td>
+          </tr>
+          <tr>
+            <th scope="row">KEYLESS ENTRY</th>
+            <td>{items.keyless_entry}</td>
+          </tr>
+          <tr>
+            <th scope="row">AIRBAG</th>
+            <td>{items.airbag}</td>
+          </tr>
+          <tr>
+            <th scope="row">POWER STEERING</th>
+            <td>{items.powersteering}</td>
+          </tr>
+          <tr>
             <th scope="row">HARGA</th>
             <td>
               <NumberFormat
