@@ -10,9 +10,11 @@ class ModalKondisi extends React.Component {
     };
   }
 
-  onChangeCheckbox(event) {
+  onChangeCheckbox = (event) => {
+    this.setState({ valueCheckbox: event.target.name });
     console.log(event.target.name);
-  }
+    console.log(this.state.valueCheckbox);
+  };
   render() {
     return (
       <Modal
@@ -48,6 +50,7 @@ class ModalKondisi extends React.Component {
                 <div className="custom-control custom-checkbox custom-control-inline">
                   <input
                     type="checkbox"
+                    name="checkbox-1"
                     className="custom-control-input"
                     id="defaultInline2"
                   />

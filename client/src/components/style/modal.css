@@ -45,3 +45,12 @@ input[type="text"] {
   margin-left: 285px !important;
   text-align: center;
 }
+
+label {
+  margin: 10px;
+  font-size: 15px;
+}
+
+input[type="radio"] {
+  margin: 10px;
+}

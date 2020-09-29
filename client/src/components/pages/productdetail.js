@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./../style/productdetail.css";
 import Carousel from "./page_components/productdetail/img_slideshow";
 import ProductData from "./page_components/productdetail/productdata";
@@ -6,11 +6,6 @@ import { observable } from "mobx";
 
 const productdetail = (props) => {
   const data = props.location.data;
-
-  //abaikan saja
-  // const data_router = null;
-  // console.log(data);
-  // console.log(data_router);
 
   return (
     <div className="container">
