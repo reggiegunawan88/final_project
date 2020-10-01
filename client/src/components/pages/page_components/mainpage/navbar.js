@@ -15,13 +15,23 @@ class NavigationBar extends React.Component {
               </Navbar.Brand>
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                  <Nav.Link href="/">Home</Nav.Link>
-                  <Nav.Link>Naripan Motor</Nav.Link>
-                  <Nav.Link className="nav-carimobil">Cari Mobil</Nav.Link>
-                  <Nav.Link>Jual Mobil Anda</Nav.Link>
-                  <Nav.Link>Body Repair</Nav.Link>
-                  <Nav.Link>News</Nav.Link>
-                  <Nav.Link>Hubungi Kami</Nav.Link>
+                  <Nav.Link href="http://naripanmotor.com/">Home</Nav.Link>
+                  <Nav.Link href="https://naripanmotor.com/naripan-motor">
+                    Naripan Motor
+                  </Nav.Link>
+                  <Nav.Link className="nav-carimobil" href="/">
+                    Cari Mobil
+                  </Nav.Link>
+                  <Nav.Link href="https://naripanmotor.com/jual-mobil-anda">
+                    Jual Mobil Anda
+                  </Nav.Link>
+                  <Nav.Link href="http://naripanmotor.com/body-repair-and-oven-painting">
+                    Body Repair
+                  </Nav.Link>
+                  <Nav.Link href="http://naripanmotor.com/news">News</Nav.Link>
+                  <Nav.Link href="http://naripanmotor.com/hubungi-kami">
+                    Hubungi Kami
+                  </Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
