@@ -141,8 +141,10 @@ app.post("/mobil/post_result_SECC", (req, res) => {
   const data = {
     merk_mobil: req.body.merk_mobil,
     tipe_mobil: req.body.tipe_mobil,
-    harga: req.body.harga,
-    tahun: req.body.tahun,
+    harga_1: req.body.harga_1,
+    harga_2: req.body.harga_2,
+    tahun_1: req.body.tahun_1,
+    tahun_2: req.body.tahun_2,
   };
   data_query_SECC = data;
   return res.send({
@@ -154,39 +156,32 @@ app.post("/mobil/post_result_SECC", (req, res) => {
 
 //query get result from SECC selection (part 1 selection)
 app.get("/mobil/get_result_SECC", (req, res) => {
-  //get sent data
+  //receive sent data
   var data = data_query_SECC;
   const merk_mobil = '"' + data.merk_mobil + '"';
   const tipe_mobil = '"' + data.tipe_mobil + '"';
-  const harga = data.harga;
-  const tahun = data.tahun;
+  const harga_1 = data.harga_1,
+    harga_2 = data.harga_2;
+  const tahun_1 = data.tahun_1,
+    tahun_2 = data.tahun_2;
+
   //do MySQL query
   var query_SECC = "";
-  if (harga === 100 && tahun === 2010) {
-    console.log("opsi 1 check");
-    query_SECC =
-      "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, keyless_entry, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe where harga > 500000000 AND harga <= 100000000 AND tahun > 2005 AND tahun <= 2010 AND merk = " +
-      merk_mobil +
-      " AND tipe_mobil = " +
-      tipe_mobil +
-      " order by harga asc";
-  } else if (harga === 200 && tahun === 2015) {
-    console.log("opsi 2 check");
-    query_SECC =
-      "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, keyless_entry, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe where harga > 100000000 AND harga <= 200000000 AND tahun > 2011 AND tahun <= 2015 AND merk = " +
-      merk_mobil +
-      " AND tipe_mobil = " +
-      tipe_mobil +
-      " order by harga asc";
-  } else {
-    console.log("opsi 3 check");
-    query_SECC =
-      "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, keyless_entry, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe where harga > 200000000 AND harga <= 300000000 AND tahun > 2015 AND merk = " +
-      merk_mobil +
-      " AND tipe_mobil = " +
-      tipe_mobil +
-      " order by harga asc";
-  }
+  query_SECC =
+    "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, keyless_entry, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe where harga >= " +
+    harga_1 +
+    " AND harga <= " +
+    harga_2 +
+    " AND tahun >= " +
+    tahun_1 +
+    " AND tahun <= " +
+    tahun_2 +
+    " AND merk = " +
+    merk_mobil +
+    " AND tipe_mobil = " +
+    tipe_mobil +
+    " order by harga asc";
+  console.log(query_SECC);
   pool.query(query_SECC, (err, result) => {
     if (err) {
       return res.send(err);

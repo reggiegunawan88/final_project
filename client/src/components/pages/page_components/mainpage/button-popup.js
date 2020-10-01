@@ -25,6 +25,11 @@ class ButtonLayout extends React.Component {
           </p>
         </div>
         <div className="row justify-content-md-center m-2">
+          <Button style={{ display: "none" }} variant="warning">
+            RESET
+          </Button>
+        </div>
+        <div className="row justify-content-md-center m-2">
           <p className="separator-line" />
         </div>
         <div className="row justify-content-md-center m-2">
@@ -32,7 +37,7 @@ class ButtonLayout extends React.Component {
             variant="primary"
             onClick={() => this.setState({ showModalKriteria: true })}
           >
-            Pilih Mobil
+            PILIH MOBIL
           </Button>
           <ModalKriteria
             show={this.state.showModalKriteria}
@@ -44,7 +49,7 @@ class ButtonLayout extends React.Component {
             variant="secondary"
             onClick={() => this.setState({ showModalKondisi: true })}
           >
-            Pilih Kondisi
+            PILIH KONDISI
           </Button>
           <ModalKondisi
             show={this.state.showModalKondisi}

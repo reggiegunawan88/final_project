@@ -1,7 +1,7 @@
 import React from "react";
 import "../../../../style/modal.css";
 import { Alert, Button, Modal } from "react-bootstrap";
-import { Dropdown } from "semantic-ui-react";
+import { Confirm, Dropdown } from "semantic-ui-react";
 import axios from "axios";
 
 class ModalKriteria extends React.Component {
@@ -12,8 +12,10 @@ class ModalKriteria extends React.Component {
       list_tipe_mobil: [],
       merk_mobil: null,
       tipe_mobil: null,
-      harga: null,
-      tahun: null,
+      harga_1: null,
+      harga_2: null,
+      tahun_1: null,
+      tahun_2: null,
     };
   }
 
@@ -53,9 +55,11 @@ class ModalKriteria extends React.Component {
   onChangeRadio = (event) => {
     const value = event.target.name;
     if (value === "radiobtn-harga") {
-      this.setState({ harga: event.target.value });
+      var string = event.target.value.split(",");
+      this.setState({ harga_1: string[0], harga_2: string[1] });
     } else {
-      this.setState({ tahun: event.target.value });
+      var string = event.target.value.split(",");
+      this.setState({ tahun_1: string[0], tahun_2: string[1] });
     }
   };
 
@@ -77,23 +81,30 @@ class ModalKriteria extends React.Component {
     var filter_data = {
       merk_mobil: this.state.merk_mobil,
       tipe_mobil: this.state.tipe_mobil,
-      harga: this.state.harga,
-      tahun: this.state.tahun,
+      harga_1: this.state.harga_1,
+      harga_2: this.state.harga_2,
+      tahun_1: this.state.tahun_1,
+      tahun_2: this.state.tahun_2,
     };
     if (this.state.merk_mobil == null) {
       alert("Merk mobil belum dipilih");
     } else if (this.state.tipe_mobil == null) {
       alert("Tipe mobil belum dipilih");
-    } else if (this.state.harga == null) {
+    } else if (this.state.harga_1 == null && this.state.harga_2 == null) {
       alert("Rentang harga mobil belum dipilih");
-    } else if (this.state.tahun == null) {
+    } else if (this.state.tahun_1 == null && this.state.tahun_2 == null) {
       alert("Rentang tahun keluaran mobil belum dipilih");
     } else {
       await axios
-        .post("http://localhost:5000/mobil/post_result_SECC", filter_data)
+        .post("http://localhost:5000/mobil/post_result_SECC", filter_data, {
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            accept: "application/json",
+          },
+        })
         .then((response) => {
           console.log(response);
-          return response.json();
+          alert("Data berhasil dimasukkan!");
         })
         .catch(function (err) {
           console.log(err);
@@ -156,7 +167,7 @@ class ModalKriteria extends React.Component {
                     <label className="radio-btn-group">
                       <input
                         type="radio"
-                        value="100"
+                        value="50000000,100000000"
                         name="radiobtn-harga"
                         onChange={this.onChangeRadio}
                       />
@@ -165,7 +176,7 @@ class ModalKriteria extends React.Component {
                     <label>
                       <input
                         type="radio"
-                        value="200"
+                        value="101000000,200000000"
                         name="radiobtn-harga"
                         onChange={this.onChangeRadio}
                       />
@@ -174,11 +185,20 @@ class ModalKriteria extends React.Component {
                     <label>
                       <input
                         type="radio"
-                        value="300"
+                        value="201000000,300000000"
                         name="radiobtn-harga"
                         onChange={this.onChangeRadio}
                       />
                       201 - 300 juta
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        value="301000000,400000000"
+                        name="radiobtn-harga"
+                        onChange={this.onChangeRadio}
+                      />
+                      301 - 400 juta
                     </label>
                   </div>
                 </div>
@@ -190,7 +210,7 @@ class ModalKriteria extends React.Component {
                     <label className="radio-btn-tahun">
                       <input
                         type="radio"
-                        value="2010"
+                        value="2005,2010"
                         name="radionbtn-tahun"
                         onChange={this.onChangeRadio}
                       />
@@ -199,7 +219,7 @@ class ModalKriteria extends React.Component {
                     <label className="radio-btn-tahun">
                       <input
                         type="radio"
-                        value="2015"
+                        value="2011,2015"
                         name="radionbtn-tahun"
                         onChange={this.onChangeRadio}
                       />
@@ -208,7 +228,7 @@ class ModalKriteria extends React.Component {
                     <label className="radio-btn-tahun">
                       <input
                         type="radio"
-                        value="2020"
+                        value="2016,2020"
                         name="radionbtn-tahun"
                         onChange={this.onChangeRadio}
                       />

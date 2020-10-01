@@ -17,7 +17,11 @@ const ListMobil = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/mobil");
+      const res = await axios.get("http://localhost:5000/mobil", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       setItems(res.data);
       setLoading(false);
     };
@@ -36,7 +40,6 @@ const ListMobil = () => {
     const selected_value = data.value;
     console.log(selected_value);
     // setSortValue(selected_value);
-    console.log(sortValue);
   };
 
   return (

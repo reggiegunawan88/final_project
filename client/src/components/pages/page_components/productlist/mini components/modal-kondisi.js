@@ -60,24 +60,6 @@ class ModalKondisi extends React.Component {
                 </div>
               </div>
             </div>
-            {/* <div className="row">
-              <div className="col-12">
-                <p id="label-txt">HARGA : </p>
-                <div className="centered">
-                  <input type="text" placeholder="Minimum" />
-                  <input type="text" placeholder="Maksimum" />
-                </div>
-              </div>
-            </div> */}
-            {/* <div className="row">
-              <div className="col-12">
-                <p id="label-txt">TAHUN KELUARAN : </p>
-                <div className="centered">
-                  <input type="text" placeholder="Minimum" />
-                  <input type="text" placeholder="Maksimum" />
-                </div>
-              </div>
-            </div> */}
           </div>
         </Modal.Body>
         <Modal.Footer>
