@@ -137,7 +137,7 @@ app.get("/mobil/tipemobil", (req, res) => {
 });
 
 //query send result from SECC selection (part 1 selection)
-app.post("/mobil/post_result_SECC", (req, res) => {
+app.post("/mobil/result_SECC", (req, res) => {
   const data = {
     merk_mobil: req.body.merk_mobil,
     tipe_mobil: req.body.tipe_mobil,
@@ -146,18 +146,6 @@ app.post("/mobil/post_result_SECC", (req, res) => {
     tahun_1: req.body.tahun_1,
     tahun_2: req.body.tahun_2,
   };
-  data_query_SECC = data;
-  return res.send({
-    error: false,
-    data_query: data_query_SECC,
-    message: "Query data has successfully sent.",
-  });
-});
-
-//query get result from SECC selection (part 1 selection)
-app.get("/mobil/get_result_SECC", (req, res) => {
-  //receive sent data
-  var data = data_query_SECC;
   const merk_mobil = '"' + data.merk_mobil + '"';
   const tipe_mobil = '"' + data.tipe_mobil + '"';
   const harga_1 = data.harga_1,
@@ -181,7 +169,6 @@ app.get("/mobil/get_result_SECC", (req, res) => {
     " AND tipe_mobil = " +
     tipe_mobil +
     " order by harga asc";
-  console.log(query_SECC);
   pool.query(query_SECC, (err, result) => {
     if (err) {
       return res.send(err);

@@ -1,7 +1,7 @@
 import React from "react";
 import "../../../../style/modal.css";
 import { Alert, Button, Modal } from "react-bootstrap";
-import { Confirm, Dropdown } from "semantic-ui-react";
+import { Dropdown } from "semantic-ui-react";
 import axios from "axios";
 
 class ModalKriteria extends React.Component {
@@ -23,6 +23,7 @@ class ModalKriteria extends React.Component {
     this.get_data();
   }
 
+  //fetch data from server
   async get_data() {
     try {
       const res_merk = await axios("http://localhost:5000/mobil/merkmobil");
@@ -75,7 +76,7 @@ class ModalKriteria extends React.Component {
     this.setState({ tipe_mobil: value });
   };
 
-  //submit data into query
+  //submit data into query process
   post_data = async (e) => {
     e.preventDefault();
     var filter_data = {
@@ -96,15 +97,17 @@ class ModalKriteria extends React.Component {
       alert("Rentang tahun keluaran mobil belum dipilih");
     } else {
       await axios
-        .post("http://localhost:5000/mobil/post_result_SECC", filter_data, {
+        .post("http://localhost:5000/mobil/result_SECC", filter_data, {
           headers: {
             "Content-Type": "application/json; charset=utf-8",
             accept: "application/json",
           },
         })
         .then((response) => {
-          console.log(response);
-          alert("Data berhasil dimasukkan!");
+          console.log(response.data);
+          //send hasil query ke mainpage
+          this.props.onHide();
+          this.props.onSearchInvoked(response.data);
         })
         .catch(function (err) {
           console.log(err);

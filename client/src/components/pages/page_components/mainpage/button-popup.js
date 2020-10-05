@@ -25,7 +25,7 @@ class ButtonLayout extends React.Component {
           </p>
         </div>
         <div className="row justify-content-md-center m-2">
-          <Button style={{ display: "none" }} variant="warning">
+          <Button style={{ display: "block" }} variant="warning">
             RESET
           </Button>
         </div>
@@ -42,6 +42,7 @@ class ButtonLayout extends React.Component {
           <ModalKriteria
             show={this.state.showModalKriteria}
             onHide={closeModalKriteria}
+            onSearchInvoked={this.props.onSearchInvoked}
           />
         </div>
         <div className="row justify-content-md-center m-2">
@@ -54,6 +55,7 @@ class ButtonLayout extends React.Component {
           <ModalKondisi
             show={this.state.showModalKondisi}
             onHide={closeModalKondisi}
+            disabled
           />
         </div>
       </div>
