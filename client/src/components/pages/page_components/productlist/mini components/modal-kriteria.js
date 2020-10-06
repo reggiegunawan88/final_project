@@ -105,9 +105,9 @@ class ModalKriteria extends React.Component {
         })
         .then((response) => {
           console.log(response.data);
-          //send hasil query ke mainpage
+          //send query result to mainpage
           this.props.onHide();
-          this.props.onSearchInvoked(response.data);
+          this.props.onReceiveProps(response.data);
         })
         .catch(function (err) {
           console.log(err);

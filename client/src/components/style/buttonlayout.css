@@ -13,3 +13,9 @@
   line-height: 0.1em;
   margin: 10px !important;
 }
+
+.btn-reset,
+.btn-kriteria,
+.btn-kondisi {
+  font-weight: bold !important;
+}

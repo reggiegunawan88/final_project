@@ -24,8 +24,13 @@ class ButtonLayout extends React.Component {
             CARI MOBIL
           </p>
         </div>
-        <div className="row justify-content-md-center m-2">
-          <Button style={{ display: "block" }} variant="warning">
+        <div className="row justify-content-md-center m-3">
+          <Button
+            className="btn-reset"
+            variant="warning"
+            onClick={this.props.onReset}
+            hidden={this.props.showResetBtn}
+          >
             RESET
           </Button>
         </div>
@@ -34,6 +39,7 @@ class ButtonLayout extends React.Component {
         </div>
         <div className="row justify-content-md-center m-2">
           <Button
+            className="btn-kriteria"
             variant="primary"
             onClick={() => this.setState({ showModalKriteria: true })}
           >
@@ -42,12 +48,14 @@ class ButtonLayout extends React.Component {
           <ModalKriteria
             show={this.state.showModalKriteria}
             onHide={closeModalKriteria}
-            onSearchInvoked={this.props.onSearchInvoked}
+            onReceiveProps={this.props.onReceiveProps}
           />
         </div>
         <div className="row justify-content-md-center m-2">
           <Button
-            variant="secondary"
+            className="btn-kondisi"
+            variant={this.props.btnModalColor}
+            disabled={this.props.disableModalProps}
             onClick={() => this.setState({ showModalKondisi: true })}
           >
             PILIH KONDISI
@@ -55,7 +63,6 @@ class ButtonLayout extends React.Component {
           <ModalKondisi
             show={this.state.showModalKondisi}
             onHide={closeModalKondisi}
-            disabled
           />
         </div>
       </div>
