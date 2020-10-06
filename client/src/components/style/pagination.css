@@ -10,3 +10,10 @@ li {
   line-height: 2rem;
   border-bottom: 1px dotted #777;
 }
+
+.container-pagination {
+  position: relative;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  bottom: 20px;
+}

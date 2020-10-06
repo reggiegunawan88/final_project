@@ -8,7 +8,7 @@ const pagination = ({ itemsPerPage, totalItems, paginate }) => {
   }
 
   return (
-    <nav style={{ marginBottom: "50px", marginTop: "50px" }}>
+    <nav className="container-pagination">
       <ul className="pagination">
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
