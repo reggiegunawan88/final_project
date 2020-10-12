@@ -55,7 +55,7 @@ class ButtonLayout extends React.Component {
           <Button
             className="btn-kondisi"
             variant={this.props.btnModalColor}
-            disabled={this.props.disableModalProps}
+            disabled={false}
             onClick={() => this.setState({ showModalKondisi: true })}
           >
             PILIH KONDISI

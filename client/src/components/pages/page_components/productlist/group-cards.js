@@ -1,29 +1,22 @@
 import React, { useState } from "react";
 import CardMobil from "./mini components/card-mobil";
 
-const GroupCards = ({ items, loading, sortvalue }) => {
-  if (loading) {
-    return <h3>Loading...</h3>;
-  }
-
+const GroupCards = ({ items, loading }) => {
+  // console.log(items)
   if (items.length === 0) {
     return <h3>Maaf, mobil tidak ditemukan.</h3>;
   }
-
-  // const [sortedItems, setsortedItems] = useState([]);
-
-  // useEffect(() => {
-  //   const sortItems = () => {
-  //     setsortedItems(items.sort((a, b) => b.tahun - a.tahun));
-  //   };
-  //   sortItems();
-  // }, [items]);
+  else{
+    if (loading) {
+      return <h3>Loading...</h3>;
+    }
+  }
 
   return (
     <div className="row">
       {items.map((item) => (
         <div className="col-4" key={item.nama}>
-          <CardMobil items={item} />
+          <CardMobil item={item} />
         </div>
       ))}
     </div>

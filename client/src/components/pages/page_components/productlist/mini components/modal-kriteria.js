@@ -183,7 +183,7 @@ class ModalKriteria extends React.Component {
                         name="radiobtn-harga"
                         onChange={this.onChangeRadio}
                       />
-                      101 - 200 juta
+                      100 - 200 juta
                     </label>
                     <label>
                       <input
@@ -192,7 +192,7 @@ class ModalKriteria extends React.Component {
                         name="radiobtn-harga"
                         onChange={this.onChangeRadio}
                       />
-                      201 - 300 juta
+                      200 - 300 juta
                     </label>
                     <label>
                       <input
@@ -201,7 +201,25 @@ class ModalKriteria extends React.Component {
                         name="radiobtn-harga"
                         onChange={this.onChangeRadio}
                       />
-                      301 - 400 juta
+                      300 - 400 juta
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        value="401000000,500000000"
+                        name="radiobtn-harga"
+                        onChange={this.onChangeRadio}
+                      />
+                      400 - 500 juta
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        value="0,99999999999"
+                        name="radiobtn-harga"
+                        onChange={this.onChangeRadio}
+                      />
+                       Semua harga
                     </label>
                   </div>
                 </div>
@@ -236,6 +254,15 @@ class ModalKriteria extends React.Component {
                         onChange={this.onChangeRadio}
                       />
                       2016 - 2020
+                    </label>
+                    <label className="radio-btn-tahun">
+                      <input
+                        type="radio"
+                        value="1999,2099"
+                        name="radionbtn-tahun"
+                        onChange={this.onChangeRadio}
+                      />
+                      Semua tahun
                     </label>
                   </div>
                 </div>

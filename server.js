@@ -33,11 +33,8 @@ const pool = mysql.createPool({
 });
 
 const query_mobil =
-  "SELECT nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, keyless_entry, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe";
-const query_harga_asc = "SELECT * FROM mobil ORDER BY harga ASC";
-const query_harga_desc = "SELECT * FROM mobil ORDER BY harga DESC";
-const query_tahun_oldest = "SELECT * FROM mobil ORDER BY tahun ASC";
-const query_tahun_newest = "SELECT * FROM mobil ORDER BY tahun DESC";
+  "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, keyless_entry, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe ORDER BY idmobil ASC";
+const query_get_img = "select idmobil, img_url from gambar_mobil";
 const query_merkmobil = "SELECT merk FROM merk_mobil";
 const query_tipemobil = "SELECT tipe_mobil FROM tipe_mobil";
 
@@ -56,12 +53,20 @@ pool.getConnection(function (err, connection) {
   });
 });
 
-//variables
-let data_query_SECC = {};
-
 //query get all items
 app.get("/mobil", (req, res) => {
   pool.query(query_mobil, (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(result);
+    }
+  });
+});
+
+//query to get all items's images
+app.get("/naripanmotor_img", (req, res) => {
+  pool.query(query_get_img, (err, result) => {
     if (err) {
       return res.send(err);
     } else {
@@ -155,6 +160,47 @@ app.post("/mobil/result_SECC", (req, res) => {
 
   //do MySQL query
   var query_SECC = "";
+  if(merk_mobil == "any" && tipe_mobil == "any"){
+    query_SECC =
+    "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, keyless_entry, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe where harga >= " +
+    harga_1 +
+    " AND harga <= " +
+    harga_2 +
+    " AND tahun >= " +
+    tahun_1 +
+    " AND tahun <= " +
+    tahun_2 +
+    " order by harga asc";
+  }
+  else if(merk_mobil == "any" && tipe_mobil != "any"){
+    query_SECC =
+    "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, keyless_entry, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe where harga >= " +
+    harga_1 +
+    " AND harga <= " +
+    harga_2 +
+    " AND tahun >= " +
+    tahun_1 +
+    " AND tahun <= " +
+    tahun_2 +
+    " AND merk = " +
+    merk_mobil +
+    " order by harga asc";
+  }
+  else if(tipe_mobil == "any" && merk_mobil != "any"){
+    query_SECC =
+    "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, keyless_entry, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe where harga >= " +
+    harga_1 +
+    " AND harga <= " +
+    harga_2 +
+    " AND tahun >= " +
+    tahun_1 +
+    " AND tahun <= " +
+    tahun_2 +
+    " AND tipe_mobil = " +
+    tipe_mobil +
+    " order by harga asc";
+  }
+else{
   query_SECC =
     "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, keyless_entry, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe where harga >= " +
     harga_1 +
@@ -169,6 +215,7 @@ app.post("/mobil/result_SECC", (req, res) => {
     " AND tipe_mobil = " +
     tipe_mobil +
     " order by harga asc";
+}
   pool.query(query_SECC, (err, result) => {
     if (err) {
       return res.send(err);
