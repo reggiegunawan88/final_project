@@ -6,15 +6,13 @@ import { withRouter } from "react-router-dom";
 import NumberFormat from "react-number-format";
 
 const CardMobil = ({ item }) => {
-  console.log(item);
-  // console.log(item.img[0].url)
   const image_url = "https://naripanmotor.com/wp-content/uploads/";
 
   return (
     <div>
       <Link to={{ pathname: `/productdetail/${item.nama}`, data: item }}>
         <Card className="mobil-card">
-          <Image src={image_url + "2020/10/8158.jpeg"} wrapped ui={true} />
+          <Image src={image_url + item.img[0].url} wrapped ui={true} />
           <Card.Content>
             <Card.Header>{item.merk}</Card.Header>
             <Card.Meta>

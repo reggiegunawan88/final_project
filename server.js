@@ -34,7 +34,7 @@ const pool = mysql.createPool({
 
 const query_mobil =
   "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, keyless_entry, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe ORDER BY idmobil ASC";
-const query_get_img = "select idmobil, img_url from gambar_mobil";
+const query_get_img = "select idmobil, img_url from gambar_mobil order by idmobil asc";
 const query_merkmobil = "SELECT merk FROM merk_mobil";
 const query_tipemobil = "SELECT tipe_mobil FROM tipe_mobil";
 
