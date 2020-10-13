@@ -3,33 +3,20 @@ import ImageGallery from "react-image-gallery";
 import { Image } from "semantic-ui-react";
 import "react-image-gallery/styles/css/image-gallery.css";
 
-const img_slideshow = () => {
+const img_slideshow = (props) => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    setImages([
-      {
-        original:
-          "https://naripanmotor.com/wp-content/uploads/2020/09/8014.jpeg",
-        thumbnail:
-          "https://naripanmotor.com/wp-content/uploads/2020/09/8014.jpeg",
-      },
-      {
-        original:
-          "https://naripanmotor.com/wp-content/uploads/2020/09/8015.jpeg",
-        thumbnail:
-          "https://naripanmotor.com/wp-content/uploads/2020/09/8015.jpeg",
-      },
-    ]);
+    let new_images = renderImg();
+    setImages(new_images);
   }, []);
-  // console.log(images);
 
-  const renderImg = (item) => {
-    if (item) {
-      let url = item + "";
-      console.log(url);
-      <Image src={require("../../../../assets/kia-rio.jpg")} />;
+  const renderImg = () => {
+    let img_data = [];
+    for (let i = 0; i < props.items.img.length; i++) {
+      img_data.push({original: "https://naripanmotor.com/wp-content/uploads/"+props.items.img[i].url, thumbnail: "https://naripanmotor.com/wp-content/uploads/"+props.items.img[i].url})
     }
+    return img_data;
   };
 
   return (

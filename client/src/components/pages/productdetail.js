@@ -6,7 +6,7 @@ import ProductData from "./page_components/productdetail/productdata";
 
 const productdetail = (props) => {
   const data = props.location.data;
-
+  
   return (
     <div className="container">
       <div className="row">
