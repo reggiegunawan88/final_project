@@ -170,7 +170,7 @@ app.post("/mobil/result_SECC", (req, res) => {
     tahun_1 +
     " AND tahun <= " +
     tahun_2 +
-    " order by harga asc";
+    " order by idmobil asc";
   }
   else if(merk_mobil == "any" && tipe_mobil != "any"){
     query_SECC =
@@ -184,7 +184,7 @@ app.post("/mobil/result_SECC", (req, res) => {
     tahun_2 +
     " AND merk = " +
     merk_mobil +
-    " order by harga asc";
+    " order by idmobil asc";
   }
   else if(tipe_mobil == "any" && merk_mobil != "any"){
     query_SECC =
@@ -198,7 +198,7 @@ app.post("/mobil/result_SECC", (req, res) => {
     tahun_2 +
     " AND tipe_mobil = " +
     tipe_mobil +
-    " order by harga asc";
+    " order by idmobil asc";
   }
 else{
   query_SECC =
@@ -214,7 +214,7 @@ else{
     merk_mobil +
     " AND tipe_mobil = " +
     tipe_mobil +
-    " order by harga asc";
+    " order by idmobil asc";
 }
   pool.query(query_SECC, (err, result) => {
     if (err) {

@@ -1,6 +1,7 @@
 import React from "react";
 import ButtonPopup from "./page_components/mainpage/button-popup";
 import ProductList from "./productlist";
+import put_imgArray from "./function/combine_array";
 import axios from "axios";
 
 
@@ -20,7 +21,10 @@ class MainPage extends React.Component {
     //show reset btn
     showResetBtn: true,
 
-    //state dipakai lagi untuk eliminasi BG
+    //filter status
+    filter_status: false,
+
+    //state reuse for BrownGibson elimination
     harga1: null,
     harga2: null,
     tahun1: null,
@@ -41,10 +45,9 @@ class MainPage extends React.Component {
       .all([requestOne, requestTwo])
       .then(
         axios.spread((response1, response2) => {
-          let processedItems = this.put_imgArray(response1.data,response2.data);
+          let processedItems = put_imgArray(response1.data,response2.data);
           this.setState({
               items: processedItems,
-              // items_img: response2.data,
               isLoading: false,
               itemsTotal: response1.data.length,
           });
@@ -55,61 +58,20 @@ class MainPage extends React.Component {
       });
   }
 
-  put_imgArray = (items, items_img) => {
-    let clone_items = [...items]; //clone from state
-    let clone_itemsImg = [...items_img]; //clone from state
-    let img_arr = []; //initial empty temp arr for img
-    for (let i = 0; i < items.length; i++) {
-      // console.log("MOBIL KE-" + (i + 1));
-      for (let j = 0; j <= clone_itemsImg.length; j++) {
-        if (items[i].idmobil === clone_itemsImg[0].idmobil) {
-          // debugger
-          // console.log(
-          //   "id mobil: " + this.state.items[i].idmobil,
-          //   "id_imgmobil: " + clone_itemsImg[0].idmobil
-          // );
-
-          //put img into arr temp
-          // img_arr.push(clone_itemsImg[0].img_url);
-          img_arr.push({url: clone_itemsImg[0].img_url })
-          clone_itemsImg.shift();
-          j = 0;
-
-          //length img = 0
-          if (clone_itemsImg.length == 0) {
-            //set img_arr into state
-            //1. assign img value to copied arr
-            let item_arr = { ...clone_items[i], img: img_arr };
-            //2. put back into copied arr
-            clone_items[i] = item_arr;
-            img_arr = [];
-          }
-        } else {
-          if (img_arr.length) {
-            //assign img value to copied arr
-            let item_arr = { ...clone_items[i], img: img_arr };
-            //put back into copied arr
-            clone_items[i] = item_arr;
-            img_arr = [];
-          } else {
-            break;
-          }
-        }
-      }
-    }
-    //finally, return the complete array
-    return clone_items;
-  };
-
   //set new items to render when button SECC clicked
   get_SECC_result(results) {
-    this.setState({
-      items: results,
-      itemsTotal: results.length,
-      disableModalProps: false,
-      btnModalColor: "success",
-      showResetBtn: false,
+    axios.get("http://localhost:5000/naripanmotor_img")
+    .then(response => {
+      let processedItems = put_imgArray(results,response.data);
+      this.setState({
+        items: processedItems,
+        itemsTotal: results.length,
+        disableModalProps: false,
+        btnModalColor: "success",
+        showResetBtn: false,
+      }, ()=> console.log(this.state.items));
     });
+
   }
 
   //reset page when button reset clicked
@@ -122,6 +84,13 @@ class MainPage extends React.Component {
     if( this.state.items[0] === undefined ) {
       return <h3>Loading...</h3>
   }
+
+      // if(this.state.items.length == 0){
+    //   return(
+    //   <h3>Maaf mobil tidak ditemukan</h3>
+    //   ) 
+      
+    // }
 
     return (
       <div className="container">
