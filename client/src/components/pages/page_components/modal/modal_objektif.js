@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../../style/modal.css";
+import "../../../style/modal_objektif.css";
 import { Alert, Button, Modal } from "react-bootstrap";
 import { Dropdown } from "semantic-ui-react";
 import axios from "axios";
@@ -67,13 +67,13 @@ class ModalKriteria extends React.Component {
   //get dropdown data for merk_mobil
   get_dropdown_merkmobil = (event) => {
     const value = event.target.textContent;
-    this.setState({ merk_mobil: value });
+    (value.includes("===SEMUA===")? this.setState({ merk_mobil: `all` }) : this.setState({ merk_mobil: value }) )
   };
 
   //get dropdown data for tipe_mobil
   get_dropdown_tipemobil = (event) => {
     const value = event.target.textContent;
-    this.setState({ tipe_mobil: value });
+    (value.includes("===SEMUA===")? this.setState({ tipe_mobil: `all` }) : this.setState({ tipe_mobil: value }) )
   };
 
   //submit data into query process
@@ -125,7 +125,7 @@ class ModalKriteria extends React.Component {
       >
         <Modal.Header>
           <Modal.Title id="contained-modal-title-vcenter centered">
-            Pilih Kriteria Mobil Bekas yang Diinginkan
+            <b>PILIH KRITERIA MOBIL BEKAS</b>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
