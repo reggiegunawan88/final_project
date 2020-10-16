@@ -56,8 +56,8 @@ const productdata = ({ items }) => {
             <td>{items.gps}</td>
           </tr>
           <tr>
-            <th scope="row">KEYLESS ENTRY</th>
-            <td>{items.keyless_entry}</td>
+            <th scope="row">SMART KEY</th>
+            <td>{items.smart_key}</td>
           </tr>
           <tr>
             <th scope="row">AIRBAG</th>

@@ -33,7 +33,7 @@ const pool = mysql.createPool({
 });
 
 const query_mobil =
-  "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, keyless_entry, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe ORDER BY idmobil ASC";
+  "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, smart_key, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe ORDER BY idmobil ASC";
 const query_get_img =
   "select idmobil, img_url from gambar_mobil order by idmobil asc";
 const query_merkmobil = "SELECT merk FROM merk_mobil";
@@ -119,7 +119,7 @@ app.post("/mobil/result_SECC", (req, res) => {
   var query_SECC = "";
   if (merk_mobil === '"all"' && tipe_mobil === '"all"') {
     query_SECC =
-      "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, keyless_entry, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe where harga >= " +
+      "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, smart_key, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe where harga >= " +
       harga_1 +
       " AND harga <= " +
       harga_2 +
@@ -130,7 +130,7 @@ app.post("/mobil/result_SECC", (req, res) => {
       " order by idmobil asc";
   } else if (merk_mobil == '"all"' && tipe_mobil != '"all"') {
     query_SECC =
-      "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, keyless_entry, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe where harga >= " +
+      "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, smart_key, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe where harga >= " +
       harga_1 +
       " AND harga <= " +
       harga_2 +
@@ -144,7 +144,7 @@ app.post("/mobil/result_SECC", (req, res) => {
       " order by idmobil asc";
   } else if (tipe_mobil == '"all"' && merk_mobil != '"all"') {
     query_SECC =
-      "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, keyless_entry, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe where harga >= " +
+      "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, smart_key, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe where harga >= " +
       harga_1 +
       " AND harga <= " +
       harga_2 +
@@ -158,7 +158,7 @@ app.post("/mobil/result_SECC", (req, res) => {
       " order by idmobil asc";
   } else {
     query_SECC =
-      "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, keyless_entry, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe where harga >= " +
+      "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, smart_key, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe where harga >= " +
       harga_1 +
       " AND harga <= " +
       harga_2 +
