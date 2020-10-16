@@ -67,13 +67,17 @@ class ModalKriteria extends React.Component {
   //get dropdown data for merk_mobil
   get_dropdown_merkmobil = (event) => {
     const value = event.target.textContent;
-    (value.includes("===SEMUA===")? this.setState({ merk_mobil: `all` }) : this.setState({ merk_mobil: value }) )
+    value.includes("===SEMUA===")
+      ? this.setState({ merk_mobil: `all` })
+      : this.setState({ merk_mobil: value });
   };
 
   //get dropdown data for tipe_mobil
   get_dropdown_tipemobil = (event) => {
     const value = event.target.textContent;
-    (value.includes("===SEMUA===")? this.setState({ tipe_mobil: `all` }) : this.setState({ tipe_mobil: value }) )
+    value.includes("===SEMUA===")
+      ? this.setState({ tipe_mobil: `all` })
+      : this.setState({ tipe_mobil: value });
   };
 
   //submit data into query process
@@ -82,6 +86,12 @@ class ModalKriteria extends React.Component {
     var filter_data = {
       merk_mobil: this.state.merk_mobil,
       tipe_mobil: this.state.tipe_mobil,
+      harga_1: this.state.harga_1,
+      harga_2: this.state.harga_2,
+      tahun_1: this.state.tahun_1,
+      tahun_2: this.state.tahun_2,
+    };
+    var SECC_postprocessed = {
       harga_1: this.state.harga_1,
       harga_2: this.state.harga_2,
       tahun_1: this.state.tahun_1,
@@ -107,7 +117,7 @@ class ModalKriteria extends React.Component {
           console.log(response.data);
           //send query result to mainpage
           this.props.onHide();
-          this.props.onReceiveProps(response.data);
+          this.props.onReceiveProps(response.data, SECC_postprocessed);
         })
         .catch(function (err) {
           console.log(err);
@@ -219,7 +229,7 @@ class ModalKriteria extends React.Component {
                         name="radiobtn-harga"
                         onChange={this.onChangeRadio}
                       />
-                       Semua harga
+                      Semua harga
                     </label>
                   </div>
                 </div>

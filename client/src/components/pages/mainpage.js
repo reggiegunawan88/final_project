@@ -4,7 +4,6 @@ import ProductList from "./productlist";
 import put_imgArray from "./function/combine_array";
 import axios from "axios";
 
-
 class MainPage extends React.Component {
   state = {
     isLoading: true,
@@ -32,7 +31,9 @@ class MainPage extends React.Component {
   };
 
   componentDidMount() {
-    this.get_data_mobil();
+    if (!this.state.filter_status) {
+      this.get_data_mobil();
+    }
   }
 
   get_data_mobil() {
@@ -45,11 +46,11 @@ class MainPage extends React.Component {
       .all([requestOne, requestTwo])
       .then(
         axios.spread((response1, response2) => {
-          let processedItems = put_imgArray(response1.data,response2.data);
+          let processedItems = put_imgArray(response1.data, response2.data);
           this.setState({
-              items: processedItems,
-              isLoading: false,
-              itemsTotal: response1.data.length,
+            items: processedItems,
+            isLoading: false,
+            itemsTotal: response1.data.length,
           });
         })
       )
@@ -59,19 +60,22 @@ class MainPage extends React.Component {
   }
 
   //set new items to render when button SECC clicked
-  get_SECC_result(results) {
-    axios.get("http://localhost:5000/naripanmotor_img")
-    .then(response => {
-      let processedItems = put_imgArray(results,response.data);
+  get_SECC_result(results, SECC_data) {
+    axios.get("http://localhost:5000/naripanmotor_img").then((response) => {
+      let processedItems = put_imgArray(results, response.data);
       this.setState({
+        filter_status: true,
         items: processedItems,
         itemsTotal: results.length,
         disableModalProps: false,
         btnModalColor: "success",
         showResetBtn: false,
-      }, ()=> console.log(this.state.items));
+        harga1: SECC_data.harga1,
+        harga2: SECC_data.harga2,
+        tahun1: SECC_data.tahun1,
+        tahun2: SECC_data.tahun2,
+      });
     });
-
   }
 
   //reset page when button reset clicked
@@ -81,15 +85,15 @@ class MainPage extends React.Component {
 
   render() {
     //loading if state is still null
-    if( this.state.items[0] === undefined ) {
-      return <h3>Loading...</h3>
-  }
+    if (this.state.items[0] === undefined) {
+      return <h3>Loading...</h3>;
+    }
 
-      // if(this.state.items.length == 0){
+    // if(this.state.items.length == 0){
     //   return(
     //   <h3>Maaf mobil tidak ditemukan</h3>
-    //   ) 
-      
+    //   )
+
     // }
 
     return (
@@ -97,7 +101,9 @@ class MainPage extends React.Component {
         <div className="row">
           <div className="col-3">
             <ButtonPopup
-              onReceiveProps={(results) => this.get_SECC_result(results)}
+              onReceiveProps={(results, SECC_data) =>
+                this.get_SECC_result(results, SECC_data)
+              }
               onReset={() => this.reset_page()}
               disableModalProps={this.state.disableModalProps}
               btnModalColor={this.state.btnModalColor}

@@ -1,8 +1,9 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import "./../../../style/buttonlayout.css";
-import ModalKriteria from "../modal/modal_objektif";
-import ModalKondisi from "../modal/modal_subjektif";
+import ModalObjektif from "../modal/modal_objektif";
+import ModalSubjektif from "../modal/modal_subjektif";
+import ModalBG from "./../modal/modal_BG";
 
 class ButtonLayout extends React.Component {
   constructor(props) {
@@ -10,7 +11,6 @@ class ButtonLayout extends React.Component {
     this.state = {
       showModalKriteria: false,
       showModalKondisi: false,
-      activeModal: "",
     };
   }
 
@@ -45,7 +45,7 @@ class ButtonLayout extends React.Component {
           >
             PILIH MOBIL
           </Button>
-          <ModalKriteria
+          <ModalObjektif
             show={this.state.showModalKriteria}
             onHide={closeModalKriteria}
             onReceiveProps={this.props.onReceiveProps}
@@ -60,7 +60,7 @@ class ButtonLayout extends React.Component {
           >
             PILIH KONDISI
           </Button>
-          <ModalKondisi
+          <ModalBG
             show={this.state.showModalKondisi}
             onHide={closeModalKondisi}
           />
