@@ -1,12 +1,37 @@
 import React, { useState, useEffect } from "react";
 import "../style/listmobil.css";
-import Dropdown from "./page_components/productlist/mini components/dropdown";
-import GroupCards from "./page_components/productlist/group-cards";
-import Pagination from "./page_components/productlist/pagination";
+import Dropdown from "./../page_components/dropdown/dropdown";
+import GroupCards from "./../page_components/productlist/group-cards";
+import Pagination from "./../page_components/productlist/pagination";
 
 const ListMobil = ({ items, loading, itemsTotal }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(6);
+
+  //state for define dropdown properties
+  const [dropdown_placeholder] = useState("Pilih Kriteria...");
+  const [dropdown_data] = useState([
+    {
+      key: "Harga Termurah",
+      text: "Harga Termurah",
+      value: "Harga Termurah",
+    },
+    {
+      key: "Harga Termahal",
+      text: "Harga Termahal",
+      value: "Harga Termahal",
+    },
+    {
+      key: "Tahun Terbaru",
+      text: "Tahun Terbaru",
+      value: "Tahun Terbaru",
+    },
+    {
+      key: "Tahun Terlama",
+      text: "Tahun Terlama",
+      value: "Tahun Terlama",
+    },
+  ]);
 
   // Get current cards
   const idxOfLastCard = currentPage * itemsPerPage;
@@ -39,7 +64,11 @@ const ListMobil = ({ items, loading, itemsTotal }) => {
             </div>
             <div className="col-6">
               <div className="dropdown-area">
-                <Dropdown onChange={get_dropdownvalue} />
+                <Dropdown
+                  placeholder={dropdown_placeholder}
+                  options={dropdown_data}
+                  onChange={get_dropdownvalue}
+                />
               </div>
             </div>
           </div>

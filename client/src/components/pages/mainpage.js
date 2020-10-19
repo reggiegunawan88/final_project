@@ -1,7 +1,7 @@
 import React from "react";
-import ButtonPopup from "./page_components/mainpage/button-popup";
+import ButtonPopup from "./../page_components/button-popup/button-popup";
 import ProductList from "./productlist";
-import put_imgArray from "./function/combine_array";
+import put_imgArray from "./../function/combine_array";
 import axios from "axios";
 
 class MainPage extends React.Component {

@@ -1,12 +1,12 @@
 import React from "react";
 import "./../style/productdetail.css";
-import ImageSlideshow from "./page_components/productdetail/img_slideshow";
-import ProductData from "./page_components/productdetail/productdata";
+import ImageSlideshow from "../page_components/productdetail/img_slideshow";
+import ProductData from "../page_components/productdetail/productdata";
 // import { observable } from "mobx";
 
 const productdetail = (props) => {
   const data = props.location.data;
-  
+
   return (
     <div className="container">
       <div className="row">

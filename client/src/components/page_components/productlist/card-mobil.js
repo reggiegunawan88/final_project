@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, Image } from "semantic-ui-react";
-import "../../../../style/card.css";
+import "./../../style/card.css";
 import { withRouter } from "react-router-dom";
 import NumberFormat from "react-number-format";
 

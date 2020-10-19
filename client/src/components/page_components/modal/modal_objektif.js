@@ -1,7 +1,8 @@
 import React from "react";
-import "../../../style/modal_objektif.css";
+import "./../../style/modal_objektif.css";
 import { Alert, Button, Modal } from "react-bootstrap";
-import { Dropdown } from "semantic-ui-react";
+// import { Dropdown } from "semantic-ui-react";
+import Dropdown from "./../dropdown/dropdown";
 import axios from "axios";
 
 class ModalKriteria extends React.Component {
@@ -16,6 +17,93 @@ class ModalKriteria extends React.Component {
       harga_2: null,
       tahun_1: null,
       tahun_2: null,
+      options_tahun: [
+        {
+          key: "ALL",
+          text: "===SEMUA===",
+          value: "ALL",
+        },
+        {
+          key: "1",
+          text: "2005 - 2010",
+          value: "2005,2010",
+        },
+        {
+          key: "2",
+          text: "2011 - 2015",
+          value: "2011,2015",
+        },
+        {
+          key: "3",
+          text: "2016 - 2020",
+          value: "2016,2020",
+        },
+      ],
+      options_harga: [
+        {
+          key: "ALL",
+          text: "===SEMUA===",
+          value: "ALL",
+        },
+        {
+          key: "1",
+          text: "50 juta - 100 juta",
+          value: "50000000,100000000",
+        },
+        {
+          key: "2",
+          text: "100 juta - 200 juta",
+          value: "100000000,200000000",
+        },
+        {
+          key: "3",
+          text: "200 juta - 300 juta",
+          value: "200000000,300000000",
+        },
+        {
+          key: "4",
+          text: "300 juta - 400 juta",
+          value: "300000000,400000000",
+        },
+        {
+          key: "5",
+          text: "400 juta - 500 juta",
+          value: "400000000,500000000",
+        },
+        {
+          key: "6",
+          text: "> 500 juta",
+          value: "500000000,5000000000",
+        },
+      ],
+      options_km: [
+        {
+          key: "ALL",
+          text: "===SEMUA===",
+          value: "ALL",
+        },
+        {
+          key: "1",
+          text: "0 - 10.000",
+          value: "0,10000",
+        },
+        {
+          key: "2",
+          text: "10.000 - 20.000",
+          value: "10000,20000",
+        },
+        {
+          key: "3",
+
+          text: "20.000 - 30.000",
+          value: "20000,30000",
+        },
+        {
+          key: "4",
+          text: "30.000 - 40.000",
+          value: "30000,40000",
+        },
+      ],
     };
   }
 
@@ -78,6 +166,27 @@ class ModalKriteria extends React.Component {
     value.includes("===SEMUA===")
       ? this.setState({ tipe_mobil: `all` })
       : this.setState({ tipe_mobil: value });
+  };
+
+  get_dropdown_harga = (event, data) => {
+    const toString = data.value.split(",");
+    data.value.includes("ALL")
+      ? this.setState({ harga_1: 0, harga_2: 999999999999 })
+      : this.setState({ harga_1: toString[0], harga_2: toString[1] });
+  };
+
+  // get_dropdown_km = (event, data) => {
+  //   const toString = data.value.split(",");
+  //   data.value.includes("ALL")
+  //     ? this.setState({ km1: 0, km2: 9999999 })
+  //     : this.setState({ km1: toString[0], km2: toString[1] });
+  // };
+
+  get_dropdown_tahun = (event, data) => {
+    const toString = data.value.split(",");
+    data.value.includes("ALL")
+      ? this.setState({ tahun_1: 0, tahun_2: 2030 })
+      : this.setState({ tahun_1: toString[0], tahun_2: toString[1] });
   };
 
   //submit data into query process
@@ -144,13 +253,9 @@ class ModalKriteria extends React.Component {
               <div className="row">
                 <div className="col-12 col-md-offset-6 ">
                   <p id="label-txt">MERK :</p>
-                  <div>
+                  <div className="dropdown-component">
                     <Dropdown
-                      id="kriteria-merk"
-                      className="dropdown"
-                      placeholder="--Semua--"
-                      fluid
-                      selection
+                      placeholder="---Semua---"
                       onChange={this.get_dropdown_merkmobil}
                       options={this.state.list_merk_mobil}
                     />
@@ -160,13 +265,9 @@ class ModalKriteria extends React.Component {
               <div className="row">
                 <div className="col-12">
                   <p id="label-txt">TIPE MOBIL : </p>
-                  <div>
+                  <div className="dropdown-component">
                     <Dropdown
-                      name="dropdown_merk"
-                      id="kriteria-merk"
-                      placeholder="--Semua--"
-                      fluid
-                      selection
+                      placeholder="---Semua---"
                       onChange={this.get_dropdown_tipemobil}
                       options={this.state.list_tipe_mobil}
                     />
@@ -176,104 +277,36 @@ class ModalKriteria extends React.Component {
               <div className="row">
                 <div className="col-12">
                   <p id="label-txt">HARGA : </p>
-                  <div className="centered">
-                    <label className="radio-btn-group">
-                      <input
-                        type="radio"
-                        value="50000000,100000000"
-                        name="radiobtn-harga"
-                        onChange={this.onChangeRadio}
-                      />
-                      50 - 100 juta
-                    </label>
-                    <label>
-                      <input
-                        type="radio"
-                        value="101000000,200000000"
-                        name="radiobtn-harga"
-                        onChange={this.onChangeRadio}
-                      />
-                      100 - 200 juta
-                    </label>
-                    <label>
-                      <input
-                        type="radio"
-                        value="201000000,300000000"
-                        name="radiobtn-harga"
-                        onChange={this.onChangeRadio}
-                      />
-                      200 - 300 juta
-                    </label>
-                    <label>
-                      <input
-                        type="radio"
-                        value="301000000,400000000"
-                        name="radiobtn-harga"
-                        onChange={this.onChangeRadio}
-                      />
-                      300 - 400 juta
-                    </label>
-                    <label>
-                      <input
-                        type="radio"
-                        value="401000000,500000000"
-                        name="radiobtn-harga"
-                        onChange={this.onChangeRadio}
-                      />
-                      400 - 500 juta
-                    </label>
-                    <label>
-                      <input
-                        type="radio"
-                        value="0,99999999999"
-                        name="radiobtn-harga"
-                        onChange={this.onChangeRadio}
-                      />
-                      Semua harga
-                    </label>
+                  <div className="dropdown-component">
+                    <Dropdown
+                      placeholder="---Semua---"
+                      onChange={this.get_dropdown_harga}
+                      options={this.state.options_harga}
+                    />
                   </div>
                 </div>
               </div>
               <div className="row">
                 <div className="col-12">
                   <p id="label-txt">TAHUN KELUARAN :</p>
-                  <div className="centered">
-                    <label className="radio-btn-tahun">
-                      <input
-                        type="radio"
-                        value="2005,2010"
-                        name="radionbtn-tahun"
-                        onChange={this.onChangeRadio}
-                      />
-                      2005 - 2010
-                    </label>
-                    <label className="radio-btn-tahun">
-                      <input
-                        type="radio"
-                        value="2011,2015"
-                        name="radionbtn-tahun"
-                        onChange={this.onChangeRadio}
-                      />
-                      2011 - 2015
-                    </label>
-                    <label className="radio-btn-tahun">
-                      <input
-                        type="radio"
-                        value="2016,2020"
-                        name="radionbtn-tahun"
-                        onChange={this.onChangeRadio}
-                      />
-                      2016 - 2020
-                    </label>
-                    <label className="radio-btn-tahun">
-                      <input
-                        type="radio"
-                        value="1999,2099"
-                        name="radionbtn-tahun"
-                        onChange={this.onChangeRadio}
-                      />
-                      Semua tahun
-                    </label>
+                  <div className="dropdown-component">
+                    <Dropdown
+                      placeholder="---Semua---"
+                      onChange={this.get_dropdown_tahun}
+                      options={this.state.options_tahun}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-12">
+                  <p id="label-txt">KILOMETER :</p>
+                  <div className="dropdown-component">
+                    <Dropdown
+                      placeholder="---Semua---"
+                      onChange={this.get_dropdown_km}
+                      options={this.state.options_km}
+                    />
                   </div>
                 </div>
               </div>

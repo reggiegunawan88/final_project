@@ -39,11 +39,14 @@ input[type="text"] {
   border-radius: 3.3rem !important;
 }
 
-#kriteria-merk,
-#kriteria-tipe {
+.dropdown-component {
   width: 25%;
   margin-left: 285px !important;
+}
+
+.ui.fluid.dropdown {
   text-align: center;
+  justify-content: center;
 }
 
 label {

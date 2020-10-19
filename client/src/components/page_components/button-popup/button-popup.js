@@ -1,9 +1,9 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import "./../../../style/buttonlayout.css";
+import "./../../style/buttonlayout.css";
 import ModalObjektif from "../modal/modal_objektif";
 import ModalSubjektif from "../modal/modal_subjektif";
-import ModalBG from "./../modal/modal_BG";
+import ModalBG from "../modal/modal_BG";
 
 class ButtonLayout extends React.Component {
   constructor(props) {

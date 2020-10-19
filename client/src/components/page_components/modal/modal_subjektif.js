@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../style/modal_subjektif.css";
+import "./../../style/modal_subjektif.css";
 import { Button, Modal } from "react-bootstrap";
 import { Dropdown } from "semantic-ui-react";
 import ModalPrioritas from "./modal_prioritas";
@@ -70,22 +70,6 @@ class ModalKondisi extends React.Component {
         </Modal.Header>
         <Modal.Body>
           <div className="form align-content-center">
-            <div className="row">
-              <div className="col-12">
-                <p id="label-txt">JUMLAH KILOMETER: </p>
-                <div className="centered">
-                  <Dropdown
-                    id="kriteria-km"
-                    className="dropdown"
-                    placeholder="--Semua--"
-                    fluid
-                    selection
-                    onChange={this.get_dropdown_km}
-                    options={this.state.options_km}
-                  />
-                </div>
-              </div>
-            </div>
             <div className="row">
               <div className="col-12">
                 <p id="label-txt">

@@ -1,7 +1,7 @@
 import React from "react";
-import "../../../../components/style/navbar.css";
+import "./../../style//navbar.css";
 import { Navbar, Nav } from "react-bootstrap";
-import logo from "../../../../assets/logo-naripan-motor.jpg";
+import logo from "./../../../assets/logo-naripan-motor.jpg";
 
 class NavigationBar extends React.Component {
   render() {

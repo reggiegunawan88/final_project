@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../style/modal_objektif.css";
+import "./../../style/modal_objektif.css";
 import { Button, Modal } from "react-bootstrap";
 import { Dropdown } from "semantic-ui-react";
 
