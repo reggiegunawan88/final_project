@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ModalPrioritas1 from "./modal_prioritas2";
+import ModalPrioritas1 from "./modal_prioritas1";
 import ModalPrioritas2 from "./modal_prioritas2";
 
 class modal_BG extends Component {

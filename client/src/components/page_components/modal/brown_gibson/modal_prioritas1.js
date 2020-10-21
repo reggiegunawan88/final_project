@@ -1,6 +1,5 @@
 import React from "react";
 import "./../../../style/modal_prioritas1.css";
-import ModalPrioritas2 from "./modal_prioritas1_s";
 import { Button, Modal } from "react-bootstrap";
 import FormControl from "@material-ui/core/FormControl";
 import FormGroup from "@material-ui/core/FormGroup";
