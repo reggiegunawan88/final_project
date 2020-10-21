@@ -2,21 +2,25 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import "./../../style/buttonlayout.css";
 import ModalObjektif from "../modal/modal_objektif";
-import ModalSubjektif from "../modal/modal_subjektif";
-import ModalBG from "../modal/modal_BG";
+import ModalBG from "../modal/brown_gibson/modal_BG";
 
 class ButtonLayout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModalKriteria: false,
-      showModalKondisi: false,
+      showModalObjektif: false,
+      showModalSubjektif: false,
     };
   }
 
   render() {
-    let closeModalKriteria = () => this.setState({ showModalKriteria: false });
-    let closeModalKondisi = () => this.setState({ showModalKondisi: false });
+    let closeModalObjektif = () => this.setState({ showModalObjektif: false });
+    let closeModalSubjektif = () =>
+      this.setState({ showModalSubjektif: false });
+    let openModalSubjektif = () => {
+      this.setState({ showModalSubjektif: true });
+    };
+
     return (
       <div className="container filter-container">
         <div className="row justify-content-md-center m-2">
@@ -41,13 +45,13 @@ class ButtonLayout extends React.Component {
           <Button
             className="btn-kriteria"
             variant="primary"
-            onClick={() => this.setState({ showModalKriteria: true })}
+            onClick={() => this.setState({ showModalObjektif: true })}
           >
             PILIH MOBIL
           </Button>
           <ModalObjektif
-            show={this.state.showModalKriteria}
-            onHide={closeModalKriteria}
+            show={this.state.showModalObjektif}
+            onHide={closeModalObjektif}
             onReceiveProps={this.props.onReceiveProps}
           />
         </div>
@@ -56,13 +60,14 @@ class ButtonLayout extends React.Component {
             className="btn-kondisi"
             variant={this.props.btnModalColor}
             disabled={false}
-            onClick={() => this.setState({ showModalKondisi: true })}
+            onClick={() => this.setState({ showModalSubjektif: true })}
           >
             PILIH KONDISI
           </Button>
           <ModalBG
-            show={this.state.showModalKondisi}
-            onHide={closeModalKondisi}
+            show={this.state.showModalSubjektif}
+            onHide={closeModalSubjektif}
+            reopenModal={openModalSubjektif}
           />
         </div>
       </div>

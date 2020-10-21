@@ -16,12 +16,14 @@
     "nodemon": "^1.14.6"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "axios": "^0.19.2",
     "concurrently": "^3.5.1",
     "cors": "^2.8.5",
     "express": "^4.16.2",
     "mysql": "^2.18.1",
-    "node-sass": "^4.14.1"
+    "node-sass": "^4.14.1",
+    "react-spring": "^8.0.27"
   },
   "proxy": "http://localhost:5000"
 }

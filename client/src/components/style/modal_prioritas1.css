@@ -22,9 +22,9 @@
   text-align: center;
 }
 
-#label-txt {
-  font-size: 15px;
-  margin-top: 15px;
+.label-txt {
+  font-size: 17px;
+  margin-bottom: 20px !important;
   font-weight: bold;
 }
 
@@ -54,4 +54,19 @@ label {
 
 input[type="radio"] {
   margin: 5px;
+}
+
+.checkbox-group {
+  margin-top: 20px;
+}
+
+.tooltip {
+  background-color: rgba(0, 0, 0, 0.87);
+  max-width: 220px;
+  font-size: 15px;
+  border: 1px solid #dadde9;
+}
+
+.col-checkbox {
+  text-align: right;
 }

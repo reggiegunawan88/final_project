@@ -31,9 +31,7 @@ class MainPage extends React.Component {
   };
 
   componentDidMount() {
-    if (!this.state.filter_status) {
-      this.get_data_mobil();
-    }
+    this.get_data_mobil();
   }
 
   get_data_mobil() {
@@ -88,13 +86,6 @@ class MainPage extends React.Component {
     if (this.state.items[0] === undefined) {
       return <h3>Loading...</h3>;
     }
-
-    // if(this.state.items.length == 0){
-    //   return(
-    //   <h3>Maaf mobil tidak ditemukan</h3>
-    //   )
-
-    // }
 
     return (
       <div className="container">

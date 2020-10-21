@@ -22,8 +22,9 @@
   text-align: center;
 }
 
-#label-txt {
-  margin-top: 10px;
+.label-txt {
+  font-size: 17px;
+  margin-bottom: 20px !important;
   font-weight: bold;
 }
 
@@ -39,17 +40,33 @@ input[type="text"] {
   border-radius: 3.3rem !important;
 }
 
-.dropdown-component {
+#kriteria-km {
   width: 25%;
   margin-left: 285px !important;
-}
-
-.ui.fluid.dropdown {
+  margin-bottom: 15px;
   text-align: center;
-  justify-content: center;
 }
 
 label {
-  margin: 5px;
+  margin: 0px 5px 5px;
   font-size: 15px;
+}
+
+input[type="radio"] {
+  margin: 5px;
+}
+
+.checkbox-group {
+  margin-top: 20px;
+}
+
+.tooltip {
+  background-color: rgba(0, 0, 0, 0.87);
+  max-width: 220px;
+  font-size: 15px;
+  border: 1px solid #dadde9;
+}
+
+.col-checkbox {
+  text-align: right;
 }

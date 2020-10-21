@@ -1,7 +1,6 @@
 import React from "react";
 import "./../../style/modal_objektif.css";
 import { Alert, Button, Modal } from "react-bootstrap";
-// import { Dropdown } from "semantic-ui-react";
 import Dropdown from "./../dropdown/dropdown";
 import axios from "axios";
 
@@ -315,10 +314,10 @@ class ModalKriteria extends React.Component {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={this.post_data}>
-            CARI MOBIL
+            <b>CARI MOBIL</b>
           </Button>
           <Button variant="danger" onClick={this.props.onHide}>
-            BATAL
+            <b>BATAL</b>
           </Button>
         </Modal.Footer>
       </Modal>
