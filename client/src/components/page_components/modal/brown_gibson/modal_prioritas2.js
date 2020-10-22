@@ -14,6 +14,23 @@ class ModalPrioritas2 extends React.Component {
       harga: false,
       tahun: false,
       kilometer: false,
+      dropdown_value: [
+        {
+          key: 1,
+          text: "1",
+          value: 1,
+        },
+        {
+          key: 2,
+          text: "2",
+          value: 2,
+        },
+        {
+          key: 3,
+          text: "3",
+          value: 3,
+        },
+      ],
     };
   }
 
@@ -24,6 +41,19 @@ class ModalPrioritas2 extends React.Component {
   goto_finalModal = () => {
     this.props.onReceivedProps();
   };
+
+  //* method for getting value of each dropdown
+  get_value_harga(event) {
+    const value = parseInt(event.target.textContent, 10);
+  }
+
+  get_value_tahun(event) {
+    const value = parseInt(event.target.textContent, 10);
+  }
+
+  get_value_kilometer(event) {
+    const value = parseInt(event.target.textContent, 10);
+  }
 
   render() {
     return (
@@ -36,26 +66,30 @@ class ModalPrioritas2 extends React.Component {
       >
         <Modal.Header>
           <Modal.Title id="contained-modal-title-vcenter centered">
-            <b>TETAPKAN PRIORITAS KONDISI MOBIL BEKAS</b>
+            <b>TETAPKAN PRIORITAS KRITERIA UTAMA MOBIL BEKAS</b>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="form align-content-center">
             <div className="row">
               <div className="col-12">
-                <p className="label-txt">KRITERIA UTAMA MOBIL :</p>
+                <p className="label-txt">
+                  Kriteria yang dipilih akan menjadi faktor objektif sebuah
+                  mobil bekas
+                </p>
               </div>
             </div>
             <div className="row">
-              <div className="col-12">
+              <div className="col-6 col-checkbox">
                 <FormControl component="fieldset" className="checkbox-group">
                   <FormGroup>
                     <FormControlLabel
                       control={
                         <Checkbox
-                          checked={this.state.harga}
+                          checked={true}
                           onChange={this.handleChange}
                           name="harga"
+                          disabled
                         />
                       }
                       label="HARGA"
@@ -63,9 +97,10 @@ class ModalPrioritas2 extends React.Component {
                     <FormControlLabel
                       control={
                         <Checkbox
-                          checked={this.state.tahun}
+                          checked={true}
                           onChange={this.handleChange}
                           name="tahun"
+                          disabled
                         />
                       }
                       label="TAHUN KELUARAN"
@@ -73,15 +108,39 @@ class ModalPrioritas2 extends React.Component {
                     <FormControlLabel
                       control={
                         <Checkbox
-                          checked={this.state.kilometer}
+                          checked={true}
                           onChange={this.handleChange}
                           name="kilometer"
+                          disabled
                         />
                       }
                       label="KILOMETER"
                     />
                   </FormGroup>
                 </FormControl>
+              </div>
+              <div className="col-6 col-dropdown">
+                <div className="dropdown-harga">
+                  <Dropdown
+                    placeholder="---Pilih---"
+                    options={this.state.dropdown_value}
+                    onChange={this.get_value_harga}
+                  />
+                </div>
+                <div className="dropdown-tahun">
+                  <Dropdown
+                    placeholder="---Pilih---"
+                    options={this.state.dropdown_value}
+                    onChange={this.get_value_tahun}
+                  />
+                </div>
+                <div className="dropdown-kilometer">
+                  <Dropdown
+                    placeholder="---Pilih---"
+                    options={this.state.dropdown_value}
+                    onChange={this.get_value_kilometer}
+                  />
+                </div>
               </div>
             </div>
             <br></br>
