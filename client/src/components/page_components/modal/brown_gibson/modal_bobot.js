@@ -32,7 +32,7 @@ export class modal_bobot extends Component {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary">
+          <Button variant="success">
             <b>SELESAI</b>
           </Button>
           <Button variant="danger" onClick={this.props.onHide}>

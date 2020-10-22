@@ -4,8 +4,8 @@ import { Button, Modal } from "react-bootstrap";
 import FormControl from "@material-ui/core/FormControl";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import Checkbox from "@material-ui/core/Checkbox";
+import Dropdown from "./../../dropdown/dropdown";
 
 class ModalPrioritas2 extends React.Component {
   constructor(props) {
@@ -19,6 +19,10 @@ class ModalPrioritas2 extends React.Component {
 
   handleChange = (event) => {
     this.setState({ ...this.state, [event.target.name]: event.target.checked });
+  };
+
+  goto_finalModal = () => {
+    this.props.onReceivedProps();
   };
 
   render() {
@@ -84,8 +88,8 @@ class ModalPrioritas2 extends React.Component {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary">
-            <b>SELESAI</b>
+          <Button variant="primary" onClick={this.goto_finalModal}>
+            <b>SELANJUTNYA</b>
           </Button>
           <Button variant="danger" onClick={() => this.props.onHide()}>
             <b>BATAL</b>
