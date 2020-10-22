@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ModalPrioritas1 from "./modal_prioritas1";
 import ModalPrioritas2 from "./modal_prioritas2";
+import ModalBobot from "./modal_bobot";
 
 class modal_BG extends Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class modal_BG extends Component {
     this.state = {
       show_1st_modal: false,
       show_2nd_modal: false,
+      show_3rd_modal: false,
     };
   }
 
@@ -23,6 +25,15 @@ class modal_BG extends Component {
     this.props.reopenModal();
   }
 
+  //* method for opening final modal
+  show_finalModal() {
+    this.setState({ show_3rd_modal: true, show_2nd_modal: false });
+  }
+
+  close_finalModal() {
+    this.setState({ show_3rd_modal: false, show_2nd_modal: true });
+  }
+
   render() {
     return (
       <div className="modal-transition">
@@ -34,29 +45,15 @@ class modal_BG extends Component {
         <ModalPrioritas2
           show={this.state.show_2nd_modal}
           onHide={() => this.close_nextModal()}
+          onReceivedProps={() => this.show_finalModal()}
+        />
+        <ModalBobot
+          show={this.state.show_3rd_modal}
+          onHide={() => this.close_finalModal()}
         />
       </div>
     );
   }
 }
-
-// const modal_BG = (props) => {
-//   const [index, setIndex] = useState(0);
-//   allModal = [ModalPrioritasOb, ModalPrioritasSub];
-
-//   const onClick = useCallback(() => setIndex((state) => (state + 1) % 2), []);
-//   const transitions = useTransition(index, (p) => p, {
-//     from: { opacity: 0, transform: "translate3d(100%,0,0)" },
-//     enter: { opacity: 1, transform: "translate3d(0%,0,0)" },
-//     leave: { opacity: 0, transform: "translate3d(-50%,0,0)" },
-//   });
-
-//   return (
-//     <div className="modal-transition">
-//       <ModalPrioritasSub show={props.show} onHide={props.onHide} />
-//       {/* <ModalPrioritasOb show={props.show} onHide={props.onHide} /> */}
-//     </div>
-//   );
-// };
 
 export default modal_BG;
