@@ -12,43 +12,30 @@ class ModalPrioritas1 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      choice: 0,
-
-      //attribute
       jenis_rem: false,
       jenis_bb: false,
       airbag: false,
       gps: false,
       smart_key: false,
       power_steering: false,
-      dropdown_value: [
-        {
-          key: 1,
-          text: "1",
-          value: 1,
-        },
-        {
-          key: 2,
-          text: "2",
-          value: 2,
-        },
-        {
-          key: 3,
-          text: "3",
-          value: 3,
-        },
-      ],
+      dropdown_value: [],
     };
+    this.choice = 0;
   }
 
   //* increment state by 1 if one of the checkbox is selected
   handleChange = (event) => {
-    if (event.target.checked) {
-      this.setState({ choice: this.state.choice++ });
-    } else {
-      this.setState({ choice: this.state.choice-- });
-    }
+    event.preventDefault();
     this.setState({ ...this.state, [event.target.name]: event.target.checked });
+    if (event.target.checked) {
+      this.choice++;
+      let processedValue = this.setDropdownValue(this.choice);
+      this.setState({ dropdown_value: processedValue });
+    } else {
+      this.choice--;
+      let processedValue = this.setDropdownValue(this.choice);
+      this.setState({ dropdown_value: processedValue });
+    }
   };
 
   nextModal = () => {
@@ -57,6 +44,45 @@ class ModalPrioritas1 extends React.Component {
     } else {
       this.props.onReceivedProps();
     }
+  };
+
+  setDropdownValue(choice) {
+    let arr = [];
+    for (let i = 1; i <= choice; i++) {
+      arr.push({ key: i, text: "" + i, value: i });
+    }
+    return arr;
+  }
+
+  //* method below for getting each dropdown (rank) value
+  get_value_jenisrem = (event) => {
+    const value = parseInt(event.target.textContent);
+    console.log("jenisrem : " + value);
+  };
+
+  get_value_jenisbahanbakar = (event) => {
+    const value = parseInt(event.target.textContent);
+    console.log("bahanbakar : " + value);
+  };
+
+  get_value_airbag = (event) => {
+    const value = parseInt(event.target.textContent);
+    console.log("airbag : " + value);
+  };
+
+  get_value_gps = (event) => {
+    const value = parseInt(event.target.textContent);
+    console.log("gps : " + value);
+  };
+
+  get_value_smartkey = (event) => {
+    const value = parseInt(event.target.textContent);
+    console.log("smartkey : " + value);
+  };
+
+  get_value_powersteering = (event) => {
+    const value = parseInt(event.target.textContent);
+    console.log("powersteering: " + value);
   };
 
   render() {
@@ -77,7 +103,8 @@ class ModalPrioritas1 extends React.Component {
             <div className="row">
               <div className="col-12">
                 <p className="label-txt">
-                  KONDISI MOBIL <br /> (Pilih Minimal 3 Kriteria)
+                  KONDISI MOBIL (Pilih Minimal 3) <br /> Kondisi yang dipilih
+                  akan menjadi faktor subjektif sebuah mobil
                 </p>
               </div>
             </div>
@@ -197,21 +224,82 @@ class ModalPrioritas1 extends React.Component {
                   </FormGroup>
                 </FormControl>
               </div>
-              {/* <div className="col-4">
-                <Dropdown
-                  id="dropdown-jenisrem"
-                  placeholder="Pilih prioritas.."
-                  options={this.state.dropdown_value}
-                />
-                <Dropdown
-                  placeholder="Pilih prioritas.."
-                  options={this.state.dropdown_value}
-                />
-                <Dropdown
-                  placeholder="Pilih prioritas.."
-                  options={this.state.dropdown_value}
-                />
-              </div> */}
+              <div className="col-4">
+                <div
+                  className="dropdown-rem"
+                  style={{
+                    visibility: this.state.jenis_rem ? "visible" : "hidden",
+                  }}
+                >
+                  <Dropdown
+                    placeholder="Pilih prioritas.."
+                    options={this.state.dropdown_value}
+                    onChange={this.get_value_jenisrem}
+                  />
+                </div>
+                <div
+                  className="dropdown-bahanbakar"
+                  style={{
+                    visibility: this.state.jenis_bb ? "visible" : "hidden",
+                  }}
+                >
+                  <Dropdown
+                    placeholder="Pilih prioritas.."
+                    options={this.state.dropdown_value}
+                    onChange={this.get_value_jenisbahanbakar}
+                  />
+                </div>
+                <div
+                  className="dropdown-airbag"
+                  style={{
+                    visibility: this.state.airbag ? "visible" : "hidden",
+                  }}
+                >
+                  <Dropdown
+                    placeholder="Pilih prioritas.."
+                    options={this.state.dropdown_value}
+                    onChange={this.get_value_airbag}
+                  />
+                </div>
+                <div
+                  className="dropdown-gps"
+                  style={{
+                    visibility: this.state.gps ? "visible" : "hidden",
+                  }}
+                >
+                  <Dropdown
+                    placeholder="Pilih prioritas.."
+                    options={this.state.dropdown_value}
+                    onChange={this.get_value_gps}
+                  />
+                </div>
+                <div
+                  className="dropdown-smartkey"
+                  style={{
+                    visibility: this.state.smart_key ? "visible" : "hidden",
+                  }}
+                >
+                  <Dropdown
+                    placeholder="Pilih prioritas.."
+                    options={this.state.dropdown_value}
+                    onChange={this.get_value_smartkey}
+                  />
+                </div>
+                <div
+                  className="dropdown-ps"
+                  style={{
+                    visibility: this.state.power_steering
+                      ? "visible"
+                      : "hidden",
+                  }}
+                >
+                  <Dropdown
+                    placeholder="Pilih prioritas.."
+                    options={this.state.dropdown_value}
+                    onChange={this.get_value_powersteering}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </Modal.Body>

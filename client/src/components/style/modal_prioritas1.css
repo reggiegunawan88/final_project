@@ -40,11 +40,14 @@ input[type="text"] {
   border-radius: 3.3rem !important;
 }
 
-#kriteria-km {
-  width: 25%;
-  margin-left: 285px !important;
-  margin-bottom: 15px;
-  text-align: center;
+.dropdown-rem,
+.dropdown-bahanbakar,
+.dropdown-airbag,
+.dropdown-gps,
+.dropdown-smartkey,
+.dropdown-ps {
+  width: 60% !important;
+  margin: 6px !important;
 }
 
 label {
