@@ -56,32 +56,32 @@ class ModalPrioritas1 extends React.Component {
 
   //* method below for getting each dropdown (rank) value
   get_value_jenisrem = (event) => {
-    const value = parseInt(event.target.textContent);
+    const value = parseInt(event.target.textContent, 10);
     console.log("jenisrem : " + value);
   };
 
   get_value_jenisbahanbakar = (event) => {
-    const value = parseInt(event.target.textContent);
+    const value = parseInt(event.target.textContent, 10);
     console.log("bahanbakar : " + value);
   };
 
   get_value_airbag = (event) => {
-    const value = parseInt(event.target.textContent);
+    const value = parseInt(event.target.textContent, 10);
     console.log("airbag : " + value);
   };
 
   get_value_gps = (event) => {
-    const value = parseInt(event.target.textContent);
+    const value = parseInt(event.target.textContent, 10);
     console.log("gps : " + value);
   };
 
   get_value_smartkey = (event) => {
-    const value = parseInt(event.target.textContent);
+    const value = parseInt(event.target.textContent, 10);
     console.log("smartkey : " + value);
   };
 
   get_value_powersteering = (event) => {
-    const value = parseInt(event.target.textContent);
+    const value = parseInt(event.target.textContent, 10);
     console.log("powersteering: " + value);
   };
 
@@ -104,7 +104,7 @@ class ModalPrioritas1 extends React.Component {
               <div className="col-12">
                 <p className="label-txt">
                   KONDISI MOBIL (Pilih Minimal 3) <br /> Kondisi yang dipilih
-                  akan menjadi faktor subjektif sebuah mobil
+                  akan menjadi faktor subjektif sebuah mobil bekas
                 </p>
               </div>
             </div>
@@ -232,7 +232,7 @@ class ModalPrioritas1 extends React.Component {
                   }}
                 >
                   <Dropdown
-                    placeholder="Pilih prioritas.."
+                    placeholder="---Pilih---"
                     options={this.state.dropdown_value}
                     onChange={this.get_value_jenisrem}
                   />
@@ -244,7 +244,7 @@ class ModalPrioritas1 extends React.Component {
                   }}
                 >
                   <Dropdown
-                    placeholder="Pilih prioritas.."
+                    placeholder="---Pilih---"
                     options={this.state.dropdown_value}
                     onChange={this.get_value_jenisbahanbakar}
                   />
@@ -256,7 +256,7 @@ class ModalPrioritas1 extends React.Component {
                   }}
                 >
                   <Dropdown
-                    placeholder="Pilih prioritas.."
+                    placeholder="---Pilih---"
                     options={this.state.dropdown_value}
                     onChange={this.get_value_airbag}
                   />
@@ -268,7 +268,7 @@ class ModalPrioritas1 extends React.Component {
                   }}
                 >
                   <Dropdown
-                    placeholder="Pilih prioritas.."
+                    placeholder="---Pilih---"
                     options={this.state.dropdown_value}
                     onChange={this.get_value_gps}
                   />
@@ -280,7 +280,7 @@ class ModalPrioritas1 extends React.Component {
                   }}
                 >
                   <Dropdown
-                    placeholder="Pilih prioritas.."
+                    placeholder="---Pilih---"
                     options={this.state.dropdown_value}
                     onChange={this.get_value_smartkey}
                   />
@@ -294,7 +294,7 @@ class ModalPrioritas1 extends React.Component {
                   }}
                 >
                   <Dropdown
-                    placeholder="Pilih prioritas.."
+                    placeholder="---Pilih---"
                     options={this.state.dropdown_value}
                     onChange={this.get_value_powersteering}
                   />
