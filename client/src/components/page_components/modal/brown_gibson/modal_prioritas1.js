@@ -19,6 +19,7 @@ class ModalPrioritas1 extends React.Component {
       smart_key: false,
       power_steering: false,
       dropdown_value: [],
+      subj_data: [],
     };
     this.choice = 0;
   }
@@ -29,60 +30,98 @@ class ModalPrioritas1 extends React.Component {
     this.setState({ ...this.state, [event.target.name]: event.target.checked });
     if (event.target.checked) {
       this.choice++;
-      let processedValue = this.setDropdownValue(this.choice);
-      this.setState({ dropdown_value: processedValue });
+      this.add_CheckboxData(event.target.name);
+      this.set_DropdownValue(this.choice);
     } else {
       this.choice--;
-      let processedValue = this.setDropdownValue(this.choice);
-      this.setState({ dropdown_value: processedValue });
+      this.remove_CheckboxData(event.target.name);
+      this.set_DropdownValue(this.choice);
     }
   };
 
+  resetState = () => {
+    this.choice = 0;
+    this.setState({
+      jenis_rem: false,
+      jenis_bb: false,
+      airbag: false,
+      gps: false,
+      smart_key: false,
+      power_steering: false,
+      dropdown_value: [],
+      subj_data: [],
+    });
+  };
+
   nextModal = () => {
-    if (this.state.choice < 3) {
+    if (this.choice < 3) {
       alert("Pilihan masih dibawah 3");
     } else {
+      this.resetState();
       this.props.onReceivedProps();
     }
   };
 
-  setDropdownValue(choice) {
+  set_DropdownValue(choice) {
     let arr = [];
     for (let i = 1; i <= choice; i++) {
       arr.push({ key: i, text: "" + i, value: i });
     }
-    return arr;
+    this.setState({ dropdown_value: arr });
+  }
+
+  add_CheckboxData(name) {
+    let temp_arr = [...this.state.subj_data]; //temp array
+    temp_arr.push({ data: name, value: 0 });
+    this.setState({ subj_data: temp_arr }, () =>
+      console.log(this.state.subj_data)
+    );
+  }
+
+  remove_CheckboxData(name) {
+    let temp_arr = [...this.state.subj_data]; //copy arr from state
+    let result = temp_arr.filter((item) => item.data !== name);
+    this.setState({ subj_data: result });
+  }
+
+  update_dropdown_value(checkbox_name, selected_value) {
+    const index = this.state.subj_data.findIndex(
+      (item) => item.data === checkbox_name
+    );
+    let new_state = [...this.state.subj_data];
+    new_state[index] = { ...new_state[index], value: selected_value };
+    this.setState({ subj_data: new_state });
   }
 
   //* method below for getting each dropdown (rank) value
   get_value_jenisrem = (event) => {
-    const value = parseInt(event.target.textContent, 10);
-    console.log("jenisrem : " + value);
+    const selected_value = parseInt(event.target.textContent, 10);
+    this.update_dropdown_value("jenis_rem", selected_value);
   };
 
   get_value_jenisbahanbakar = (event) => {
-    const value = parseInt(event.target.textContent, 10);
-    console.log("bahanbakar : " + value);
+    const selected_value = parseInt(event.target.textContent, 10);
+    this.update_dropdown_value("jenis_bb", selected_value);
   };
 
   get_value_airbag = (event) => {
-    const value = parseInt(event.target.textContent, 10);
-    console.log("airbag : " + value);
+    const selected_value = parseInt(event.target.textContent, 10);
+    this.update_dropdown_value("airbag", selected_value);
   };
 
   get_value_gps = (event) => {
-    const value = parseInt(event.target.textContent, 10);
-    console.log("gps : " + value);
+    const selected_value = parseInt(event.target.textContent, 10);
+    this.update_dropdown_value("gps", selected_value);
   };
 
   get_value_smartkey = (event) => {
-    const value = parseInt(event.target.textContent, 10);
-    console.log("smartkey : " + value);
+    const selected_value = parseInt(event.target.textContent, 10);
+    this.update_dropdown_value("smart_key", selected_value);
   };
 
   get_value_powersteering = (event) => {
-    const value = parseInt(event.target.textContent, 10);
-    console.log("powersteering: " + value);
+    const selected_value = parseInt(event.target.textContent, 10);
+    this.update_dropdown_value("power_sterring", selected_value);
   };
 
   render() {

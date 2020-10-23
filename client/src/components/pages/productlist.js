@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../style/listmobil.css";
 import Dropdown from "./../page_components/dropdown/dropdown";
 import GroupCards from "./../page_components/productlist/group-cards";
