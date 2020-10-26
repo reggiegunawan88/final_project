@@ -19,6 +19,8 @@ class ModalPrioritas1 extends React.Component {
       smart_key: false,
       power_steering: false,
       dropdown_value: [],
+
+      //this state wil be send to the next modal
       subj_data: [],
     };
     this.choice = 0;
@@ -27,7 +29,10 @@ class ModalPrioritas1 extends React.Component {
   //* increment state by 1 if one of the checkbox is selected
   handleChange = (event) => {
     event.preventDefault();
-    this.setState({ ...this.state, [event.target.name]: event.target.checked });
+    this.setState({
+      ...this.state,
+      [event.target.value]: event.target.checked,
+    });
     if (event.target.checked) {
       this.choice++;
       this.add_CheckboxData(event.target.name);
@@ -53,12 +58,14 @@ class ModalPrioritas1 extends React.Component {
     });
   };
 
+  //* submit btn click
   nextModal = () => {
     if (this.choice < 3) {
       alert("Pilihan masih dibawah 3");
     } else {
       this.resetState();
       this.props.onReceivedProps();
+      this.props.onSendDataSubj(this.state.subj_data);
     }
   };
 
@@ -73,9 +80,7 @@ class ModalPrioritas1 extends React.Component {
   add_CheckboxData(name) {
     let temp_arr = [...this.state.subj_data]; //temp array
     temp_arr.push({ data: name, value: 0 });
-    this.setState({ subj_data: temp_arr }, () =>
-      console.log(this.state.subj_data)
-    );
+    this.setState({ subj_data: temp_arr });
   }
 
   remove_CheckboxData(name) {
@@ -96,32 +101,32 @@ class ModalPrioritas1 extends React.Component {
   //* method below for getting each dropdown (rank) value
   get_value_jenisrem = (event) => {
     const selected_value = parseInt(event.target.textContent, 10);
-    this.update_dropdown_value("jenis_rem", selected_value);
+    this.update_dropdown_value("JENIS REM", selected_value);
   };
 
   get_value_jenisbahanbakar = (event) => {
     const selected_value = parseInt(event.target.textContent, 10);
-    this.update_dropdown_value("jenis_bb", selected_value);
+    this.update_dropdown_value("JENIS BAHAN BAKAR", selected_value);
   };
 
   get_value_airbag = (event) => {
     const selected_value = parseInt(event.target.textContent, 10);
-    this.update_dropdown_value("airbag", selected_value);
+    this.update_dropdown_value("AIRBAG", selected_value);
   };
 
   get_value_gps = (event) => {
     const selected_value = parseInt(event.target.textContent, 10);
-    this.update_dropdown_value("gps", selected_value);
+    this.update_dropdown_value("GPS", selected_value);
   };
 
   get_value_smartkey = (event) => {
     const selected_value = parseInt(event.target.textContent, 10);
-    this.update_dropdown_value("smart_key", selected_value);
+    this.update_dropdown_value("SMART KEY", selected_value);
   };
 
   get_value_powersteering = (event) => {
     const selected_value = parseInt(event.target.textContent, 10);
-    this.update_dropdown_value("power_sterring", selected_value);
+    this.update_dropdown_value("POWER STEERING", selected_value);
   };
 
   render() {
@@ -158,7 +163,8 @@ class ModalPrioritas1 extends React.Component {
                             <Checkbox
                               checked={this.state.jenis_rem}
                               onChange={this.handleChange}
-                              name="jenis_rem"
+                              name="JENIS REM"
+                              value="jenis_rem"
                             />
                           }
                           label="JENIS REM"
@@ -176,7 +182,8 @@ class ModalPrioritas1 extends React.Component {
                             <Checkbox
                               checked={this.state.jenis_bb}
                               onChange={this.handleChange}
-                              name="jenis_bb"
+                              name="JENIS BAHAN BAKAR"
+                              value="jenis_bb"
                             />
                           }
                           label="JENIS BAHAN BAKAR"
@@ -193,7 +200,8 @@ class ModalPrioritas1 extends React.Component {
                             <Checkbox
                               checked={this.state.airbag}
                               onChange={this.handleChange}
-                              name="airbag"
+                              name="AIRBAG"
+                              value="airbag"
                             />
                           }
                           label="AIRBAG"
@@ -211,7 +219,8 @@ class ModalPrioritas1 extends React.Component {
                             <Checkbox
                               checked={this.state.gps}
                               onChange={this.handleChange}
-                              name="gps"
+                              name="GPS"
+                              value="gps"
                             />
                           }
                           label="GPS"
@@ -230,7 +239,8 @@ class ModalPrioritas1 extends React.Component {
                             <Checkbox
                               checked={this.state.smart_key}
                               onChange={this.handleChange}
-                              name="smart_key"
+                              name="SMART KEY"
+                              value="smart_key"
                             />
                           }
                           label="SMART KEY"
@@ -249,7 +259,8 @@ class ModalPrioritas1 extends React.Component {
                             <Checkbox
                               checked={this.state.power_steering}
                               onChange={this.handleChange}
-                              name="power_steering"
+                              name="POWER STEERING"
+                              value="power_steering"
                             />
                           }
                           label="POWER STEERING"

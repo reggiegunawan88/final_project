@@ -10,6 +10,8 @@ class modal_BG extends Component {
       show_1st_modal: false,
       show_2nd_modal: false,
       show_3rd_modal: false,
+      obj_data: [],
+      subj_data: [],
     };
   }
 
@@ -34,6 +36,18 @@ class modal_BG extends Component {
     this.setState({ show_3rd_modal: false, show_2nd_modal: true });
   }
 
+  //* method for get props data from modal 1
+  get_subj_data(data) {
+    this.setState({ subj_data: data }, () => console.log(this.state.subj_data));
+  }
+
+  //* method for get props data from modal 2
+  get_obj_data(data) {
+    this.setState({ obj_data: data }, () => console.log(this.state.obj_data));
+  }
+
+  get_data_for_modal3() {}
+
   render() {
     return (
       <div className="modal-transition">
@@ -41,15 +55,20 @@ class modal_BG extends Component {
           show={this.props.show}
           onHide={this.props.onHide}
           onReceivedProps={() => this.show_nextModal()}
+          onSendDataSubj={(data_subj) => this.get_subj_data(data_subj)}
         />
         <ModalPrioritas2
           show={this.state.show_2nd_modal}
           onHide={() => this.close_nextModal()}
           onReceivedProps={() => this.show_finalModal()}
+          onSendDataObj={(data_obj) => this.get_obj_data(data_obj)}
         />
         <ModalBobot
           show={this.state.show_3rd_modal}
           onHide={() => this.close_finalModal()}
+          onReceivedSubjData={this.state.subj_data}
+          onReceivedObjData={this.state.obj_data}
+          onTriggerFunc={this.get_data_for_modal3}
         />
       </div>
     );

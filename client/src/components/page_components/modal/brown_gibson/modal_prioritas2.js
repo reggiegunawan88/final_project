@@ -31,29 +31,68 @@ class ModalPrioritas2 extends React.Component {
           value: 3,
         },
       ],
+      obj_data: [
+        {
+          data: "HARGA",
+          value: 0,
+        },
+        {
+          data: "TAHUN KELUARAN",
+          value: 0,
+        },
+        {
+          data: "KILOMETER",
+          value: 0,
+        },
+      ],
     };
   }
 
-  handleChange = (event) => {
-    this.setState({ ...this.state, [event.target.name]: event.target.checked });
+  goto_finalModal = () => {
+    this.props.onReceivedProps(); //close current modal
+    this.props.onSendDataObj(this.state.obj_data); //send state data
+    this.setState({
+      obj_data: [
+        {
+          data: "harga",
+          value: 0,
+        },
+        {
+          data: "tahun",
+          value: 0,
+        },
+        {
+          data: "kilometer",
+          value: 0,
+        },
+      ],
+    });
   };
 
-  goto_finalModal = () => {
-    this.props.onReceivedProps();
-  };
+  update_dropdownValue(index, selected_value) {
+    let new_state = [...this.state.obj_data];
+    new_state[index] = { ...new_state[index], value: selected_value };
+    this.setState({ obj_data: new_state });
+  }
 
   //* method for getting value of each dropdown
-  get_value_harga(event) {
+  get_priority_harga = (event) => {
+    const index = 0;
     const value = parseInt(event.target.textContent, 10);
-  }
+    this.update_dropdownValue(index, value);
+  };
 
-  get_value_tahun(event) {
+  get_priority_tahun = (event) => {
+    const index = 1;
     const value = parseInt(event.target.textContent, 10);
-  }
+    this.update_dropdownValue(index, value);
+  };
 
-  get_value_kilometer(event) {
+  get_priority_kilometer = (event) => {
+    const index = 2;
     const value = parseInt(event.target.textContent, 10);
-  }
+    this.update_dropdownValue(index, value);
+  };
 
   render() {
     return (
@@ -85,34 +124,19 @@ class ModalPrioritas2 extends React.Component {
                   <FormGroup>
                     <FormControlLabel
                       control={
-                        <Checkbox
-                          checked={true}
-                          onChange={this.handleChange}
-                          name="harga"
-                          disabled
-                        />
+                        <Checkbox checked={true} name="harga" disabled />
                       }
                       label="HARGA"
                     />
                     <FormControlLabel
                       control={
-                        <Checkbox
-                          checked={true}
-                          onChange={this.handleChange}
-                          name="tahun"
-                          disabled
-                        />
+                        <Checkbox checked={true} name="tahun" disabled />
                       }
                       label="TAHUN KELUARAN"
                     />
                     <FormControlLabel
                       control={
-                        <Checkbox
-                          checked={true}
-                          onChange={this.handleChange}
-                          name="kilometer"
-                          disabled
-                        />
+                        <Checkbox checked={true} name="kilometer" disabled />
                       }
                       label="KILOMETER"
                     />
@@ -124,21 +148,21 @@ class ModalPrioritas2 extends React.Component {
                   <Dropdown
                     placeholder="---Pilih---"
                     options={this.state.dropdown_value}
-                    onChange={this.get_value_harga}
+                    onChange={this.get_priority_harga}
                   />
                 </div>
                 <div className="dropdown-tahun">
                   <Dropdown
                     placeholder="---Pilih---"
                     options={this.state.dropdown_value}
-                    onChange={this.get_value_tahun}
+                    onChange={this.get_priority_tahun}
                   />
                 </div>
                 <div className="dropdown-kilometer">
                   <Dropdown
                     placeholder="---Pilih---"
                     options={this.state.dropdown_value}
-                    onChange={this.get_value_kilometer}
+                    onChange={this.get_priority_kilometer}
                   />
                 </div>
               </div>
