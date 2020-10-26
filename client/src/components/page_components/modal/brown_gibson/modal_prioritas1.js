@@ -98,7 +98,7 @@ class ModalPrioritas1 extends React.Component {
     this.setState({ subj_data: new_state });
   }
 
-  //* method below for getting each dropdown (rank) value
+  //* method below for get each dropdown (rank) value
   get_value_jenisrem = (event) => {
     const selected_value = parseInt(event.target.textContent, 10);
     this.update_dropdown_value("JENIS REM", selected_value);

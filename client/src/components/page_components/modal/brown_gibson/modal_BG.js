@@ -36,17 +36,15 @@ class modal_BG extends Component {
     this.setState({ show_3rd_modal: false, show_2nd_modal: true });
   }
 
-  //* method for get props data from modal 1
+  //* method for receive props data from modal 1
   get_subj_data(data) {
-    this.setState({ subj_data: data }, () => console.log(this.state.subj_data));
+    this.setState({ subj_data: data });
   }
 
-  //* method for get props data from modal 2
+  //* method for receive props data from modal 2
   get_obj_data(data) {
-    this.setState({ obj_data: data }, () => console.log(this.state.obj_data));
+    this.setState({ obj_data: data });
   }
-
-  get_data_for_modal3() {}
 
   render() {
     return (

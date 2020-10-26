@@ -54,15 +54,15 @@ class ModalPrioritas2 extends React.Component {
     this.setState({
       obj_data: [
         {
-          data: "harga",
+          data: "HARGA",
           value: 0,
         },
         {
-          data: "tahun",
+          data: "TAHUN KELUARAN",
           value: 0,
         },
         {
-          data: "kilometer",
+          data: "KILOMETER",
           value: 0,
         },
       ],
@@ -124,19 +124,23 @@ class ModalPrioritas2 extends React.Component {
                   <FormGroup>
                     <FormControlLabel
                       control={
-                        <Checkbox checked={true} name="harga" disabled />
+                        <Checkbox checked={true} value="HARGA" disabled />
                       }
                       label="HARGA"
                     />
                     <FormControlLabel
                       control={
-                        <Checkbox checked={true} name="tahun" disabled />
+                        <Checkbox
+                          checked={true}
+                          value="TAHUN KELUARAN"
+                          disabled
+                        />
                       }
                       label="TAHUN KELUARAN"
                     />
                     <FormControlLabel
                       control={
-                        <Checkbox checked={true} name="kilometer" disabled />
+                        <Checkbox checked={true} value="KILOMETER" disabled />
                       }
                       label="KILOMETER"
                     />
