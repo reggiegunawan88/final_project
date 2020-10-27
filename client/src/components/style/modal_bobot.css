@@ -28,36 +28,8 @@
   font-weight: bold;
 }
 
-input[type="text"] {
-  margin-right: 20px !important;
-  padding: 5px !important;
-  height: 35px;
-  text-align: center;
-  border-radius: 5px;
-}
-
 .modal-content {
   border-radius: 3.3rem !important;
-}
-
-#kriteria-km {
-  width: 25%;
-  margin-left: 285px !important;
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-label {
-  margin: 0px 5px 5px;
-  font-size: 15px;
-}
-
-input[type="radio"] {
-  margin: 5px;
-}
-
-.checkbox-group {
-  margin-top: 20px;
 }
 
 .tooltip {
@@ -67,6 +39,6 @@ input[type="radio"] {
   border: 1px solid #dadde9;
 }
 
-.col-checkbox {
-  text-align: right;
+.bobot-select {
+  width: 100px;
 }
