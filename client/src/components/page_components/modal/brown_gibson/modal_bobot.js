@@ -140,7 +140,7 @@ export class modal_bobot extends Component {
               <div className="col-4">
                 <p className="label-txt">Pembobotan</p>
                 <div className="select-bobot-container">
-                  <div className="row">
+                  <div className="row" style={{ marginTop: "20%" }}>
                     <div className="col-6">
                       <FormControl variant="outlined" style={{ minWidth: 100 }}>
                         <InputLabel id="demo-simple-select-outlined-label">

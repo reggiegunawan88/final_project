@@ -42,3 +42,8 @@
 .bobot-select {
   width: 100px;
 }
+
+.select-box {
+  font-size: 15px;
+  font-weight: bold;
+}
