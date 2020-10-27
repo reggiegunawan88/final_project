@@ -107,13 +107,17 @@ app.post("/mobil/result_SECC", (req, res) => {
     harga_2: req.body.harga_2,
     tahun_1: req.body.tahun_1,
     tahun_2: req.body.tahun_2,
+    km_1: req.body.km_1,
+    km_2: req.body.km_2,
   };
   const merk_mobil = '"' + data.merk_mobil + '"';
   const tipe_mobil = '"' + data.tipe_mobil + '"';
   const harga_1 = data.harga_1,
     harga_2 = data.harga_2,
     tahun_1 = data.tahun_1,
-    tahun_2 = data.tahun_2;
+    tahun_2 = data.tahun_2,
+    km_1 = data.km_1,
+    km_2 = data.km_2;
 
   //do MySQL query
   var query_SECC = "";
@@ -127,6 +131,10 @@ app.post("/mobil/result_SECC", (req, res) => {
       tahun_1 +
       " AND tahun <= " +
       tahun_2 +
+      " AND kilometer >= " +
+      km_1 +
+      " AND kilometer <= " +
+      km_2 +
       " order by idmobil asc";
   } else if (merk_mobil == '"all"' && tipe_mobil != '"all"') {
     query_SECC =
@@ -138,6 +146,10 @@ app.post("/mobil/result_SECC", (req, res) => {
       tahun_1 +
       " AND tahun <= " +
       tahun_2 +
+      " AND kilometer >= " +
+      km_1 +
+      " AND kilometer <= " +
+      km_2 +
       " AND merk = `merk` " +
       " AND tipe_mobil = " +
       tipe_mobil +
@@ -152,6 +164,10 @@ app.post("/mobil/result_SECC", (req, res) => {
       tahun_1 +
       " AND tahun <= " +
       tahun_2 +
+      " AND kilometer >= " +
+      km_1 +
+      " AND kilometer <= " +
+      km_2 +
       " AND tipe_mobil = `tipe_mobil`" +
       " AND merk = " +
       merk_mobil +
@@ -166,6 +182,10 @@ app.post("/mobil/result_SECC", (req, res) => {
       tahun_1 +
       " AND tahun <= " +
       tahun_2 +
+      " AND kilometer >= " +
+      km_1 +
+      " AND kilometer <= " +
+      km_2 +
       " AND merk = " +
       merk_mobil +
       " AND tipe_mobil = " +

@@ -16,6 +16,8 @@ class ModalKriteria extends React.Component {
       harga_2: null,
       tahun_1: null,
       tahun_2: null,
+      km_1: null,
+      km_2: null,
       options_tahun: [
         {
           key: "ALL",
@@ -174,12 +176,12 @@ class ModalKriteria extends React.Component {
       : this.setState({ harga_1: toString[0], harga_2: toString[1] });
   };
 
-  // get_dropdown_km = (event, data) => {
-  //   const toString = data.value.split(",");
-  //   data.value.includes("ALL")
-  //     ? this.setState({ km1: 0, km2: 9999999 })
-  //     : this.setState({ km1: toString[0], km2: toString[1] });
-  // };
+  get_dropdown_km = (event, data) => {
+    const toString = data.value.split(",");
+    data.value.includes("ALL")
+      ? this.setState({ km_1: 0, km_2: 9999999 })
+      : this.setState({ km_1: toString[0], km_2: toString[1] });
+  };
 
   get_dropdown_tahun = (event, data) => {
     const toString = data.value.split(",");
@@ -198,12 +200,16 @@ class ModalKriteria extends React.Component {
       harga_2: this.state.harga_2,
       tahun_1: this.state.tahun_1,
       tahun_2: this.state.tahun_2,
+      km_1: this.state.km_1,
+      km_2: this.state.km_2,
     };
     var SECC_postprocessed = {
       harga_1: this.state.harga_1,
       harga_2: this.state.harga_2,
       tahun_1: this.state.tahun_1,
       tahun_2: this.state.tahun_2,
+      km_1: this.state.km_1,
+      km_2: this.state.km_2,
     };
     if (this.state.merk_mobil == null) {
       alert("Merk mobil belum dipilih");
@@ -213,6 +219,8 @@ class ModalKriteria extends React.Component {
       alert("Rentang harga mobil belum dipilih");
     } else if (this.state.tahun_1 == null && this.state.tahun_2 == null) {
       alert("Rentang tahun keluaran mobil belum dipilih");
+    } else if (this.state.km_1 == null && this.state.km_2 == null) {
+      alert("Rentang kilometer mobil belum dipilih");
     } else {
       await axios
         .post("http://localhost:5000/mobil/result_SECC", filter_data, {
