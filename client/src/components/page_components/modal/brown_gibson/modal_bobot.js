@@ -8,6 +8,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Checkbox from "@material-ui/core/Checkbox";
 import Select from "@material-ui/core/Select";
+import HelpOutlineIcon from "@material-ui/icons/HelpOutline"; //for icon
+import { Popup } from "semantic-ui-react"; //for tooltip
 
 export class modal_bobot extends Component {
   constructor(props) {
@@ -123,7 +125,23 @@ export class modal_bobot extends Component {
             </div>
             <div className="row">
               <div className="col-4">
-                <p className="label-txt">Faktor Objektif</p>
+                <div className="wrapper-text-icon">
+                  <p className="label-txt">Faktor Objektif</p>
+                  <Popup
+                    trigger={
+                      <HelpOutlineIcon
+                        id="HelpIcon"
+                        fontSize="medium"
+                        color="primary"
+                      />
+                    }
+                    position="bottom right"
+                  >
+                    Kriteria pada faktor ini merupakan kriteria utama mobil
+                    bekas yang sudah ditentukan oleh sistem yang ada pada slide
+                    kedua
+                  </Popup>
+                </div>
                 <FormControl component="fieldset" className="checkbox-group">
                   <FormGroup>
                     {this.state.obj_data.map((item) => (
@@ -138,9 +156,25 @@ export class modal_bobot extends Component {
                 </FormControl>
               </div>
               <div className="col-4">
-                <p className="label-txt">Pembobotan</p>
+                <div className="wrapper-text-icon">
+                  <p className="label-txt">Pembobotan</p>
+                  <Popup
+                    trigger={
+                      <HelpOutlineIcon
+                        id="HelpIcon"
+                        fontSize="medium"
+                        color="primary"
+                      />
+                    }
+                    position="bottom center"
+                  >
+                    Anda menentukan apakah kriteria objektif akan memiliki bobot
+                    lebih besar (lebih penting) daripada kriteria subjektif dan
+                    sebaliknya
+                  </Popup>
+                </div>
                 <div className="select-bobot-container">
-                  <div className="row" style={{ marginTop: "20%" }}>
+                  <div className="row" style={{ marginTop: "10%" }}>
                     <div className="col-6">
                       <FormControl variant="outlined" style={{ minWidth: 100 }}>
                         <InputLabel id="demo-simple-select-outlined-label">
@@ -195,7 +229,22 @@ export class modal_bobot extends Component {
                 </div>
               </div>
               <div className="col-4">
-                <p className="label-txt">Faktor Subjektif</p>
+                <div className="wrapper-text-icon">
+                  <p className="label-txt">Faktor Subjektif</p>
+                  <Popup
+                    trigger={
+                      <HelpOutlineIcon
+                        id="HelpIcon"
+                        fontSize="medium"
+                        color="primary"
+                      />
+                    }
+                    position="bottom left"
+                  >
+                    Kriteria pada faktor ini merupakan semua kriteria yang ada
+                    pilih sebelumnya di slide pertama
+                  </Popup>
+                </div>
                 <FormControl component="fieldset" className="checkbox-group">
                   <FormGroup>
                     {this.state.subj_data.map((item) => (
