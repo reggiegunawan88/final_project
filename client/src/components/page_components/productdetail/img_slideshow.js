@@ -14,14 +14,11 @@ const img_slideshow = (props) => {
     let img_data = [];
     for (let i = 0; i < props.items.img.length; i++) {
       img_data.push({
-        original:
-          "https://naripanmotor.com/wp-content/uploads/" +
-          props.items.img[i].url,
-        thumbnail:
-          "https://naripanmotor.com/wp-content/uploads/" +
-          props.items.img[i].url,
+        original: "/img/" + props.items.img[i].url,
+        thumbnail: "/img/" + props.items.img[i].url,
       });
     }
+    console.log(img_data);
     return img_data;
   };
 
