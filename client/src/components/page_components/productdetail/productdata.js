@@ -44,6 +44,10 @@ const productdata = ({ items }) => {
             </td>
           </tr>
           <tr>
+            <th scope="row">TRANSMISI</th>
+            <td>{items.transmisi}</td>
+          </tr>
+          <tr>
             <th scope="row">JENIS REM</th>
             <td>{items.jenis_rem}</td>
           </tr>
