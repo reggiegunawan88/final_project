@@ -84,7 +84,15 @@ class MainPage extends React.Component {
   render() {
     //loading if state is still null
     if (this.state.items[0] === undefined) {
-      return <h3>Loading...</h3>;
+      <ButtonPopup
+        onReceiveProps={(results, SECC_data) =>
+          this.get_SECC_result(results, SECC_data)
+        }
+        onReset={() => this.reset_page()}
+        disableModalProps={this.state.disableModalProps}
+        btnModalColor={this.state.btnModalColor}
+        showResetBtn={this.state.showResetBtn}
+      />;
     }
 
     return (
@@ -99,6 +107,7 @@ class MainPage extends React.Component {
               disableModalProps={this.state.disableModalProps}
               btnModalColor={this.state.btnModalColor}
               showResetBtn={this.state.showResetBtn}
+              getSECCData={this.state.items}
             />
           </div>
           <div className="col-9" style={{ backgroundColor: "" }}>
