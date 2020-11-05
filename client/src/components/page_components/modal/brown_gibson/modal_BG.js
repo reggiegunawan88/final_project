@@ -12,7 +12,15 @@ class modal_BG extends Component {
       show_3rd_modal: false,
       obj_data: [],
       subj_data: [],
+      SECC_processed_data: this.props.getSECCData,
     };
+  }
+
+  //* always update if new SECC data is received
+  componentDidUpdate() {
+    if (this.props.getSECCData !== this.state.SECC_processed_data) {
+      this.setState({ SECC_processed_data: this.props.getSECCData });
+    }
   }
 
   // *method for show next modal then close current modal
@@ -66,7 +74,7 @@ class modal_BG extends Component {
           onHide={() => this.close_finalModal()}
           onReceivedSubjData={this.state.subj_data}
           onReceivedObjData={this.state.obj_data}
-          onTriggerFunc={this.get_data_for_modal3}
+          getSECCData={this.state.SECC_processed_data}
         />
       </div>
     );

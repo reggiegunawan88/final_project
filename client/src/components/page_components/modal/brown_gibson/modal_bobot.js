@@ -11,10 +11,14 @@ import Select from "@material-ui/core/Select";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline"; //for icon
 import { Popup } from "semantic-ui-react"; //for tooltip
 
+//brown-gibson algorithm
+import calculate_LPM from "./../../../function/brown-gibson";
+
 export class modal_bobot extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      secc_data: this.props.getSECCData,
       subj_data: this.props.onReceivedSubjData,
       obj_data: this.props.onReceivedObjData,
       weight: [
@@ -54,27 +58,25 @@ export class modal_bobot extends Component {
           text: "90%",
           value: 0.9,
         },
-        {
-          text: "100%",
-          value: 1,
-        },
       ],
       text_weight_obj: "",
       text_weight_subj: "",
-      weight_obj: 0,
-      weight_subj: 0,
+      obj_weight: 0,
+      subj_weight: 0,
     };
   }
 
   componentDidUpdate() {
+    let props_secc_data = this.props.getSECCData;
     let props_obj = this.props.onReceivedObjData;
     let props_subj = this.props.onReceivedSubjData;
     if (
+      props_secc_data !== this.state.secc_data ||
       props_obj !== this.state.obj_data ||
       props_subj !== this.state.subj_data
     ) {
-      console.log("state updated");
       this.setState({
+        secc_data: this.props.getSECCData,
         obj_data: this.props.onReceivedObjData,
         subj_data: this.props.onReceivedSubjData,
       });
@@ -89,8 +91,8 @@ export class modal_bobot extends Component {
     const subj_weight_value = Math.round((1 - obj_weight_value) * 10) / 10; //result for subj weight
     this.setState(
       {
-        weight_obj: obj_weight_value,
-        weight_subj: subj_weight_value,
+        obj_weight: obj_weight_value,
+        subj_weight: subj_weight_value,
         text_weight_obj: obj_percent,
         text_weight_subj: subj_percent,
       },
@@ -101,6 +103,16 @@ export class modal_bobot extends Component {
   //* render value inside select box
   renderValue = (value) => {
     return value;
+  };
+
+  submit_all_data = () => {
+    let result = calculate_LPM(
+      this.state.secc_data,
+      this.state.obj_data,
+      this.state.subj_data,
+      this.state.obj_weight,
+      this.state.subj_weight
+    );
   };
 
   render() {
@@ -241,7 +253,7 @@ export class modal_bobot extends Component {
                     }
                     position="bottom left"
                   >
-                    Kriteria pada faktor ini merupakan semua kriteria yang ada
+                    Kriteria pada faktor ini merupakan semua kriteria yang Anda
                     pilih sebelumnya di slide pertama
                   </Popup>
                 </div>
@@ -262,7 +274,7 @@ export class modal_bobot extends Component {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="success">
+          <Button variant="success" onClick={this.submit_all_data}>
             <b>SELESAI</b>
           </Button>
           <Button variant="danger" onClick={this.props.onHide}>
