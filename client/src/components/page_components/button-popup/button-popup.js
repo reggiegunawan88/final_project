@@ -59,15 +59,17 @@ class ButtonLayout extends React.Component {
           <Button
             className="btn-kondisi"
             variant={this.props.btnModalColor}
-            disabled={false}
+            // disabled={this.props.disableModalProps}
             onClick={() => this.setState({ showModalSubjektif: true })}
+            hidden={this.props.showResetBtn}
           >
-            PILIH KONDISI
+            TETAPKAN PRIORITAS
           </Button>
           <ModalBG
             show={this.state.showModalSubjektif}
             onHide={closeModalSubjektif}
             reopenModal={openModalSubjektif}
+            getSECCData={this.props.getSECCData}
           />
         </div>
       </div>
