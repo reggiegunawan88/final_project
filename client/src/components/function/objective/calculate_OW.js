@@ -1,5 +1,6 @@
 /* calculate each objective factor weight
 - first loop: based on each obj factor
+- second into third loop: pairwise comparison for each item
 */
 const calculate_OW = (data_item, obj_data) => {
   console.log(data_item, obj_data);
@@ -7,6 +8,7 @@ const calculate_OW = (data_item, obj_data) => {
   let total_row = [];
 
   //matrix cross product for each item
+  // debugger;
   for (let i = 0; i < obj_data.length; i++) {
     let sum_row = [];
     for (let j = 0; j < data_item.length; j++) {
@@ -36,19 +38,19 @@ const calculate_OW = (data_item, obj_data) => {
     total_row.push(sum_row);
   }
 
-  //calculate OW for each item
-  for (let i = 0; i < data_item.length; i++) {
+  //calculate obj weight for each item
+  // debugger;
+  for (let i = 0; i < total_row.length; i++) {
     const res_totalrow = total_row[i].reduce(
       (total, current) => (total = total + current)
     );
     let temp_arr = [];
-    for (let j = 0; j < total_row.length; j++) {
+    for (let j = 0; j < total_row[i].length; j++) {
       temp_arr.push(total_row[i][j] / res_totalrow);
     }
     OBJ_WEIGHT.push(temp_arr);
   }
 
-  //calculate OF
   return OBJ_WEIGHT;
 };
 

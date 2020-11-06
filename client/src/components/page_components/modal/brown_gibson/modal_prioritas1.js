@@ -147,8 +147,8 @@ class ModalPrioritas1 extends React.Component {
             <div className="row">
               <div className="col-12">
                 <p className="label-txt">
-                  KONDISI MOBIL (Pilih Minimal 3) <br /> Kondisi yang dipilih
-                  akan menjadi faktor subjektif sebuah mobil bekas
+                  Pilih Minimal 3 <br /> Kondisi yang dipilih akan menjadi
+                  faktor subjektif sebuah mobil bekas
                 </p>
               </div>
             </div>

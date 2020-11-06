@@ -1,3 +1,6 @@
+/* calculate obj factor weight
+-nested double loop : pairwise comparison for each factor
+*/
 const calculate_OFW = (obj_data) => {
   let OBJ_FACTOR_WEIGHT = [];
   let total_row_arr = [];
@@ -24,7 +27,8 @@ const calculate_OFW = (obj_data) => {
   );
 
   /*calculate OFW from total row array
-    total OFW = 1 
+  -method: total value per row [index] / total_row
+  -total OFW must be = 1 
   */
   for (let i = 0; i < total_row_arr.length; i++) {
     const ofw = total_row_arr[i] / total_row;
