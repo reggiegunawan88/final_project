@@ -75,12 +75,20 @@ export class modal_bobot extends Component {
       props_obj !== this.state.obj_data ||
       props_subj !== this.state.subj_data
     ) {
+      //sort by rank first
+      let result_obj = this.sort_by_ranking(props_obj);
+      let result_subj = this.sort_by_ranking(props_subj);
       this.setState({
         secc_data: this.props.getSECCData,
-        obj_data: this.props.onReceivedObjData,
-        subj_data: this.props.onReceivedSubjData,
+        obj_data: result_obj,
+        subj_data: result_subj,
       });
     }
+  }
+
+  sort_by_ranking(data) {
+    let result = data.sort((a, b) => (a.value > b.value ? 1 : -1));
+    return result;
   }
 
   handle_change_bobot = (event) => {
@@ -125,7 +133,7 @@ export class modal_bobot extends Component {
       >
         <Modal.Header>
           <Modal.Title id="contained-modal-title-vcenter centered">
-            <b>TETAPKAN BOBOT ANTARA FAKTOR OBJEKTIF DAN SUBJEKTIF</b>
+            <b>TETAPKAN BOBOT</b>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -161,7 +169,7 @@ export class modal_bobot extends Component {
                         control={
                           <Checkbox checked={true} name={item.data} disabled />
                         }
-                        label={item.data}
+                        label={item.data + " -> " + "(" + item.value + ")"}
                       />
                     ))}
                   </FormGroup>
@@ -264,7 +272,7 @@ export class modal_bobot extends Component {
                         control={
                           <Checkbox checked={true} name={item.data} disabled />
                         }
-                        label={item.data}
+                        label={item.data + " -> " + "(" + item.value + ")"}
                       />
                     ))}
                   </FormGroup>

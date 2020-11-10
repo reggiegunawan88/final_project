@@ -115,6 +115,9 @@ class ModalPrioritas2 extends React.Component {
                 <p className="label-txt">
                   Kriteria yang dipilih akan menjadi faktor objektif sebuah
                   mobil bekas
+                  <div className="note-txt">
+                    *Anda dapat memilih angka prioritas yang sama antar kriteria
+                  </div>
                 </p>
               </div>
             </div>

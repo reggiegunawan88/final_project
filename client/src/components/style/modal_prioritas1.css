@@ -41,3 +41,12 @@
 .col-checkbox {
   text-align: right;
 }
+
+.desc-txt {
+  font-size: 20px;
+}
+
+.note-txt {
+  font-size: 13px;
+  color: red;
+}
