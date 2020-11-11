@@ -114,7 +114,7 @@ export class modal_bobot extends Component {
   };
 
   submit_all_data = () => {
-    let result = calculate_LPM(
+    calculate_LPM(
       this.state.secc_data,
       this.state.obj_data,
       this.state.subj_data,

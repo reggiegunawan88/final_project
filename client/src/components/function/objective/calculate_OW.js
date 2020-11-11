@@ -3,7 +3,7 @@
 - second into third loop: pairwise comparison for each item
 */
 const calculate_OW = (data_item, obj_data) => {
-  console.log(data_item, obj_data);
+  // console.log(data_item, obj_data);
   let OBJ_WEIGHT = [];
   let total_row = [];
 
@@ -15,12 +15,12 @@ const calculate_OW = (data_item, obj_data) => {
       let row = 0;
       for (let k = 0; k < data_item.length; k++) {
         if (data_item[j].idmobil != data_item[k].idmobil) {
-          if (obj_data[i].data == "TAHUN KELUARAN") {
+          if (obj_data[i].data === "TAHUN KELUARAN") {
             data_item[j].tahun > data_item[k].tahun ||
             data_item[j].tahun == data_item[k].tahun
               ? (row += 1)
               : (row += 0);
-          } else if (obj_data[i].data == "HARGA") {
+          } else if (obj_data[i].data === "HARGA") {
             data_item[j].harga < data_item[k].harga ||
             data_item[j].harga == data_item[k].harga
               ? (row += 1)
