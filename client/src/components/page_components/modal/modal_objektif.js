@@ -85,24 +85,29 @@ class ModalKriteria extends React.Component {
         },
         {
           key: "1",
-          text: "0 - 10.000",
-          value: "0,10000",
+          text: "0 - 25.000",
+          value: "0,25000",
         },
         {
           key: "2",
-          text: "10.000 - 20.000",
-          value: "10000,20000",
+          text: "25.000 - 50.000",
+          value: "25000,50000",
         },
         {
           key: "3",
 
-          text: "20.000 - 30.000",
-          value: "20000,30000",
+          text: "50.000 - 75.000",
+          value: "50000,75000",
         },
         {
           key: "4",
-          text: "30.000 - 40.000",
-          value: "30000,40000",
+          text: "75.000 - 100.000",
+          value: "75000,100000",
+        },
+        {
+          key: "5",
+          text: "> 100.000",
+          value: "100000,1000000",
         },
       ],
     };
@@ -282,9 +287,9 @@ class ModalKriteria extends React.Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-12">
+                <div className="col-4">
                   <p id="label-txt">HARGA : </p>
-                  <div className="dropdown-component">
+                  <div>
                     <Dropdown
                       placeholder="---Semua---"
                       onChange={this.get_dropdown_harga}
@@ -292,8 +297,28 @@ class ModalKriteria extends React.Component {
                     />
                   </div>
                 </div>
+                <div className="col-4">
+                  <p id="label-txt">TAHUN KELUARAN :</p>
+                  <div>
+                    <Dropdown
+                      placeholder="---Semua---"
+                      onChange={this.get_dropdown_tahun}
+                      options={this.state.options_tahun}
+                    />
+                  </div>
+                </div>
+                <div className="col-4">
+                  <p id="label-txt">KILOMETER :</p>
+                  <div>
+                    <Dropdown
+                      placeholder="---Semua---"
+                      onChange={this.get_dropdown_km}
+                      options={this.state.options_km}
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="row">
+              {/* <div className="row">
                 <div className="col-12">
                   <p id="label-txt">TAHUN KELUARAN :</p>
                   <div className="dropdown-component">
@@ -304,8 +329,8 @@ class ModalKriteria extends React.Component {
                     />
                   </div>
                 </div>
-              </div>
-              <div className="row">
+              </div> */}
+              {/* <div className="row">
                 <div className="col-12">
                   <p id="label-txt">KILOMETER :</p>
                   <div className="dropdown-component">
@@ -316,7 +341,7 @@ class ModalKriteria extends React.Component {
                     />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </form>
         </Modal.Body>
