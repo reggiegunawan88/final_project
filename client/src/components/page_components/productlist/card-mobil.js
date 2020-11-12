@@ -20,6 +20,7 @@ const CardMobil = ({ item }) => {
             <Card.Header>{item.merk}</Card.Header>
             <Card.Meta>
               <span className="date">{item.tahun}</span>
+              {item.hasOwnProperty("LPM") && <span>{item.LPM}</span>}
             </Card.Meta>
             <Card.Description>{item.nama}</Card.Description>
           </Card.Content>
