@@ -7,3 +7,10 @@
 .ui.card.mobil-card:hover {
   transform: scale(1.065, 1.065);
 }
+
+.lpm-value {
+  border: 2px solid red;
+  border-radius: 5px;
+  padding: 3px;
+  margin: 0px 0px 30px 60%;
+}

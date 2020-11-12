@@ -61,7 +61,7 @@ class ButtonLayout extends React.Component {
             variant={this.props.btnModalColor}
             // disabled={this.props.disableModalProps}
             onClick={() => this.setState({ showModalSubjektif: true })}
-            hidden={this.props.showResetBtn}
+            hidden={this.props.hidePriorityBtn}
           >
             TETAPKAN PRIORITAS
           </Button>
@@ -70,6 +70,7 @@ class ButtonLayout extends React.Component {
             onHide={closeModalSubjektif}
             reopenModal={openModalSubjektif}
             getSECCData={this.props.getSECCData}
+            getFinalResult={this.props.getFinalResult}
           />
         </div>
       </div>

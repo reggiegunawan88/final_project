@@ -19,7 +19,7 @@ class MainPage extends React.Component {
 
     //show reset and priority modal btn
     showResetBtn: true,
-    showPriorityBtn: true,
+    hidePriorityBtn: true,
     //state reuse for BrownGibson elimination
     harga1: null,
     harga2: null,
@@ -64,7 +64,7 @@ class MainPage extends React.Component {
         disableModalProps: false,
         btnModalColor: "success",
         showResetBtn: false,
-        showPriorityBtn: false,
+        hidePriorityBtn: results.length <= 2 ? true : false,
         harga1: SECC_data.harga1,
         harga2: SECC_data.harga2,
         tahun1: SECC_data.tahun1,
@@ -97,9 +97,9 @@ class MainPage extends React.Component {
           this.get_SECC_result(results, SECC_data)
         }
         onReset={() => this.reset_page()}
-        disableModalProps={this.state.disableModalProps}
         btnModalColor={this.state.btnModalColor}
         showResetBtn={this.state.showResetBtn}
+        hidePriorityBtn={true}
       />;
     }
 
@@ -114,12 +114,12 @@ class MainPage extends React.Component {
               onReset={() => this.reset_page()}
               btnModalColor={this.state.btnModalColor}
               showResetBtn={this.state.showResetBtn}
-              showPriorityBtn={this.state.showPriorityBtn}
+              hidePriorityBtn={this.state.hidePriorityBtn}
               getSECCData={this.state.items}
               getFinalResult={(data) => this.get_BG_result(data)}
             />
           </div>
-          <div className="col-9" style={{ backgroundColor: "" }}>
+          <div className="col-9" style={{ top: 100 }}>
             <ProductList
               items={this.state.items}
               loading={this.state.isLoading}
