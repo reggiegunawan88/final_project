@@ -18,7 +18,6 @@ const img_slideshow = (props) => {
         thumbnail: "/img/" + props.items.img[i].url,
       });
     }
-    console.log(img_data);
     return img_data;
   };
 

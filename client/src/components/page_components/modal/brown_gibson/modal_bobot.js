@@ -97,15 +97,12 @@ export class modal_bobot extends Component {
     const obj_percent = (obj_weight_value * 100).toString() + "%"; //convert to string percent
     const subj_percent = (100 - obj_weight_value * 100).toString() + "%"; //sum and convert to string percent
     const subj_weight_value = Math.round((1 - obj_weight_value) * 10) / 10; //result for subj weight
-    this.setState(
-      {
-        obj_weight: obj_weight_value,
-        subj_weight: subj_weight_value,
-        text_weight_obj: obj_percent,
-        text_weight_subj: subj_percent,
-      },
-      () => console.log(this.state)
-    );
+    this.setState({
+      obj_weight: obj_weight_value,
+      subj_weight: subj_weight_value,
+      text_weight_obj: obj_percent,
+      text_weight_subj: subj_percent,
+    });
   };
 
   //* render value inside select box
@@ -114,13 +111,19 @@ export class modal_bobot extends Component {
   };
 
   submit_all_data = () => {
-    calculate_LPM(
-      this.state.secc_data,
-      this.state.obj_data,
-      this.state.subj_data,
-      this.state.obj_weight,
-      this.state.subj_weight
-    );
+    if (this.state.obj_weight == 0) {
+      alert("Mohon maaf, bobot belum diisi");
+    } else {
+      let result_BG = calculate_LPM(
+        this.state.secc_data,
+        this.state.obj_data,
+        this.state.subj_data,
+        this.state.obj_weight,
+        this.state.subj_weight
+      );
+      this.props.onCloseModal();
+      this.props.receivedFinalResult(result_BG);
+    }
   };
 
   render() {

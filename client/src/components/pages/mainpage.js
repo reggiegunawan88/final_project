@@ -17,12 +17,9 @@ class MainPage extends React.Component {
     //initial color for 2nd modal btn
     btnModalColor: "secondary",
 
-    //show reset btn
+    //show reset and priority modal btn
     showResetBtn: true,
-
-    //filter status
-    filter_status: false,
-
+    showPriorityBtn: true,
     //state reuse for BrownGibson elimination
     harga1: null,
     harga2: null,
@@ -62,17 +59,28 @@ class MainPage extends React.Component {
     axios.get("http://localhost:5000/naripanmotor_img").then((response) => {
       let processedItems = put_imgArray(results, response.data);
       this.setState({
-        filter_status: true,
         items: processedItems,
         itemsTotal: results.length,
         disableModalProps: false,
         btnModalColor: "success",
         showResetBtn: false,
+        showPriorityBtn: false,
         harga1: SECC_data.harga1,
         harga2: SECC_data.harga2,
         tahun1: SECC_data.tahun1,
         tahun2: SECC_data.tahun2,
       });
+    });
+  }
+
+  //set items into final result Brown Gibson
+  get_BG_result(data) {
+    let result = data;
+    result.sort((a, b) => (a.LPM < b.LPM ? 1 : -1)); //sort LPM value descending
+    this.setState({
+      items: data,
+      showResetBtn: false,
+      showPriorityBtn: true,
     });
   }
 
@@ -104,10 +112,11 @@ class MainPage extends React.Component {
                 this.get_SECC_result(results, SECC_data)
               }
               onReset={() => this.reset_page()}
-              disableModalProps={this.state.disableModalProps}
               btnModalColor={this.state.btnModalColor}
               showResetBtn={this.state.showResetBtn}
+              showPriorityBtn={this.state.showPriorityBtn}
               getSECCData={this.state.items}
+              getFinalResult={(data) => this.get_BG_result(data)}
             />
           </div>
           <div className="col-9" style={{ backgroundColor: "" }}>

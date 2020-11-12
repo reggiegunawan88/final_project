@@ -23,25 +23,31 @@ class modal_BG extends Component {
     }
   }
 
-  // *method for show next modal then close current modal
-  show_nextModal() {
+  // *close 1st modal and show 2nd modal
+  show_2nd_modal() {
     this.setState({ show_2nd_modal: true });
     this.props.onHide();
   }
-
-  //* method for close next modal and re-open current modal
-  close_nextModal() {
-    this.setState({ show_2nd_modal: false });
-    this.props.reopenModal();
-  }
-
-  //* method for opening final modal
+  //* close 2nd modal and show 3rd modal
   show_finalModal() {
     this.setState({ show_3rd_modal: true, show_2nd_modal: false });
   }
 
-  close_finalModal() {
+  //* close 2nd modal and back to 1st modal
+  close_2nd_modal() {
+    this.setState({ show_2nd_modal: false });
+    this.props.reopenModal();
+  }
+
+  //* back from 3rd to 2nd modal
+  back_to_prevModal() {
     this.setState({ show_3rd_modal: false, show_2nd_modal: true });
+  }
+
+  //*close 3rd modal
+  close_final_modal() {
+    console.log("3rd modal closed");
+    this.setState({ show_3rd_modal: false });
   }
 
   //* method for receive props data from modal 1
@@ -54,27 +60,35 @@ class modal_BG extends Component {
     this.setState({ obj_data: data });
   }
 
+  //*send result dataset to mainpage
+  get_final_result(result) {
+    console.log(result);
+    this.props.getFinalResult(result);
+  }
+
   render() {
     return (
       <div className="modal-transition">
         <ModalPrioritas1
           show={this.props.show}
           onHide={this.props.onHide}
-          onReceivedProps={() => this.show_nextModal()}
+          onReceivedProps={() => this.show_2nd_modal()}
           onSendDataSubj={(data_subj) => this.get_subj_data(data_subj)}
         />
         <ModalPrioritas2
           show={this.state.show_2nd_modal}
-          onHide={() => this.close_nextModal()}
+          onHide={() => this.close_2nd_modal()}
           onReceivedProps={() => this.show_finalModal()}
           onSendDataObj={(data_obj) => this.get_obj_data(data_obj)}
         />
         <ModalBobot
           show={this.state.show_3rd_modal}
-          onHide={() => this.close_finalModal()}
+          onHide={() => this.back_to_prevModal()}
+          onCloseModal={() => this.close_final_modal()}
           onReceivedSubjData={this.state.subj_data}
           onReceivedObjData={this.state.obj_data}
           getSECCData={this.state.SECC_processed_data}
+          receivedFinalResult={(data) => this.get_final_result(data)}
         />
       </div>
     );
