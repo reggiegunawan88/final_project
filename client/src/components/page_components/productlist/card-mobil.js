@@ -5,6 +5,11 @@ import "./../../style/card.css";
 import { withRouter } from "react-router-dom";
 import NumberFormat from "react-number-format";
 
+function format_value(value) {
+  var res = value.toLocaleString(undefined, { maximumFractionDigit: 3 });
+  return res;
+}
+
 const CardMobil = ({ item }) => {
   return (
     <div>
@@ -20,7 +25,11 @@ const CardMobil = ({ item }) => {
             <Card.Header>{item.merk}</Card.Header>
             <Card.Meta>
               <span className="date">{item.tahun}</span>
-              {item.hasOwnProperty("LPM") && <span>{item.LPM}</span>}
+              {item.hasOwnProperty("LPM") && (
+                <div classname="lpm-value">
+                  <span>{format_value(item.LPM)}</span>
+                </div>
+              )}
             </Card.Meta>
             <Card.Description>{item.nama}</Card.Description>
           </Card.Content>
