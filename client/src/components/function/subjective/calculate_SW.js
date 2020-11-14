@@ -1,5 +1,3 @@
-import { keys } from "@material-ui/core/styles/createBreakpoints";
-
 /* calculate each objective factor weight
 - first loop: based on each obj factor
 - second into third loop: pairwise comparison for each item
@@ -10,33 +8,120 @@ const calculate_SW = (data_item, subj_data) => {
 
   //matrix cross product for each item
   for (let i = 0; i < subj_data.length; i++) {
+    // debugger;
     let sum_row = [];
     for (let j = 0; j < data_item.length; j++) {
       let row = 0;
       for (let k = 0; k < data_item.length; k++) {
-        if (data_item[j].idmobil != data_item[k].idmobil) {
+        if (data_item[j].idmobil !== data_item[k].idmobil) {
           if (subj_data[i].data === "JENIS REM") {
-            data_item[j].jenis_rem === data_item[k].jenis_rem
-              ? (row += 1)
-              : (row += 0);
+            if (
+              data_item[j].jenis_rem === "ABS" &&
+              data_item[k].jenis_rem === "ABS"
+            ) {
+              row += 1;
+            } else if (
+              data_item[j].jenis_rem === "NON ABS" &&
+              data_item[k].jenis_rem === "NON ABS"
+            ) {
+              row += 1;
+            } else if (
+              data_item[j].jenis_rem === "ABS" &&
+              data_item[k].jenis_rem === "NON ABS"
+            ) {
+              row += 1;
+            } else {
+              row += 0;
+            }
           } else if (subj_data[i].data === "JENIS BAHAN BAKAR") {
-            data_item[j].bahan_bakar === data_item[k].bahan_bakar
-              ? (row += 1)
-              : (row += 0);
+            if (
+              data_item[j].bahan_bakar === "DIESEL" &&
+              data_item[k].bahan_bakar === "BENSIN"
+            ) {
+              row += 1;
+            } else if (
+              data_item[j].bahan_bakar === "DIESEL" &&
+              data_item[k].bahan_bakar === "DIESEL"
+            ) {
+              row += 1;
+            } else if (
+              data_item[j].bahan_bakar === "BENSIN" &&
+              data_item[k].bahan_bakar === "BENSIN"
+            ) {
+              row += 1;
+            } else {
+              row += 0;
+            }
           } else if (subj_data[i].data === "AIRBAG") {
-            data_item[j].airbag === data_item[k].airbag
-              ? (row += 1)
-              : (row += 0);
+            if (data_item[j].airbag === "YA" && data_item[k].airbag === "YA") {
+              row += 1;
+            } else if (
+              data_item[j].airbag === "TIDAK" &&
+              data_item[k].airbag === "TIDAK"
+            ) {
+              row += 1;
+            } else if (
+              data_item[j].airbag === "YA" &&
+              data_item[k].airbag === "TIDAK"
+            ) {
+              row += 1;
+            } else {
+              row += 0;
+            }
           } else if (subj_data[i].data === "GPS") {
-            data_item[j].gps === data_item[k].gps ? (row += 1) : (row += 0);
+            if (data_item[j].gps === "YA" && data_item[k].gps === "YA") {
+              row += 1;
+            } else if (
+              data_item[j].gps === "TIDAK" &&
+              data_item[k].gps === "TIDAK"
+            ) {
+              row += 1;
+            } else if (
+              data_item[j].gps === "YA" &&
+              data_item[k].gps === "TIDAK"
+            ) {
+              row += 1;
+            } else {
+              row += 0;
+            }
           } else if (subj_data[i].data === "SMART KEY") {
-            data_item[j].smart_key === data_item[k].smart_key
-              ? (row += 1)
-              : (row += 0);
+            if (
+              data_item[j].smart_key === "YA" &&
+              data_item[k].smart_key === "YA"
+            ) {
+              row += 1;
+            } else if (
+              data_item[j].smart_key === "TIDAK" &&
+              data_item[k].smart_key === "TIDAK"
+            ) {
+              row += 1;
+            } else if (
+              data_item[j].smart_key === "YA" &&
+              data_item[k].smart_key === "TIDAK"
+            ) {
+              row += 1;
+            } else {
+              row += 0;
+            }
           } else {
-            data_item[j].powersteering === data_item[k].powersteering
-              ? (row += 1)
-              : (row += 0);
+            if (
+              data_item[j].powersteering === "YA" &&
+              data_item[k].powersteering === "YA"
+            ) {
+              row += 1;
+            } else if (
+              data_item[j].powersteering === "TIDAK" &&
+              data_item[k].powersteering === "TIDAK"
+            ) {
+              row += 1;
+            } else if (
+              data_item[j].powersteering === "YA" &&
+              data_item[k].powersteering === "TIDAK"
+            ) {
+              row += 1;
+            } else {
+              row += 0;
+            }
           }
         }
       }
