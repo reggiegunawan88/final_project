@@ -3,7 +3,6 @@
 */
 const calculate_OF = (data_item, ofw, ow) => {
   let result = [...data_item];
-  console.log(ofw, ow);
 
   //do matrix cartesian product per row
   // debugger;

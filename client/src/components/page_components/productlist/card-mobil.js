@@ -5,6 +5,7 @@ import "./../../style/card.css";
 import { withRouter } from "react-router-dom";
 import NumberFormat from "react-number-format";
 
+//format result into 3 num behind comma
 function format_value(value) {
   var res = value.toLocaleString(undefined, { maximumFractionDigit: 3 });
   return res;
@@ -16,7 +17,7 @@ const CardMobil = ({ item }) => {
       <Link to={{ pathname: `/productdetail/${item.nama}`, data: item }}>
         <Card className="mobil-card">
           <Image
-            //* dynamic local img must be put it public folder
+            //* dynamic local img must be put in public folder
             src={"/img/" + item.img[0].url}
             wrapped
             ui={true}
@@ -26,9 +27,7 @@ const CardMobil = ({ item }) => {
             <Card.Meta>
               <span className="date">{item.tahun}</span>
               {item.hasOwnProperty("LPM") && (
-                <div classname="lpm-value">
-                  <span>{format_value(item.LPM)}</span>
-                </div>
+                <span className="lpm-value">{format_value(item.LPM)}</span>
               )}
             </Card.Meta>
             <Card.Description>{item.nama}</Card.Description>

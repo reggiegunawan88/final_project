@@ -104,7 +104,7 @@ class MainPage extends React.Component {
     }
 
     return (
-      <div className="container">
+      <div className="container" style={{ height: "100%" }}>
         <div className="row">
           <div className="col-3">
             <ButtonPopup

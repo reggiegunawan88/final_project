@@ -74,7 +74,7 @@ const ListMobil = ({ items, loading, itemsTotal }) => {
           </div>
         </div>
       </div>
-      <h2 className="hr-line" />
+      <p className="hr-line" />
       <div className="container-fluid">
         <GroupCards items={currentItems} loading={loading} />
         <Pagination

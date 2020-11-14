@@ -111,7 +111,7 @@ export class modal_bobot extends Component {
   };
 
   submit_all_data = () => {
-    if (this.state.obj_weight == 0) {
+    if (this.state.obj_weight === 0) {
       alert("Mohon maaf, bobot belum diisi");
     } else {
       let result_BG = calculate_LPM(
@@ -154,7 +154,7 @@ export class modal_bobot extends Component {
                     trigger={
                       <HelpOutlineIcon
                         id="HelpIcon"
-                        fontSize="medium"
+                        fontSize="default"
                         color="primary"
                       />
                     }
@@ -212,10 +212,11 @@ export class modal_bobot extends Component {
                           onChange={this.handle_change_bobot}
                           label="bobot_obj"
                         >
-                          {this.state.weight.map((item) => (
+                          {this.state.weight.map((item, i) => (
                             <MenuItem
                               style={{ width: "fit-content" }}
-                              value={item.value}
+                              value={item.value + ""}
+                              key={i}
                             >
                               {item.text}
                             </MenuItem>
@@ -237,10 +238,11 @@ export class modal_bobot extends Component {
                           autoWidth
                           disabled
                         >
-                          {this.state.weight.map((item) => (
+                          {this.state.weight.map((item, i) => (
                             <MenuItem
                               style={{ width: "fit-content" }}
                               value={item.value}
+                              key={i}
                             >
                               {item.text}
                             </MenuItem>

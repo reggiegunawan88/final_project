@@ -9,6 +9,8 @@
 }
 
 .lpm-value {
+  position: relative;
+  bottom: 15px;
   border: 2px solid red;
   border-radius: 5px;
   padding: 3px;

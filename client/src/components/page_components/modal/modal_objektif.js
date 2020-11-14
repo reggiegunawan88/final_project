@@ -149,11 +149,12 @@ class ModalKriteria extends React.Component {
   //get radio btn selected data
   onChangeRadio = (event) => {
     const value = event.target.name;
+    var string = "";
     if (value === "radiobtn-harga") {
-      var string = event.target.value.split(",");
+      string = event.target.value.split(",");
       this.setState({ harga_1: string[0], harga_2: string[1] });
     } else {
-      var string = event.target.value.split(",");
+      string = event.target.value.split(",");
       this.setState({ tahun_1: string[0], tahun_2: string[1] });
     }
   };

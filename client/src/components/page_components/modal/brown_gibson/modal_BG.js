@@ -46,7 +46,6 @@ class modal_BG extends Component {
 
   //*close 3rd modal
   close_final_modal() {
-    console.log("3rd modal closed");
     this.setState({ show_3rd_modal: false });
   }
 

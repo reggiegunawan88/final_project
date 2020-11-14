@@ -9,11 +9,10 @@ const calculate_OFW = (obj_data) => {
   for (let i = 0; i < obj_data.length; i++) {
     let sum_row = 0;
     for (let j = 0; j < obj_data.length; j++) {
-      if (obj_data[i].data == obj_data[j].data) {
-        console.log("block skipped");
+      if (obj_data[i].data === obj_data[j].data) {
       } else {
         obj_data[i].value < obj_data[j].value ||
-        obj_data[i].value == obj_data[j].value
+        obj_data[i].value === obj_data[j].value
           ? (sum_row += 1)
           : (sum_row += 0);
       }

@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import CardMobil from "./../productlist/card-mobil";
 
 const GroupCards = ({ items, loading }) => {
   if (items.length === 0) {
-    return <h3>Maaf, mobil tidak ditemukan.</h3>;
+    return (
+      <h3>
+        Maaf, mobil tidak ditemukan. <br /> Silahkan cari mobil lain.
+      </h3>
+    );
   } else {
     if (loading) {
       return <h3>Loading...</h3>;

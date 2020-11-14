@@ -9,11 +9,10 @@ const calculate_SFW = (subj_data) => {
   for (let i = 0; i < subj_data.length; i++) {
     let sum_row = 0;
     for (let j = 0; j < subj_data.length; j++) {
-      if (subj_data[i].data == subj_data[j].data) {
-        console.log("block skipped");
+      if (subj_data[i].data === subj_data[j].data) {
       } else {
         subj_data[i].value < subj_data[j].value ||
-        subj_data[i].value == subj_data[j].value
+        subj_data[i].value === subj_data[j].value
           ? (sum_row += 1)
           : (sum_row += 0);
       }
