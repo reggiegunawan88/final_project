@@ -20,6 +20,10 @@ class MainPage extends React.Component {
     //show reset and priority modal btn
     showResetBtn: true,
     hidePriorityBtn: true,
+
+    //show short note (keterangan) for BG value
+    hideKeteranganTxt: true,
+
     //state reuse for BrownGibson elimination
     harga1: null,
     harga2: null,
@@ -65,6 +69,7 @@ class MainPage extends React.Component {
         btnModalColor: "success",
         showResetBtn: false,
         hidePriorityBtn: results.length <= 2 ? true : false,
+        hideKeteranganTxt: true,
         harga1: SECC_data.harga1,
         harga2: SECC_data.harga2,
         tahun1: SECC_data.tahun1,
@@ -81,6 +86,7 @@ class MainPage extends React.Component {
       items: data,
       showResetBtn: false,
       showPriorityBtn: true,
+      hideKeteranganTxt: false,
     });
   }
 
@@ -100,6 +106,7 @@ class MainPage extends React.Component {
         btnModalColor={this.state.btnModalColor}
         showResetBtn={this.state.showResetBtn}
         hidePriorityBtn={true}
+        hideKeteranganText={true}
       />;
     }
 
@@ -115,6 +122,7 @@ class MainPage extends React.Component {
               btnModalColor={this.state.btnModalColor}
               showResetBtn={this.state.showResetBtn}
               hidePriorityBtn={this.state.hidePriorityBtn}
+              hideKeteranganText={this.state.hideKeteranganTxt}
               getSECCData={this.state.items}
               getFinalResult={(data) => this.get_BG_result(data)}
             />

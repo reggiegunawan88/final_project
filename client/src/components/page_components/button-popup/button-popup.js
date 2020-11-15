@@ -73,6 +73,13 @@ class ButtonLayout extends React.Component {
             getFinalResult={this.props.getFinalResult}
           />
         </div>
+        <div className="keterangan-txt mt-5">
+          <p hidden={this.props.hideKeteranganText}>
+            *Keterangan <br /> <br /> Setiap angka yang tertera pada lingkaran
+            merah menunjukkan nilai dari setiap mobil bekas. <br /> Semakin
+            besar nilainya, maka semakin baik pula pilihan alternatifnya.
+          </p>
+        </div>
       </div>
     );
   }

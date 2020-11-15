@@ -11,7 +11,7 @@ class Main extends Component {
       <div className="App">
         <Navbar />
         <PageRouter />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }
