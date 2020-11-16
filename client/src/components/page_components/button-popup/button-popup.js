@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import "./../../style/buttonlayout.css";
 import ModalObjektif from "../modal/modal_objektif";
 import ModalBG from "../modal/brown_gibson/modal_BG";
+import ModalDesc from "../modal/brown_gibson/modal_BG_description";
 
 class ButtonLayout extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class ButtonLayout extends React.Component {
     this.state = {
       showModalObjektif: false,
       showModalSubjektif: false,
+      show_modal_desc: false,
     };
   }
 
@@ -20,6 +22,7 @@ class ButtonLayout extends React.Component {
     let openModalSubjektif = () => {
       this.setState({ showModalSubjektif: true });
     };
+    let close_modal_desc = () => this.setState({ show_modal_desc: false });
 
     return (
       <div className="container filter-container">
@@ -59,11 +62,10 @@ class ButtonLayout extends React.Component {
           <Button
             className="btn-kondisi"
             variant={this.props.btnModalColor}
-            // disabled={this.props.disableModalProps}
             onClick={() => this.setState({ showModalSubjektif: true })}
             hidden={this.props.hidePriorityBtn}
           >
-            TETAPKAN PRIORITAS
+            CARI MOBIL TERBAIK
           </Button>
           <ModalBG
             show={this.state.showModalSubjektif}
@@ -75,10 +77,22 @@ class ButtonLayout extends React.Component {
         </div>
         <div className="keterangan-txt mt-5">
           <p hidden={this.props.hideKeteranganText}>
-            *Keterangan <br /> <br /> Setiap angka yang tertera pada lingkaran
-            merah menunjukkan nilai dari setiap mobil bekas. <br /> Semakin
-            besar nilainya, maka semakin baik pula pilihan alternatifnya.
+            *Keterangan <br /> <br /> Setiap angka yang tertera pada kotak merah
+            menunjukkan nilai dari setiap mobil bekas. <br /> Semakin besar
+            nilainya, maka semakin baik pula pilihan alternatifnya.
           </p>
+          <Button
+            className="btn-kondisi"
+            variant="info"
+            onClick={() => this.setState({ show_modal_desc: true })}
+            hidden={this.props.hideKeteranganText}
+          >
+            TENTANG BROWN GIBSON
+          </Button>
+          <ModalDesc
+            show={this.state.show_modal_desc}
+            onHide={close_modal_desc}
+          />
         </div>
       </div>
     );
