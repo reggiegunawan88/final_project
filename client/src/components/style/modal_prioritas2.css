@@ -1,0 +1,49 @@
+.modal-footer {
+  display: block !important;
+  text-align: center !important;
+  border-top: 0px !important;
+  padding: 35px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.modal-header {
+  display: block !important;
+  text-align: center;
+}
+
+.modal-content {
+  border-radius: 3.3rem !important;
+}
+
+.checkbox-group {
+  margin-top: 20px;
+}
+
+.tooltip {
+  background-color: rgba(0, 0, 0, 0.87);
+  max-width: 220px;
+  font-size: 15px;
+  border: 1px solid #dadde9;
+}
+
+.col-dropdown {
+  text-align: left;
+}
+
+.col-checkbox {
+  text-align: right;
+}
+
+.dropdown-harga,
+.dropdown-tahun,
+.dropdown-kilometer {
+  width: 60%;
+  margin: 9px;
+}
+
+.note-txt {
+  font-size: 13px;
+  color: red;
+}

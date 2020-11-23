@@ -1,0 +1,18 @@
+.footer {
+  text-align: center;
+  background-color: #08051be8;
+  color: rgba(255, 255, 255, 0.6);
+  position: relative;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+.footer-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 0px;
+  padding: 10px;
+}

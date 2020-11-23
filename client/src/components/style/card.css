@@ -1,0 +1,18 @@
+.ui.card.mobil-card {
+  cursor: pointer;
+  text-align: left;
+  margin-bottom: 25px !important;
+}
+
+.ui.card.mobil-card:hover {
+  transform: scale(1.065, 1.065);
+}
+
+.lpm-value {
+  position: relative;
+  bottom: 15px;
+  border: 2px solid red;
+  border-radius: 5px;
+  padding: 3px;
+  margin: 0px 0px 30px 60%;
+}

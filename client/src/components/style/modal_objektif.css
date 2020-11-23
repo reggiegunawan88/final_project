@@ -1,0 +1,55 @@
+.modal-footer {
+  display: block !important;
+  text-align: center !important;
+  border-top: 0px !important;
+  padding: 35px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.modal-header {
+  display: block !important;
+  text-align: center;
+}
+
+.container-modal {
+  text-align: center;
+  justify-content: center;
+}
+
+.form {
+  text-align: center;
+}
+
+#label-txt {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  margin-right: 20px !important;
+  padding: 5px !important;
+  height: 35px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.modal-content {
+  border-radius: 3.3rem !important;
+}
+
+.dropdown-component {
+  width: 25%;
+  margin-left: 285px !important;
+}
+
+.ui.fluid.dropdown {
+  text-align: center;
+  justify-content: center;
+}
+
+label {
+  margin: 5px;
+  font-size: 15px;
+}
