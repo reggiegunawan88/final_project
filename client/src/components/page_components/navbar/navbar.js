@@ -10,7 +10,7 @@ class NavigationBar extends React.Component {
         <div className="row">
           <div className="col-md-12">
             <Navbar className="menu-bar" bg="" expand="lg" sticky="top">
-              <Navbar.Brand href="/">
+              <Navbar.Brand href="/carimobil">
                 <img src={logo} alt="Naripan Motor" />
               </Navbar.Brand>
               <Navbar.Collapse id="basic-navbar-nav">
@@ -19,7 +19,7 @@ class NavigationBar extends React.Component {
                   <Nav.Link href="https://naripanmotor.com/naripan-motor">
                     Naripan Motor
                   </Nav.Link>
-                  <Nav.Link className="nav-carimobil" href="/">
+                  <Nav.Link className="nav-carimobil" href="/carimobil">
                     Cari Mobil
                   </Nav.Link>
                   <Nav.Link href="https://naripanmotor.com/jual-mobil-anda">
