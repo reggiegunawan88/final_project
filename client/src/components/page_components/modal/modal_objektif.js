@@ -217,6 +217,7 @@ class ModalKriteria extends React.Component {
       km_1: this.state.km_1,
       km_2: this.state.km_2,
     };
+    //validation library javascript
     if (this.state.merk_mobil == null) {
       alert("Merk mobil belum dipilih");
     } else if (this.state.tipe_mobil == null) {
@@ -228,22 +229,9 @@ class ModalKriteria extends React.Component {
     } else if (this.state.km_1 == null && this.state.km_2 == null) {
       alert("Rentang kilometer mobil belum dipilih");
     } else {
-      await axios
-        .post("http://localhost:5000/mobil/result_SECC", filter_data, {
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-            accept: "application/json",
-          },
-        })
-        .then((response) => {
-          console.log(response.data);
-          //send query result to mainpage
-          this.props.onHide();
-          this.props.onReceiveProps(response.data, SECC_postprocessed);
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
+      //handle validate input data
+      this.props.onHide();
+      this.props.onReceiveProps(filter_data, SECC_postprocessed);
     }
   };
 
