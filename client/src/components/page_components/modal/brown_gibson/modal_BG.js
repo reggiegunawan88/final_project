@@ -60,9 +60,8 @@ class modal_BG extends Component {
   }
 
   //*send result dataset to mainpage
-  get_final_result(result) {
-    console.log(result);
-    this.props.getFinalResult(result);
+  get_final_result(result, input_data) {
+    this.props.getFinalResult(result, input_data);
   }
 
   render() {
@@ -87,7 +86,9 @@ class modal_BG extends Component {
           onReceivedSubjData={this.state.subj_data}
           onReceivedObjData={this.state.obj_data}
           getSECCData={this.state.SECC_processed_data}
-          receivedFinalResult={(data) => this.get_final_result(data)}
+          receivedFinalResult={(data, input_data) =>
+            this.get_final_result(data, input_data)
+          }
         />
       </div>
     );

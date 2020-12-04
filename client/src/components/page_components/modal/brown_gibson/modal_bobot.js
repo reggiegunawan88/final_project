@@ -114,15 +114,15 @@ export class modal_bobot extends Component {
     if (this.state.obj_weight === 0) {
       alert("Mohon maaf, bobot belum diisi");
     } else {
-      let result_BG = calculate_LPM(
-        this.state.secc_data,
-        this.state.obj_data,
-        this.state.subj_data,
-        this.state.obj_weight,
-        this.state.subj_weight
-      );
+      let input_data = {
+        secc_data: this.state.secc_data,
+        obj_input: this.state.obj_data,
+        subj_input: this.state.subj_data,
+        obj_weight: parseFloat(this.state.obj_weight),
+        subj_weight: parseFloat(this.state.subj_weight),
+      };
       this.props.onCloseModal();
-      this.props.receivedFinalResult(result_BG);
+      this.props.receivedFinalResult(input_data);
     }
   };
 

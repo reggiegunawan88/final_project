@@ -15,7 +15,6 @@ function calculate_OF(data, obj_data) {
   obj_factor_weight = calculate_OFW(obj_data);
   obj_weight = calculate_OW(data, obj_data);
   let result = calculate_result_OF(data, obj_factor_weight, obj_weight);
-  // console.log(result);
   return result;
 }
 
@@ -24,11 +23,8 @@ function calculate_SF(data, subj_data) {
   let subj_weight = null;
 
   subj_factor_weight = calculate_SFW(subj_data);
-  console.log(subj_factor_weight);
   subj_weight = calculate_SW(data, subj_data);
   let result = calculate_result_SF(data, subj_factor_weight, subj_weight);
-  console.log("result SF:", result);
-
   return result;
 }
 
@@ -44,7 +40,6 @@ const calculate_LPM = (
   */
   let processed_OF_data = calculate_OF(secc_data, obj_data);
   let result_dataset = calculate_SF(processed_OF_data, subj_data);
-  console.log(result_dataset);
 
   //cross between obj-subj weight and result_dataset (OF-SF)
   let final_result_dataset = [...result_dataset];
@@ -57,8 +52,6 @@ const calculate_LPM = (
     temp_arr = { ...result_dataset[i], LPM: final_value };
     final_result_dataset[i] = temp_arr;
   }
-
-  console.log(final_result_dataset);
 
   return final_result_dataset;
 };
