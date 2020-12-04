@@ -3,15 +3,10 @@ import ButtonPopup from "./../page_components/button-popup/button-popup";
 import ProductList from "./productlist";
 import put_imgArray from "./../function/combine_array";
 import axios from "axios";
-import {
-  withQueryParams,
-  StringParam,
-  NumberParam,
-  ArrayParam,
-  withDefault,
-  JsonParam,
-} from "use-query-params";
 import queryString from "query-string";
+
+//algorithm separated file
+import calculate_LPM from "./../function/brown-gibson";
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -53,19 +48,36 @@ class MainPage extends React.Component {
   async refreshData() {
     //get search query from this.props.location
     console.log(this.props);
-    const query_value = queryString.parse(this.props.location.search);
-    console.log(this.props.location.state);
+    var query_value = queryString.parse(this.props.location.search);
     if (this.props.location.search === "") {
       this.get_data_mobil();
     } else {
       if (!this.props.location.state) {
-        // debugger;
+        //if BG is not yet implemented
         await this.get_data_mobil();
         await this.search_SECC_result(query_value);
       } else {
-        await this.get_data_mobil();
-        // await this.search_SECC_result(query_value);
-        console.log("bg here");
+        /**
+         * Do method to get BG result on reload page from query string
+         */
+        //split url string
+        const url_split = this.props.location.search.split("&splitquery&");
+        //1. get data from query string to get weight value
+        var weight_value = queryString.parse(url_split[1]);
+        //2. get saved data obj from local storage
+        let obj_arr = localStorage.getItem("obj_input");
+        let subj_arr = localStorage.getItem("subj_input");
+        let item_data = localStorage.getItem("item_list");
+        let input_data = {
+          secc_data: JSON.parse(item_data),
+          obj_input: JSON.parse(obj_arr),
+          subj_input: JSON.parse(subj_arr),
+          obj_weight: parseFloat(weight_value.obj_weight),
+          subj_weight: parseFloat(weight_value.subj_weight),
+        };
+
+        //3. callback handle function
+        await this.handle_BG_result(input_data);
       }
     }
   }
@@ -96,21 +108,26 @@ class MainPage extends React.Component {
   }
 
   //function to setQuery into this.props.query
-  set_query_url(query_data) {
+  set_query_SECC(query_data) {
     var query_string = queryString.stringify(query_data);
     this.props.history.push("/carimobil/?" + query_string);
   }
 
-  set_query_BG(query_data) {
-    // this.props.history.push("/carimobil/?");
-    this.props.history.replace({ state: true });
-    console.log("bg algorithm work");
+  set_query_BG(data1, data2) {
+    let weight_data = {
+      obj_weight: data1,
+      subj_weight: data2,
+    };
+    var weight_query = queryString.stringify(weight_data);
+    var query_string =
+      this.props.location.search + "&splitquery&" + weight_query;
+    this.props.history.push({ search: query_string, state: true });
   }
 
   //function to search query
   search_SECC_result(filter_data) {
     //*set query string
-    this.set_query_url(filter_data);
+    this.set_query_SECC(filter_data);
     axios
       .post("http://localhost:5000/mobil/result_SECC", filter_data, {
         headers: {
@@ -129,6 +146,8 @@ class MainPage extends React.Component {
   //set new items to render when button SECC clicked
   render_SECC_result(results, filter_data) {
     let processedItems = put_imgArray(results, this.state.items_img);
+    //set item list into local storage
+    localStorage.setItem("item_list", JSON.stringify(processedItems));
     this.setState({
       items: processedItems,
       itemsTotal: results.length,
@@ -142,20 +161,36 @@ class MainPage extends React.Component {
       tahun1: filter_data.tahun1,
       tahun2: filter_data.tahun2,
     });
-    return processedItems;
   }
 
-  //set items into final result Brown Gibson
-  get_BG_result(data, input_data) {
-    this.set_query_BG(input_data);
-    let result = data;
-    result.sort((a, b) => (a.LPM < b.LPM ? 1 : -1)); //sort LPM value descending
+  //set items state into final result Brown Gibson
+  handle_BG_result(input_data) {
+    this.set_query_BG(
+      parseFloat(input_data.obj_weight),
+      parseFloat(input_data.subj_weight)
+    );
+
+    //store user input data into local storage
+    localStorage.setItem("obj_input", JSON.stringify(input_data.obj_input));
+    localStorage.setItem("subj_input", JSON.stringify(input_data.subj_input));
+    let result_BG = calculate_LPM(
+      input_data.secc_data,
+      input_data.obj_input,
+      input_data.subj_input,
+      input_data.obj_weight,
+      input_data.subj_weight
+    );
+
+    //sort LPM value descending
+    result_BG.sort((a, b) => (a.LPM < b.LPM ? 1 : -1));
     this.setState({
-      items: data,
+      items: result_BG,
       showResetBtn: false,
       showPriorityBtn: true,
       hideKeteranganTxt: false,
       BG_algorithm_done: true,
+      isLoading: false,
+      itemsTotal: result_BG.length,
     });
   }
 
@@ -192,9 +227,7 @@ class MainPage extends React.Component {
               hidePriorityBtn={this.state.hidePriorityBtn}
               hideKeteranganText={this.state.hideKeteranganTxt}
               getSECCData={this.state.items}
-              getFinalResult={(data, input_data) =>
-                this.get_BG_result(data, input_data)
-              }
+              getFinalResult={(input_data) => this.handle_BG_result(input_data)}
             />
           </div>
           <div className="col-9" style={{ top: 100 }}>

@@ -61,7 +61,6 @@ class modal_BG extends Component {
 
   //*send result dataset to mainpage
   get_final_result(result, input_data) {
-    console.log(result);
     this.props.getFinalResult(result, input_data);
   }
 
