@@ -1,0 +1,16 @@
+.custom-card {
+  text-align: left;
+  font-size: 17px;
+}
+
+.text-icon {
+  display: inline-flex;
+}
+
+.check-icon {
+  color: green;
+}
+
+.cross-icon {
+  color: red;
+}
