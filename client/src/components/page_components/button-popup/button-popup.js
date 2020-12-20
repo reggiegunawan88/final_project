@@ -36,7 +36,7 @@ class ButtonLayout extends React.Component {
             className="btn-reset"
             variant="warning"
             onClick={this.props.onReset}
-            hidden={this.props.showResetBtn}
+            hidden={this.props.hideResetBtn}
           >
             RESET
           </Button>
@@ -49,6 +49,7 @@ class ButtonLayout extends React.Component {
             className="btn-kriteria"
             variant="primary"
             onClick={() => this.setState({ showModalObjektif: true })}
+            hidden={this.props.hideChooseBtn}
           >
             PILIH MOBIL
           </Button>
@@ -75,7 +76,7 @@ class ButtonLayout extends React.Component {
             getFinalResult={this.props.getFinalResult}
           />
         </div>
-        <div className="keterangan-txt mt-5">
+        <div className="keterangan-txt mt-3">
           <p hidden={this.props.hideKeteranganText}>
             *Keterangan <br /> <br /> Setiap angka yang tertera pada kotak merah
             menunjukkan nilai dari setiap mobil bekas. <br /> Semakin besar

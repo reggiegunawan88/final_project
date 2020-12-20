@@ -1,6 +1,6 @@
 import React from "react";
 import "./../../style/modal_objektif.css";
-import { Alert, Button, Modal } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import Dropdown from "./../dropdown/dropdown";
 import axios from "axios";
 

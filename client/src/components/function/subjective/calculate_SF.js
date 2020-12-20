@@ -3,7 +3,6 @@
 */
 const calculate_SF = (data_item, sfw, sw) => {
   let result = [...data_item];
-  //   debugger;
   for (let i = 0; i < data_item.length; i++) {
     let temp_arr = [];
     let subj_factor = 0;
