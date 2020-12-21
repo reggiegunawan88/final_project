@@ -1,0 +1,11 @@
+.main-content {
+  justify-content: center;
+  margin: 20px;
+}
+
+.btn-keloladata {
+  height: 100px;
+  width: auto;
+  padding: 10px;
+  margin: 20px;
+}
