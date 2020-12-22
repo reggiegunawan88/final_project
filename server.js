@@ -36,8 +36,8 @@ const query_mobil =
   "SELECT idmobil,nama,harga,tahun,kilometer,kapasitas_mesin,bahan_bakar,jenis_rem,transmisi,merk,tipe_mobil, powersteering, gps, smart_key, airbag from mobil inner join merk_mobil on mobil.idmerk = merk_mobil.idmerk inner join tipe_mobil on mobil.idtipe = tipe_mobil.idtipe ORDER BY idmobil ASC";
 const query_get_img =
   "select idmobil, img_url from gambar_mobil order by idmobil asc";
-const query_merkmobil = "SELECT merk FROM merk_mobil";
-const query_tipemobil = "SELECT tipe_mobil FROM tipe_mobil";
+const query_merkmobil = "SELECT * FROM merk_mobil";
+const query_tipemobil = "SELECT * FROM tipe_mobil";
 
 pool.getConnection(function (err, connection) {
   if (err) throw err; // not connected!
@@ -193,6 +193,73 @@ app.post("/mobil/result_SECC", (req, res) => {
       " order by idmobil asc";
   }
   pool.query(query_SECC, (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(result);
+    }
+  });
+});
+
+//admin webservice
+/* add item to database */
+app.post("/admin/tambahmobil", (req, res) => {
+  const data = {
+    nama: `'` + req.body.nama_mobil + `'`,
+    harga: `'` + req.body.harga + `'`,
+    merk: `'` + req.body.merk_mobil + `'`,
+    tipe: `'` + req.body.tipe_mobil + `'`,
+    tahun: `'` + req.body.tahun_keluaran + `'`,
+    km: `'` + req.body.km + `'`,
+    kapasitas_mesin: `'` + req.body.kapasitas_mesin + `'`,
+    bahan_bakar: `'` + req.body.bahan_bakar + `'`,
+    transmisi: `'` + req.body.transmisi + `'`,
+    jenis_rem: `'` + req.body.jenis_rem + `'`,
+    power_steering: `'` + req.body.power_steering + `'`,
+    gps: `'` + req.body.gps + `'`,
+    smart_key: `'` + req.body.smart_key + `'`,
+    airbag: `'` + req.body.airbag + `'`,
+  };
+
+  var query =
+    "insert into mobil " +
+    `(` +
+    "nama, harga, tahun, kilometer, kapasitas_mesin, bahan_bakar, jenis_rem, transmisi, idmerk, idtipe, powersteering, gps, smart_key, airbag" +
+    `) ` +
+    "values " +
+    `(` +
+    data.nama +
+    `,` +
+    data.harga +
+    `,` +
+    data.tahun +
+    `,` +
+    data.km +
+    `,` +
+    data.kapasitas_mesin +
+    `,` +
+    data.bahan_bakar +
+    `,` +
+    data.jenis_rem +
+    `,` +
+    data.transmisi +
+    `,` +
+    data.merk +
+    `,` +
+    data.tipe +
+    `,` +
+    data.power_steering +
+    `,` +
+    data.gps +
+    `,` +
+    data.smart_key +
+    `,` +
+    data.airbag +
+    `)`;
+  console.log(query);
+
+  //process query
+  pool.query(query, (err, result) => {
     if (err) {
       return res.send(err);
     } else {
