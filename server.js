@@ -268,6 +268,20 @@ app.post("/admin/tambahmobil", (req, res) => {
   });
 });
 
+/* delete item on database*/
+app.post("/admin/hapusmobil", (req, res) => {
+  var idmobil = req.body.idmobil;
+  var query = "DELETE FROM MOBIL WHERE idmobil = " + idmobil;
+  console.log(query);
+  pool.query(query, (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(result);
+    }
+  });
+});
+
 const port = 5000;
 
 app.listen(port, () => {

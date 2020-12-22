@@ -118,6 +118,7 @@ class modal_add extends React.Component {
         })
         .then((response) => {
           alert("Mobil baru telah ditambahkan");
+          window.location.reload();
         })
         .catch(function (err) {
           console.log(err);

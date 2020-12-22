@@ -27,7 +27,24 @@ const edit_data = (props) => {
     setId(e.target.value);
   }
 
-  function delete_data(e) {}
+  function delete_data(e) {
+    var data = { idmobil: e.target.value };
+    axios
+      .post("http://localhost:5000/admin/hapusmobil", data, {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          accept: "application/json",
+        },
+      })
+      .then((response) => {
+        alert("Mobil telah dihapus");
+        window.location.reload();
+        console.log(response);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }
 
   return (
     <div>
@@ -88,6 +105,7 @@ const edit_data = (props) => {
                         variant="danger"
                         className="btn-crud"
                         value={item.idmobil}
+                        onClick={(e) => delete_data(e)}
                       >
                         DELETE
                       </Button>
