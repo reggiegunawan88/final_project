@@ -222,11 +222,11 @@ app.post("/admin/tambahmobil", (req, res) => {
   };
 
   var query =
-    "insert into mobil " +
+    "INSERT INTO MOBIL " +
     `(` +
     "nama, harga, tahun, kilometer, kapasitas_mesin, bahan_bakar, jenis_rem, transmisi, idmerk, idtipe, powersteering, gps, smart_key, airbag" +
     `) ` +
-    "values " +
+    "VALUES " +
     `(` +
     data.nama +
     `,` +
@@ -268,11 +268,101 @@ app.post("/admin/tambahmobil", (req, res) => {
   });
 });
 
+/* update item on database */
+app.post("/admin/ubahmobil", (req, res) => {
+  const data = {
+    idmobil: req.body.idmobil,
+    nama: `'` + req.body.nama_mobil + `'`,
+    harga: `'` + req.body.harga + `'`,
+    merk: `'` + req.body.merk_mobil + `'`,
+    tipe: `'` + req.body.tipe_mobil + `'`,
+    tahun: `'` + req.body.tahun_keluaran + `'`,
+    km: `'` + req.body.km + `'`,
+    kapasitas_mesin: `'` + req.body.kapasitas_mesin + `'`,
+    bahan_bakar: `'` + req.body.bahan_bakar + `'`,
+    transmisi: `'` + req.body.transmisi + `'`,
+    jenis_rem: `'` + req.body.jenis_rem + `'`,
+    power_steering: `'` + req.body.power_steering + `'`,
+    gps: `'` + req.body.gps + `'`,
+    smart_key: `'` + req.body.smart_key + `'`,
+    airbag: `'` + req.body.airbag + `'`,
+  };
+
+  var query_update =
+    "UPDATE MOBIL SET " +
+    "nama = " +
+    data.nama +
+    `,` +
+    "harga = " +
+    data.harga +
+    `,` +
+    "tahun = " +
+    data.tahun +
+    `,` +
+    "kilometer = " +
+    data.km +
+    `,` +
+    "kapasitas_mesin = " +
+    data.kapasitas_mesin +
+    `,` +
+    "bahan_bakar = " +
+    data.bahan_bakar +
+    `,` +
+    "jenis_rem = " +
+    data.jenis_rem +
+    `,` +
+    "transmisi = " +
+    data.transmisi +
+    `,` +
+    "idmerk = " +
+    data.merk +
+    `,` +
+    "idtipe = " +
+    data.tipe +
+    `,` +
+    "powersteering = " +
+    data.power_steering +
+    `,` +
+    "gps = " +
+    data.gps +
+    `,` +
+    "smart_key = " +
+    data.smart_key +
+    `,` +
+    "airbag = " +
+    data.airbag +
+    ` WHERE idmobil = ` +
+    data.idmobil;
+
+  console.log(query_update);
+  //process query
+  pool.query(query_update, (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(result);
+    }
+  });
+});
+
 /* delete item on database*/
 app.post("/admin/hapusmobil", (req, res) => {
   var idmobil = req.body.idmobil;
   var query = "DELETE FROM MOBIL WHERE idmobil = " + idmobil;
   console.log(query);
+  pool.query(query, (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(result);
+    }
+  });
+});
+
+/* get specific item*/
+app.get("/admin/carimobil/idmobil=:id_mobil", (req, res) => {
+  var idmobil = req.params.id_mobil;
+  var query = "SELECT * FROM MOBIL WHERE idmobil = " + idmobil;
   pool.query(query, (err, result) => {
     if (err) {
       return res.send(err);
