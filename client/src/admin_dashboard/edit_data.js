@@ -4,6 +4,10 @@ import { Button, Table } from "react-bootstrap";
 import axios from "axios";
 import "./style/edit_data.css";
 
+//confirmation alert
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+
 //modal popup
 import ModalAdd from "./components/modal_add";
 import ModalEdit from "./components/modal_edit";
@@ -28,7 +32,24 @@ const edit_data = (props) => {
   }
 
   function delete_data(e) {
-    var data = { idmobil: e.target.value };
+    var idmobil = e.target.value;
+    confirmAlert({
+      title: "Konfirmasi Hapus Data Mobil",
+      message: "Apakah anda yakin akan menghapus mobil ini?",
+      buttons: [
+        {
+          label: "Ya",
+          onClick: () => ajax_delete_data(idmobil),
+        },
+        {
+          label: "Tidak",
+        },
+      ],
+    });
+  }
+
+  function ajax_delete_data(idmobil) {
+    var data = { idmobil: idmobil };
     axios
       .post("http://localhost:5000/admin/hapusmobil", data, {
         headers: {

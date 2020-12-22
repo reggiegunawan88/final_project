@@ -16,12 +16,21 @@ const CardMobil = ({ item }) => {
     <div>
       <Link to={{ pathname: `/productdetail/${item.nama}`, data: item }}>
         <Card className="mobil-card">
-          <Image
-            //* dynamic local img must be put in public folder
-            src={"/img/" + item.img[0].url}
-            wrapped
-            ui={true}
-          />
+          {item.img ? (
+            <Image
+              //* dynamic local img must be put in public folder
+              src={"/img/" + item.img[0].url}
+              wrapped
+              ui={true}
+            />
+          ) : (
+            <Image
+              //empty img
+              src="http://naripanmotor.com/wp-content/themes/naripanmotor2017/img/img-slider-1.jpg"
+              wrapped
+              ui={true}
+            />
+          )}
           <Card.Content>
             <Card.Header>{item.merk}</Card.Header>
             <Card.Meta>
