@@ -44,7 +44,6 @@ const ListMobil = ({ items, loading, itemsTotal }) => {
   const get_dropdownvalue = async (event, data) => {
     const selected_value = data.value;
     console.log(selected_value);
-    // setSortValue(selected_value);
   };
 
   return (
