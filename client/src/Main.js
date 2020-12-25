@@ -7,7 +7,9 @@ import PageRouter from "./components/pageRouter";
 //ADMIN PAGE COMPONENT
 import LoginAdmin from "./admin_dashboard/login";
 import Dashboard from "./admin_dashboard/dashboard";
-import EditDataPage from "./admin_dashboard/edit_data";
+import KelolaMobil from "./admin_dashboard/components/mobil/show_data_mobil";
+import KelolaMerkMobil from "./admin_dashboard/components/merk/show_data_merk";
+import KelolaTipeMobil from "./admin_dashboard/components/tipe/show_data_tipe";
 
 class Main extends Component {
   render() {
@@ -19,7 +21,9 @@ class Main extends Component {
             {/* below routing for admin page */}
             <Route path="/admin" component={LoginAdmin}></Route>
             <Route path="/dashboard" component={Dashboard}></Route>
-            <Route path="/keloladatamobil" component={EditDataPage}></Route>
+            <Route path="/keloladatamobil" component={KelolaMobil}></Route>
+            <Route path="/kelolamerkmobil" component={KelolaMerkMobil}></Route>
+            <Route path="/kelolatipemobil" component={KelolaTipeMobil}></Route>
           </Switch>
         </Router>
       </div>

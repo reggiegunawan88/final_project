@@ -1,14 +1,15 @@
 import React from "react";
 import { Modal, Button, Form, Col } from "react-bootstrap";
 import axios from "axios";
-import "./../style/modal.css";
+import "./../../style/modal.css";
 
-class modal_add extends React.Component {
+class modal_edit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       list_merk_mobil: [],
       list_tipe_mobil: [],
+      idmobil: null,
       nama_mobil: null,
       harga: null,
       merk_mobil: null,
@@ -27,10 +28,16 @@ class modal_add extends React.Component {
   }
 
   componentDidMount() {
-    this.get_data();
+    this.get_merktipe_data();
   }
 
-  async get_data() {
+  componentDidUpdate(prevProps) {
+    if (this.props.idmobil !== prevProps.idmobil) {
+      this.get_item_data(this.props.idmobil);
+    }
+  }
+
+  async get_merktipe_data() {
     try {
       const res_merk = await axios("http://localhost:5000/mobil/merkmobil");
       const res_tipe = await axios("http://localhost:5000/mobil/tipemobil");
@@ -60,8 +67,40 @@ class modal_add extends React.Component {
     });
   }
 
+  get_item_data(id) {
+    axios
+      .get("/admin/carimobil/idmobil=" + id)
+      .then((response) => {
+        let data = response.data[0];
+        this.setState(
+          {
+            idmobil: data.idmobil,
+            nama_mobil: data.nama,
+            harga: data.harga,
+            merk_mobil: data.idmerk,
+            tipe_mobil: data.idtipe,
+            km: data.kilometer,
+            tahun_keluaran: data.tahun,
+            kapasitas_mesin: data.kapasitas_mesin,
+            bahan_bakar: data.bahan_bakar,
+            transmisi: data.transmisi,
+            jenis_rem: data.jenis_rem,
+            power_steering: data.powersteering,
+            gps: data.gps,
+            smart_key: data.smart_key,
+            airbag: data.airbag,
+          },
+          () => console.log(this.state)
+        );
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }
+
   submit_data = () => {
     var item_data = {
+      idmobil: this.state.idmobil,
       nama_mobil: this.state.nama_mobil,
       harga: this.state.harga,
       merk_mobil: this.state.merk_mobil,
@@ -110,7 +149,7 @@ class modal_add extends React.Component {
     } else {
       //POST method
       axios
-        .post("http://localhost:5000/admin/tambahmobil", item_data, {
+        .post("http://localhost:5000/admin/ubahmobil", item_data, {
           headers: {
             "Content-Type": "application/json; charset=utf-8",
             accept: "application/json",
@@ -118,7 +157,7 @@ class modal_add extends React.Component {
         })
         .then((response) => {
           console.log(response);
-          alert("Mobil baru telah ditambahkan");
+          alert("Data mobil telah diperbarui");
           window.location.reload();
         })
         .catch(function (err) {
@@ -138,7 +177,7 @@ class modal_add extends React.Component {
       >
         <Modal.Header>
           <Modal.Title id="">
-            <b>TAMBAH MOBIL</b>
+            <b>EDIT MOBIL</b>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -146,31 +185,30 @@ class modal_add extends React.Component {
             <Form.Row>
               <Form.Group as={Col} controlId="formGridEmail">
                 <Form.Label>
+                  <b>ID Mobil</b>
+                </Form.Label>
+                <Form.Control type="text" value={this.props.idmobil} disabled />
+              </Form.Group>
+              <Form.Group as={Col} controlId="formGridEmail">
+                <Form.Label>
                   <b>Nama Mobil</b>
                 </Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="Masukkan nama mobil..."
-                  onChange={(event) =>
-                    this.setState({
-                      nama_mobil: event.target.value.toUpperCase(),
-                    })
+                  value={this.state.nama_mobil}
+                  onChange={(e) =>
+                    this.setState({ nama_mobil: e.target.value })
                   }
                 />
               </Form.Group>
-
               <Form.Group as={Col} controlId="formGridPassword">
                 <Form.Label>
                   <b>Harga</b>
                 </Form.Label>
                 <Form.Control
                   type="number"
-                  placeholder="Masukkan harga mobil..."
-                  onChange={(event) =>
-                    this.setState({
-                      harga: parseInt(event.target.value),
-                    })
-                  }
+                  value={this.state.harga}
+                  onChange={(e) => this.setState({ harga: e.target.value })}
                 />
               </Form.Group>
             </Form.Row>
@@ -183,6 +221,7 @@ class modal_add extends React.Component {
                 </Form.Label>
                 <Form.Control
                   as="select"
+                  value={this.state.merk_mobil}
                   onChange={(event) =>
                     this.setState({ merk_mobil: event.target.value })
                   }
@@ -200,6 +239,7 @@ class modal_add extends React.Component {
                 </Form.Label>
                 <Form.Control
                   as="select"
+                  value={this.state.tipe_mobil}
                   onChange={(event) =>
                     this.setState({ tipe_mobil: event.target.value })
                   }
@@ -220,12 +260,11 @@ class modal_add extends React.Component {
                 </Form.Label>
                 <Form.Control
                   type="number"
-                  placeholder="Masukkan tahun keluaran..."
-                  onChange={(event) =>
-                    this.setState({
-                      tahun_keluaran: parseInt(event.target.value),
-                    })
+                  value={this.state.tahun_keluaran}
+                  onChange={(e) =>
+                    this.setState({ tahun_keluaran: e.target.value })
                   }
+                  placeholder="Masukkan tahun keluaran..."
                 ></Form.Control>
               </Form.Group>
 
@@ -235,12 +274,9 @@ class modal_add extends React.Component {
                 </Form.Label>
                 <Form.Control
                   type="number"
+                  value={this.state.km}
+                  onChange={(e) => this.setState({ km: e.target.value })}
                   placeholder="Masukkan jumlah kilometer..."
-                  onChange={(event) =>
-                    this.setState({
-                      km: parseInt(event.target.value),
-                    })
-                  }
                 ></Form.Control>
               </Form.Group>
 
@@ -250,12 +286,11 @@ class modal_add extends React.Component {
                 </Form.Label>
                 <Form.Control
                   type="number"
-                  placeholder="Masukkan kapasitas mesin..."
-                  onChange={(event) =>
-                    this.setState({
-                      kapasitas_mesin: parseInt(event.target.value),
-                    })
+                  value={this.state.kapasitas_mesin}
+                  onChange={(e) =>
+                    this.setState({ kapasitas_mesin: e.target.value })
                   }
+                  placeholder="Masukkan kapasitas mesin..."
                 ></Form.Control>
               </Form.Group>
             </Form.Row>
@@ -268,6 +303,7 @@ class modal_add extends React.Component {
                 </Form.Label>
                 <Form.Control
                   as="select"
+                  value={this.state.bahan_bakar}
                   onChange={(event) =>
                     this.setState({ bahan_bakar: event.target.value })
                   }
@@ -284,6 +320,7 @@ class modal_add extends React.Component {
                 </Form.Label>
                 <Form.Control
                   as="select"
+                  value={this.state.transmisi}
                   onChange={(event) =>
                     this.setState({ transmisi: event.target.value })
                   }
@@ -300,6 +337,7 @@ class modal_add extends React.Component {
                 </Form.Label>
                 <Form.Control
                   as="select"
+                  value={this.state.jenis_rem}
                   onChange={(event) =>
                     this.setState({ jenis_rem: event.target.value })
                   }
@@ -319,6 +357,7 @@ class modal_add extends React.Component {
                 </Form.Label>
                 <Form.Control
                   as="select"
+                  value={this.state.power_steering}
                   onChange={(event) =>
                     this.setState({ power_steering: event.target.value })
                   }
@@ -335,6 +374,7 @@ class modal_add extends React.Component {
                 </Form.Label>
                 <Form.Control
                   as="select"
+                  value={this.state.gps}
                   onChange={(event) =>
                     this.setState({ gps: event.target.value })
                   }
@@ -351,6 +391,7 @@ class modal_add extends React.Component {
                 </Form.Label>
                 <Form.Control
                   as="select"
+                  value={this.state.smart_key}
                   onChange={(event) =>
                     this.setState({ smart_key: event.target.value })
                   }
@@ -367,6 +408,7 @@ class modal_add extends React.Component {
                 </Form.Label>
                 <Form.Control
                   as="select"
+                  value={this.state.airbag}
                   onChange={(event) =>
                     this.setState({ airbag: event.target.value })
                   }
@@ -381,7 +423,7 @@ class modal_add extends React.Component {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={this.submit_data}>
-            TAMBAH MOBIL
+            UBAH DATA MOBIL
           </Button>
           <Button variant="danger" onClick={this.props.onHide}>
             BATAL
@@ -392,4 +434,4 @@ class modal_add extends React.Component {
   }
 }
 
-export default modal_add;
+export default modal_edit;

@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "./components/navbar";
+import Navbar from "../navbar";
 import { Button, Table } from "react-bootstrap";
 import axios from "axios";
-import "./style/edit_data.css";
+import "./../../style/edit_data.css";
 
 //confirmation alert
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 //modal popup
-import ModalAdd from "./components/modal_add";
-import ModalEdit from "./components/modal_edit";
+import ModalAdd from "./modal_add";
+import ModalEdit from "./modal_edit";
 
 const edit_data = (props) => {
   const [data, setData] = useState([]);

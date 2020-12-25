@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Button, Form, Col } from "react-bootstrap";
 import axios from "axios";
-import "./../style/modal.css";
+import "./../../style/modal.css";
 
 class modal_edit extends React.Component {
   constructor(props) {
