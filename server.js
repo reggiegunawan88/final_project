@@ -359,6 +359,81 @@ app.post("/admin/hapusmobil", (req, res) => {
   });
 });
 
+app.post("/admin/tambahmerk", (req, res) => {
+  var merk = `'` + req.body.nama_merk + `'`;
+  var query =
+    "insert into merk_mobil " +
+    `(` +
+    "merk" +
+    `)` +
+    " value " +
+    `(` +
+    merk +
+    `)`;
+  console.log(query);
+  pool.query(query, (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(result);
+    }
+  });
+});
+
+app.post("/admin/ubahmerk", (req, res) => {
+  var idmerk = req.body.idmerk;
+  var merk = `'` + req.body.nama_merk + `'`;
+  var query =
+    "UPDATE merk_mobil SET merk = " + merk + " WHERE idmerk = " + idmerk;
+  console.log(query);
+  pool.query(query, (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(result);
+    }
+  });
+});
+
+app.post("/admin/tambahtipe", (req, res) => {
+  var tipe_mobil = `'` + req.body.nama_tipe + `'`;
+  var query =
+    "insert into tipe_mobil " +
+    `(` +
+    "tipe_mobil" +
+    `)` +
+    " value " +
+    `(` +
+    tipe_mobil +
+    `)`;
+  console.log(query);
+  pool.query(query, (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(result);
+    }
+  });
+});
+
+app.post("/admin/ubahtipe", (req, res) => {
+  var idtipe = req.body.idtipe;
+  var tipe_mobil = `'` + req.body.nama_tipe + `'`;
+  var query =
+    "UPDATE tipe_mobil SET tipe_mobil = " +
+    tipe_mobil +
+    " WHERE idtipe = " +
+    idtipe;
+  console.log(query);
+  pool.query(query, (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json(result);
+    }
+  });
+});
+
 /* get specific item*/
 app.get("/admin/carimobil/idmobil=:id_mobil", (req, res) => {
   var idmobil = req.params.id_mobil;

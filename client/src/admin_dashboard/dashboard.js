@@ -13,7 +13,7 @@ const dashboard = (props) => {
   }
 
   function handle_btn_tipe() {
-    props.history.push("/keloladatamobil");
+    props.history.push("/kelolatipemobil");
   }
 
   return (
