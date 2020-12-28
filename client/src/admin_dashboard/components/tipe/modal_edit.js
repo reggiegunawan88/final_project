@@ -39,7 +39,7 @@ class modal_edit extends React.Component {
         })
         .then((response) => {
           console.log(response);
-          alert("Merk mobil telah diperbarui");
+          alert("Tipe mobil telah diperbarui");
           window.location.reload();
         })
         .catch(function (err) {
@@ -59,7 +59,7 @@ class modal_edit extends React.Component {
       >
         <Modal.Header>
           <Modal.Title id="">
-            <b>EDIT MERK</b>
+            <b>EDIT TIPE</b>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

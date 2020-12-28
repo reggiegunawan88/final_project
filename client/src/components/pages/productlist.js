@@ -4,7 +4,7 @@ import Dropdown from "./../page_components/dropdown/dropdown";
 import GroupCards from "./../page_components/productlist/group-cards";
 import Pagination from "./../page_components/productlist/pagination";
 
-const ListMobil = ({ items, loading, itemsTotal }) => {
+const ListMobil = ({ items, loading, itemsTotal, triggerSortBy }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(6);
 
@@ -43,7 +43,20 @@ const ListMobil = ({ items, loading, itemsTotal }) => {
 
   const get_dropdownvalue = async (event, data) => {
     const selected_value = data.value;
-    console.log(selected_value);
+    const result_arr = [...items];
+    if (selected_value === "Harga Termurah") {
+      result_arr.sort((a, b) => (a.harga > b.harga ? 1 : -1));
+      triggerSortBy(result_arr);
+    } else if (selected_value === "Harga Termahal") {
+      result_arr.sort((a, b) => (a.harga < b.harga ? 1 : -1));
+      triggerSortBy(result_arr);
+    } else if (selected_value === "Tahun Terbaru") {
+      result_arr.sort((a, b) => (a.tahun < b.tahun ? 1 : -1));
+      triggerSortBy(result_arr);
+    } else if (selected_value === "Tahun Terlama") {
+      result_arr.sort((a, b) => (a.tahun > b.tahun ? 1 : -1));
+      triggerSortBy(result_arr);
+    }
   };
 
   return (

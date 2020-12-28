@@ -202,6 +202,10 @@ class MainPage extends React.Component {
     window.location.href = "/carimobil";
   }
 
+  sort_by(sorted_items) {
+    this.setState({ items: sorted_items });
+  }
+
   render() {
     //loading if state is still null
     if (this.state.items[0] === undefined) {
@@ -239,6 +243,7 @@ class MainPage extends React.Component {
               items={this.state.items}
               loading={this.state.isLoading}
               itemsTotal={this.state.itemsTotal}
+              triggerSortBy={(items) => this.sort_by(items)}
             />
           </div>
         </div>
