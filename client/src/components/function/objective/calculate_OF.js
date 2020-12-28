@@ -5,7 +5,6 @@ const calculate_OF = (data_item, ofw, ow) => {
   let result = [...data_item];
 
   //do matrix cartesian product per row
-  // debugger;
   for (let i = 0; i < data_item.length; i++) {
     let temp_arr = [];
     let obj_factor = 0;

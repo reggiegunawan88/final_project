@@ -11,9 +11,6 @@ import Select from "@material-ui/core/Select";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline"; //for icon
 import { Popup } from "semantic-ui-react"; //for tooltip
 
-//brown-gibson algorithm
-import calculate_LPM from "./../../../function/brown-gibson";
-
 export class modal_bobot extends Component {
   constructor(props) {
     super(props);

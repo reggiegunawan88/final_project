@@ -1,11 +1,16 @@
 //function for render items with images
 const put_imgArray = (items, items_img) => {
   let clone_items = [...items]; //clone from state
+  console.log(clone_items);
   let clone_itemsImg = [...items_img]; //clone from state
+  console.log(clone_itemsImg);
   let img_arr = []; //initial empty temp arr for img
   // debugger
   for (let i = 0; i < clone_items.length; i++) {
     for (let j = 0; j <= clone_itemsImg.length; j++) {
+      if (clone_itemsImg[0] === undefined) {
+        break;
+      }
       if (clone_items[i].idmobil === clone_itemsImg[0].idmobil) {
         //put img into arr temp
         img_arr.push({ url: clone_itemsImg[0].img_url });

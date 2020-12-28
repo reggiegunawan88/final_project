@@ -23,8 +23,9 @@ class MainPage extends React.Component {
       //initial color for 2nd modal btn
       btnModalColor: "secondary",
 
-      //show reset and priority modal btn
-      showResetBtn: true,
+      //show choose, reset and priority modal btn
+      hideChooseBtn: false,
+      hideResetBtn: true,
       hidePriorityBtn: true,
 
       //show short note (keterangan) for BG value
@@ -153,7 +154,7 @@ class MainPage extends React.Component {
       itemsTotal: results.length,
       disableModalProps: false,
       btnModalColor: "success",
-      showResetBtn: false,
+      hideResetBtn: false,
       hidePriorityBtn: results.length <= 2 ? true : false,
       hideKeteranganTxt: true,
       harga1: filter_data.harga1,
@@ -185,8 +186,9 @@ class MainPage extends React.Component {
     result_BG.sort((a, b) => (a.LPM < b.LPM ? 1 : -1));
     this.setState({
       items: result_BG,
-      showResetBtn: false,
-      showPriorityBtn: true,
+      hideChooseBtn: true, //when BG done, user must reset the page to do another SPK
+      hideResetBtn: false,
+      hidePriorityBtn: true,
       hideKeteranganTxt: false,
       BG_algorithm_done: true,
       isLoading: false,
@@ -200,6 +202,10 @@ class MainPage extends React.Component {
     window.location.href = "/carimobil";
   }
 
+  sort_by(sorted_items) {
+    this.setState({ items: sorted_items });
+  }
+
   render() {
     //loading if state is still null
     if (this.state.items[0] === undefined) {
@@ -207,6 +213,7 @@ class MainPage extends React.Component {
         onReceiveProps={(filter_data) => this.search_SECC_result(filter_data)}
         onReset={() => this.reset_page()}
         btnModalColor={this.state.btnModalColor}
+        showChooseBtn={this.state.showChooseBtn}
         showResetBtn={this.state.showResetBtn}
         hidePriorityBtn={true}
         hideKeteranganText={true}
@@ -223,7 +230,8 @@ class MainPage extends React.Component {
               }
               onReset={() => this.reset_page()}
               btnModalColor={this.state.btnModalColor}
-              showResetBtn={this.state.showResetBtn}
+              hideChooseBtn={this.state.hideChooseBtn}
+              hideResetBtn={this.state.hideResetBtn}
               hidePriorityBtn={this.state.hidePriorityBtn}
               hideKeteranganText={this.state.hideKeteranganTxt}
               getSECCData={this.state.items}
@@ -235,6 +243,7 @@ class MainPage extends React.Component {
               items={this.state.items}
               loading={this.state.isLoading}
               itemsTotal={this.state.itemsTotal}
+              triggerSortBy={(items) => this.sort_by(items)}
             />
           </div>
         </div>

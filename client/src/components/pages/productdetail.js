@@ -2,15 +2,11 @@ import React from "react";
 import "./../style/productdetail.css";
 import ImageSlideshow from "../page_components/productdetail/img_slideshow";
 import ProductData from "../page_components/productdetail/productdata";
-import { Button } from "react-bootstrap";
-// import { observable } from "mobx";
+import FeatureList from "../page_components/productdetail/feature_list";
+import Description from "../page_components/productdetail/description";
 
 const productdetail = (props) => {
   const data = props.location.data;
-
-  function prev_page() {
-    props.history.goBack();
-  }
 
   return (
     <div className="container container-product">
@@ -20,11 +16,6 @@ const productdetail = (props) => {
             {data.merk} {data.nama}
           </div>
         </div>
-        {/* <div>
-          <Button onClick={prev_page}>
-            <b>KEMBALI</b>
-          </Button>
-        </div> */}
       </div>
       <div className="row mt-5 mb-5">
         <div className="col-sm-9">
@@ -34,6 +25,14 @@ const productdetail = (props) => {
         </div>
         <div className="col-sm-3">
           <ProductData items={data} />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-sm-9">
+          <FeatureList items={data} />
+        </div>
+        <div className="col-sm-3">
+          <Description />
         </div>
       </div>
     </div>

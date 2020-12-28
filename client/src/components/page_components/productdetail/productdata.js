@@ -4,6 +4,7 @@ import NumberFormat from "react-number-format";
 const productdata = ({ items }) => {
   return (
     <div>
+      <h3>INFORMASI MOBIL BEKAS</h3>
       <table className="table table-dark">
         <tbody>
           <tr>
@@ -54,22 +55,6 @@ const productdata = ({ items }) => {
           <tr>
             <th scope="row">BAHAN BAKAR</th>
             <td>{items.bahan_bakar}</td>
-          </tr>
-          <tr>
-            <th scope="row">GPS</th>
-            <td>{items.gps}</td>
-          </tr>
-          <tr>
-            <th scope="row">SMART KEY</th>
-            <td>{items.smart_key}</td>
-          </tr>
-          <tr>
-            <th scope="row">AIRBAG</th>
-            <td>{items.airbag}</td>
-          </tr>
-          <tr>
-            <th scope="row">POWER STEERING</th>
-            <td>{items.powersteering}</td>
           </tr>
           <tr>
             <th scope="row">HARGA</th>

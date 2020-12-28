@@ -8,7 +8,6 @@ const calculate_OW = (data_item, obj_data) => {
   let total_row = [];
 
   //matrix cross product for each item
-  // debugger;
   for (let i = 0; i < obj_data.length; i++) {
     let sum_row = [];
     for (let j = 0; j < data_item.length; j++) {
@@ -39,7 +38,6 @@ const calculate_OW = (data_item, obj_data) => {
   }
 
   //calculate obj weight for each item
-  // debugger;
   for (let i = 0; i < total_row.length; i++) {
     const res_totalrow = total_row[i].reduce(
       (total, current) => (total = total + current)
