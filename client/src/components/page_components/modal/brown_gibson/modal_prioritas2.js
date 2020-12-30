@@ -49,24 +49,40 @@ class ModalPrioritas2 extends React.Component {
   }
 
   goto_finalModal = () => {
-    this.props.onReceivedProps(); //close current modal
-    this.props.onSendDataObj(this.state.obj_data); //send state data
-    this.setState({
-      obj_data: [
-        {
-          data: "HARGA",
-          value: 0,
-        },
-        {
-          data: "TAHUN KELUARAN",
-          value: 0,
-        },
-        {
-          data: "KILOMETER",
-          value: 0,
-        },
-      ],
+    var formIsValid = false;
+    var ct = 0;
+
+    this.state.obj_data.forEach((item) => {
+      if (item.value !== 0) {
+        ct += 1;
+      }
     });
+
+    //check if all three priority number is filled
+    ct === 3 ? (formIsValid = true) : (formIsValid = false);
+
+    if (formIsValid) {
+      this.props.onReceivedProps(); //close current modal
+      this.props.onSendDataObj(this.state.obj_data); //send state data
+      this.setState({
+        obj_data: [
+          {
+            data: "HARGA",
+            value: 0,
+          },
+          {
+            data: "TAHUN KELUARAN",
+            value: 0,
+          },
+          {
+            data: "KILOMETER",
+            value: 0,
+          },
+        ],
+      });
+    } else {
+      alert("Ada nilai prioritas yang belum diisi");
+    }
   };
 
   update_dropdownValue(index, selected_value) {

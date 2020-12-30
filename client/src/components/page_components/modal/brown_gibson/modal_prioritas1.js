@@ -63,9 +63,26 @@ class ModalPrioritas1 extends React.Component {
     if (this.choice < 3) {
       alert("Pilihan masih dibawah 3");
     } else {
-      this.resetState();
-      this.props.onReceivedProps();
-      this.props.onSendDataSubj(this.state.subj_data);
+      //form validation
+      var isFormValid = false;
+      var ct = 0; //count if all choosed priority is filled properly
+      this.state.subj_data.forEach((item) => {
+        if (item.value !== 0) {
+          ct += 1;
+        }
+      });
+
+      ct === this.state.subj_data.length
+        ? (isFormValid = true)
+        : (isFormValid = false);
+
+      if (isFormValid) {
+        this.resetState();
+        this.props.onReceivedProps();
+        this.props.onSendDataSubj(this.state.subj_data);
+      } else {
+        alert("Ada nilai prioritas yang belum diisi");
+      }
     }
   };
 

@@ -21,7 +21,7 @@ class MainPage extends React.Component {
       disableModalProps: true,
 
       //initial color for 2nd modal btn
-      btnModalColor: "secondary",
+      btnModalColor: "success",
 
       //show choose, reset and priority modal btn
       hideChooseBtn: false,
@@ -188,7 +188,7 @@ class MainPage extends React.Component {
       items: result_BG,
       hideChooseBtn: true, //when BG done, user must reset the page to do another SPK
       hideResetBtn: false,
-      hidePriorityBtn: true,
+      hidePriorityBtn: false,
       hideKeteranganTxt: false,
       BG_algorithm_done: true,
       isLoading: false,

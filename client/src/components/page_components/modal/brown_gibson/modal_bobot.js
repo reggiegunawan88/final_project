@@ -109,7 +109,7 @@ export class modal_bobot extends Component {
 
   submit_all_data = () => {
     if (this.state.obj_weight === 0) {
-      alert("Mohon maaf, bobot belum diisi");
+      alert("Mohon isi nilai pembobotan terlebih dahulu.");
     } else {
       let input_data = {
         secc_data: this.state.secc_data,
