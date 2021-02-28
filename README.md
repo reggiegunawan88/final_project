@@ -1,9 +1,9 @@
 # Final Thesis Project Catholic Parahyangan University
-University: Catholic Parahyangan University
-Faculty: Information and Technology
-Major: Computer Science
-Student : Reggie Maurice Gunawan 
-ID number: 2016730001
+- University: Catholic Parahyangan University
+- Faculty: Information and Technology
+- Major: Computer Science
+- Student : Reggie Maurice Gunawan 
+- ID number: 2016730001
 
 # Topic: Decision Support System for Choosing Used Car Using Brown-Gibson Algorithm
 
