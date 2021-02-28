@@ -13,6 +13,7 @@ Features:
 3. See general information of a used car (by user)
 4. CRUD used car data (by admin)
 
--Front-end : React JS
--Back-end : Node JS (Express for server-side)
--Database : MySQL (Workbench)
+Stacks: 
+- Front-end : React JS
+- Back-end : Node JS (Express for server-side)
+- Database : MySQL (Workbench)
