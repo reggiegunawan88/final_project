@@ -31,7 +31,7 @@ class modal_add extends React.Component {
         .then((response) => {
           console.log(response);
           alert("Merk baru telah ditambahkan");
-          // window.location.reload();
+          window.location.reload();
         })
         .catch(function (err) {
           console.log(err);

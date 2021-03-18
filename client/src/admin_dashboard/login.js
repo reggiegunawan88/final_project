@@ -27,7 +27,6 @@ export default function Login(props) {
   return (
     <div className="Login" style={{ margin: 10 }}>
       <div className="logo-area mb-5">
-        {/* <img src={logo} /> */}
         <h3>ADMIN DASHBOARD</h3>
       </div>
       <Form onSubmit={handleSubmit}>

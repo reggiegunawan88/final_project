@@ -307,30 +307,6 @@ class ModalKriteria extends React.Component {
                   </div>
                 </div>
               </div>
-              {/* <div className="row">
-                <div className="col-12">
-                  <p id="label-txt">TAHUN KELUARAN :</p>
-                  <div className="dropdown-component">
-                    <Dropdown
-                      placeholder="---Semua---"
-                      onChange={this.get_dropdown_tahun}
-                      options={this.state.options_tahun}
-                    />
-                  </div>
-                </div>
-              </div> */}
-              {/* <div className="row">
-                <div className="col-12">
-                  <p id="label-txt">KILOMETER :</p>
-                  <div className="dropdown-component">
-                    <Dropdown
-                      placeholder="---Semua---"
-                      onChange={this.get_dropdown_km}
-                      options={this.state.options_km}
-                    />
-                  </div>
-                </div>
-              </div> */}
             </div>
           </form>
         </Modal.Body>

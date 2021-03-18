@@ -10,7 +10,9 @@ const description = () => {
           <b>DESKRIPSI</b>
         </Card.Header>
         <Card.Body>
-          <Card.Text style={{ margin: 5 }}>- Mobil siap pakai</Card.Text>
+          <Card.Text style={{ margin: 5 }}>
+            - Garansi resmi showroom selama 3 bulan sejak mobil dibeli
+          </Card.Text>
           <Card.Text style={{ margin: 5 }}>
             - Kelengkapan surat dijamin 100%
           </Card.Text>

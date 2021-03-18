@@ -5,10 +5,9 @@ const put_imgArray = (items, items_img) => {
   let clone_itemsImg = [...items_img]; //clone from state
   console.log(clone_itemsImg);
   let img_arr = []; //initial empty temp arr for img
-  // debugger
   for (let i = 0; i < clone_items.length; i++) {
     for (let j = 0; j <= clone_itemsImg.length; j++) {
-      if (clone_itemsImg[0] === undefined) {
+      if (clone_itemsImg[0] === undefined) {  //item has no img in array
         break;
       }
       if (clone_items[i].idmobil === clone_itemsImg[0].idmobil) {
@@ -32,7 +31,7 @@ const put_imgArray = (items, items_img) => {
           clone_items[i] = item_arr;
           img_arr = [];
         }
-        //break if items_id bigger than img_id
+        //break if items_id bigger than img_id (images not matching)
         if (clone_items[i].idmobil < clone_itemsImg[0].idmobil) {
           break;
         }
@@ -41,8 +40,7 @@ const put_imgArray = (items, items_img) => {
       }
     }
   }
-  //finally, return the complete array
-  // debugger
+  //return the complete array with img
   return clone_items;
 };
 

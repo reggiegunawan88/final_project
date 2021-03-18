@@ -52,6 +52,9 @@ const dashboard = (props) => {
             </Button>
           </div>
         </div>
+        <div className="container copyright-txt">
+          <h5>Copyright © Naripan Motor 2021</h5>
+        </div>
       </div>
     </div>
   );
